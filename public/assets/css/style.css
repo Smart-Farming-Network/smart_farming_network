@@ -2646,9 +2646,9 @@ a.btn-round-animation.dark {
 
 .cart-btn {
 	display: inline-flex;
-	border: 2px solid var(--color-primary);
+	border: 2px solid var(--color-secondary);
 	padding: 12px 25px;
-	border-radius: 30px;
+	border-radius: 15px;
 	text-transform: uppercase;
 	align-items: center;
 	font-size: 13px;
@@ -2662,7 +2662,7 @@ a.btn-round-animation.dark {
 }
 
 .cart-btn:hover {
-	background: var(--color-primary);
+	background: var(--color-secondary);
 	color: var(--color-heading);
 }
 
@@ -4995,6 +4995,24 @@ ul.list-standard {
 	font-weight: 900;
 	margin-bottom: 0;
 }
+
+
+.product-card {
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+.nav-pills .nav-link.active {
+  background-color: hsl(152, 69%, 31%) !important; /* Bootstrap success green */
+}
+
+.nav-pills .nav-link:hover {
+	color: #fff !important;
+}
+
 
 .mask-text {
 	-webkit-background-clip: text;

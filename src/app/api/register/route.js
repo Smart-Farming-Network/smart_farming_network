@@ -1,42 +1,65 @@
-// app/api/auth/register/route.js
 import { hash } from 'bcryptjs';
 import { NextResponse } from 'next/server';
-import { dummyUsers, addUser, findUserByEmail } from '@/app/data/dummyUser';
+import { prisma } from '@/libs/prisma'; // make sure this file exists (see below)
 
 export async function POST(req) {
-  const { firstName:first_name, lastName:last_name, email, password, phone } = await req.json();
-
   try {
-    // Check if user exists
-    const existingUser = await findUserByEmail(email);
+    const { firstName, lastName, email, password, phone } = await req.json();
+
+    if (!firstName || !lastName || !email || !password) {
+      return NextResponse.json(
+        { error: 'Missing required fields' },
+        { status: 400 }
+      );
+    }
+
+    // Check if user already exists
+    const existingUser = await prisma.user.findUnique({
+      where: { email: email.toLowerCase().trim() },
+    });
 
     if (existingUser) {
-      
       return NextResponse.json(
         { error: 'Email already exists' },
         { status: 400 }
       );
     }
 
-    // Hash password
+    // Hash the password
     const hashedPassword = await hash(password, 12);
 
-    // Create user
-    const user = await addUser({
-        first_name,
-        last_name,
-        email: email.toLowerCase(),
+    // Create user and related profile
+    const user = await prisma.user.create({
+      data: {
+        email: email.toLowerCase().trim(),
         password: hashedPassword,
-        phone,
-      });
-
-
-    return NextResponse.json({ success: true, message: "user created successfully" }, {status: 201});
-  } catch (error) {
-      console.log('error occured', error)
+        profile: {
+          create: {
+            firstName,
+            lastName,
+            phone,
+          },
+        },
+      },
+      include: { profile: true },
+    });
 
     return NextResponse.json(
-      { error: 'Registration failed' },
+      {
+        success: true,
+        message: 'User created successfully',
+        user: {
+          id: user.id,
+          email: user.email,
+          profile: user.profile,
+        },
+      },
+      { status: 201 }
+    );
+  } catch (error) {
+    console.error('Registration error:', error);
+    return NextResponse.json(
+      { error: 'Registration failed. Please try again later.' },
       { status: 500 }
     );
   }

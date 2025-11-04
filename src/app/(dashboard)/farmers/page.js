@@ -57,29 +57,6 @@ export default function FarmersPage() {
     { id: 5, title: 'Greenhouse Expansion 2', subtitle: 'Hydroponics', amount: '$2,000' },
   ];
 
-  // Badge icon & color based on verification status
-  const getBadge = (status) => {
-    switch (status) {
-      case 'success':
-        return (
-          <span className="verified-badge">
-            <i className="bi bi-check-lg"></i>
-          </span>
-        );
-      case 'warning':
-        return (
-          <span className="verified-badge bg-warning text-dark">
-            <i className="bi bi-hourglass-split"></i>
-          </span>
-        );
-      default:
-        return (
-          <span className="verified-badge bg-danger">
-            <i className="bi bi-x-lg"></i>
-          </span>
-        );
-    }
-  };
 
   return (
     <div className="container py-5">
@@ -90,9 +67,6 @@ export default function FarmersPage() {
             <h1 className="display-6 text-heading mb-0">Farmers Dashboard</h1>
             <small className="text-muted">Smart Farming Network</small>
           </div>
-        </div>
-        <div className="d-flex align-items-center gap-3">
-          {getBadge(verificationStatus)}
         </div>
       </header>
 
