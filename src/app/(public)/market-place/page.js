@@ -1,463 +1,122 @@
+'use client';
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function MarketPlacePage() {
-    return (
-        <div>
-            
-            <div className="breadcrumb-area text-center shadow dark-hard bg-cover text-light" style={{backgroundImage: "url('/assets/img/4.jpeg')"}} >
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-8 offset-lg-2">
-                            <h1>Products</h1>
-                            <nav aria-label="breadcrumb">
-                                <ol className="breadcrumb">
-                                    <li><Link href="/"><i className="fas fa-home"></i> Home</Link></li>
-                                    <li className="active">Shop</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
+  const [view, setView] = useState("grid");
+  const [activeCategory, setActiveCategory] = useState(""); // ← no default filter
+
+  const categories = ["Seeds", "Tools", "Produce", "Fertilizers"];
+
+  const products = [
+    { id: 1, name: "Maize (100kg)", price: 80000, image: "/assets/img/products/1.png", category: "Seeds" },
+    { id: 2, name: "Irrigation Kit", price: 300000, image: "/assets/img/products/2.png", category: "Tools" },
+    { id: 3, name: "Organic Fertilizer", price: 100000, image: "/assets/img/products/3.png", category: "Fertilizers" },
+    { id: 4, name: "Sprayer", price: 60000, image: "/assets/img/products/4.png", category: "Tools" },
+  ];
+
+  // Filter only when category is selected
+  const filteredProducts = activeCategory
+    ? products.filter(p => p.category === activeCategory)
+    : products;
+
+  return (
+    <div className="container py-5">
+      <div className="breadcrumb-area text-center shadow dark-hard bg-cover text-light" style={{ backgroundImage: "url('/assets/img/4.jpeg')" }}>
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-8 offset-lg-2">
+              <h1>Products</h1>
+              <nav aria-label="breadcrumb">
+                <ol className="breadcrumb justify-content-center">
+                  <li className="breadcrumb-item">
+                    <Link href="/"><i className="fas fa-home"></i> Home</Link>
+                  </li>
+                  <li className="breadcrumb-item active">Shop</li>
+                </ol>
+              </nav>
             </div>
-            
-            <div className="validtheme-shop-area default-padding">
-                <div className="container">
-                    <div className="shop-listing-contentes">
-
-                        <div className="row item-flex center">
-
-                            <div className="col-lg-7">
-                                <div className="content">
-                                    <nav>
-                                        <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                                            <button className="nav-link active" id="grid-tab-control" data-bs-toggle="tab" data-bs-target="#grid-tab" type="button" role="tab" aria-controls="grid-tab" aria-selected="true">
-                                                <i className="fas fa-th-large"></i>
-                                            </button>
-
-                                            <button className="nav-link" id="list-tab-control" data-bs-toggle="tab" data-bs-target="#list-tab" type="button" role="tab" aria-controls="list-tab" aria-selected="false">
-                                                <i className="fas fa-th-list"></i>
-                                            </button>
-                                        </div>
-                                    </nav>
-                                </div>
-                            </div>
-
-                            <div className="col-lg-5 text-right">
-                                <p>
-                                    Showing 1–10 of 47 results
-                                </p>
-                                <select name="cars" id="cars">
-                                    <option value="volvo">Short by latest</option>
-                                    <option value="saab">Short by Recent</option>
-                                    <option value="mercedes">Short by Popular</option>
-                                    <option value="audi">Short by Relevant</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <div className="tab-content tab-content-info text-center" id="shop-tabContent">
-
-                                <div className="tab-pane fade show active" id="grid-tab" role="tabpanel" aria-labelledby="grid-tab-control">
-                                    <ul className="vt-products columns-4">
-
-                                        <li className="product">
-                                            <div className="product-contents">
-                                                <div className="product-image">
-                                                    <Link href="shop-single.html">
-                                                        <Image width={100} height={100} src="/assets/img/products/1.png" alt="Product" />
-                                                    </Link>
-                                                    <div className="shop-action">
-                                                        <ul>
-                                                            <li className="cart">
-                                                                <Link href="#"><span>Add to cart</span></Link>
-                                                            </li>
-                                                            <li className="wishlist">
-                                                                <Link href="#"><span>Add to wishlist</span></Link>
-                                                            </li>
-                                                            <li className="quick-view">
-                                                                <Link href="#"><span>Quick view</span></Link>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div className="product-caption">
-                                                    <div className="product-tags">
-                                                        <Link href="#">Crop</Link>
-                                                        <Link href="#">Organic</Link>
-                                                    </div>
-                                                    <h4 className="product-title">
-                                                        <Link href="shop-single.html">Strawberry</Link>
-                                                    </h4>
-                                                    <div className="price">
-                                                        <span>$12.00</span>
-                                                    </div>
-                                                    <Link href="#" className="cart-btn"><i className="fas fa-shopping-bag"></i> Add to cart</Link>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        
-                                        <li className="product">
-                                            <div className="product-contents">
-                                                <div className="product-image">
-                                                    <span className="onsale">Sale!</span>
-                                                    <Link href="shop-single.html">
-                                                        <Image width={100} height={100} src="/assets/img/products/2.png" alt="Product" />
-                                                    </Link>
-                                                    <div className="shop-action">
-                                                        <ul>
-                                                            <li className="cart">
-                                                                <Link href="#"><span>Add to cart</span></Link>
-                                                            </li>
-                                                            <li className="wishlist">
-                                                                <Link href="#"><span>Add to wishlist</span></Link>
-                                                            </li>
-                                                            <li className="quick-view">
-                                                                <Link href="#"><span>Quick view</span></Link>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div className="product-caption">
-                                                    <div className="product-tags">
-                                                        <Link href="#">Vegetables</Link>
-                                                        <Link href="#">Winter</Link>
-                                                    </div>
-                                                    <h4 className="product-title">
-                                                        <Link href="shop-single.html">Organic Carrot</Link>
-                                                    </h4>
-                                                    <div className="price">
-                                                        <span><del>$8.00</del></span>
-                                                        <span>$5.00</span>
-                                                    </div>
-                                                    <Link href="#" className="cart-btn"><i className="fas fa-shopping-bag"></i> Add to cart</Link>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        
-                                        <li className="product">
-                                            <div className="product-contents">
-                                                <div className="product-image">
-                                                    <Link href="shop-single.html">
-                                                        <Image width={100} height={100} src="/assets/img/products/3.png" alt="Product" />
-                                                    </Link>
-                                                    <div className="shop-action">
-                                                        <ul>
-                                                            <li className="cart">
-                                                                <Link href="#"><span>Add to cart</span></Link>
-                                                            </li>
-                                                            <li className="wishlist">
-                                                                <Link href="#"><span>Add to wishlist</span></Link>
-                                                            </li>
-                                                            <li className="quick-view">
-                                                                <Link href="#"><span>Quick view</span></Link>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div className="product-caption">
-                                                    <div className="product-tags">
-                                                        <Link href="#">Fruits</Link>
-                                                        <Link href="#">Juicy</Link>
-                                                    </div>
-                                                    <h4 className="product-title">
-                                                        <Link href="shop-single.html">Fresh Red Seedless</Link>
-                                                    </h4>
-                                                    <div className="price">
-                                                        <span>$14.00</span>
-                                                    </div>
-                                                    <Link href="#" className="cart-btn"><i className="fas fa-shopping-bag"></i> Add to cart</Link>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        
-                                        <li className="product">
-                                            <div className="product-contents">
-                                                <div className="product-image">
-                                                    <Link href="shop-single.html">
-                                                        <Image width={100} height={100} src="/assets/img/products/4.png" alt="Product" />
-                                                    </Link>
-                                                    <div className="shop-action">
-                                                        <ul>
-                                                            <li className="cart">
-                                                                <Link href="#"><span>Add to cart</span></Link>
-                                                            </li>
-                                                            <li className="wishlist">
-                                                                <Link href="#"><span>Add to wishlist</span></Link>
-                                                            </li>
-                                                            <li className="quick-view">
-                                                                <Link href="#"><span>Quick view</span></Link>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div className="product-caption">
-                                                    <div className="product-tags">
-                                                        <Link href="#">Fruits</Link>
-                                                        <Link href="#">Juicy</Link>
-                                                    </div>
-                                                    <h4 className="product-title">
-                                                        <Link href="shop-single.html">Organic Sweet Corn</Link>
-                                                    </h4>
-                                                    <div className="price">
-                                                        <span>$8.00</span>
-                                                    </div>
-                                                    <Link href="#" className="cart-btn"><i className="fas fa-shopping-bag"></i> Add to cart</Link>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        
-                                        <li className="product">
-                                            <div className="product-contents">
-                                                <div className="product-image">
-                                                    <Link href="shop-single.html">
-                                                        <Image width={100} height={100} src="/assets/img/products/5.png" alt="Product" />
-                                                    </Link>
-                                                    <div className="shop-action">
-                                                        <ul>
-                                                            <li className="cart">
-                                                                <Link href="#"><span>Add to cart</span></Link>
-                                                            </li>
-                                                            <li className="wishlist">
-                                                                <Link href="#"><span>Add to wishlist</span></Link>
-                                                            </li>
-                                                            <li className="quick-view">
-                                                                <Link href="#"><span>Quick view</span></Link>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div className="product-caption">
-                                                    <div className="product-tags">
-                                                        <Link href="#">Fish</Link>
-                                                        <Link href="#">Health</Link>
-                                                    </div>
-                                                    <h4 className="product-title">
-                                                        <Link href="shop-single.html">Fresh Fish</Link>
-                                                    </h4>
-                                                    <div className="price">
-                                                        <span>$25.00</span>
-                                                    </div>
-                                                    <Link href="#" className="cart-btn"><i className="fas fa-shopping-bag"></i> Add to cart</Link>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li className="product">
-                                            <div className="product-contents">
-                                                <div className="product-image">
-                                                    <Link href="shop-single.html">
-                                                        <Image width={100} height={100} src="/assets/img/products/6.png" alt="Product" />
-                                                    </Link>
-                                                    <div className="shop-action">
-                                                        <ul>
-                                                            <li className="cart">
-                                                                <Link href="#"><span>Add to cart</span></Link>
-                                                            </li>
-                                                            <li className="wishlist">
-                                                                <Link href="#"><span>Add to wishlist</span></Link>
-                                                            </li>
-                                                            <li className="quick-view">
-                                                                <Link href="#"><span>Quick view</span></Link>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div className="product-caption">
-                                                    <div className="product-tags">
-                                                        <Link href="#">Seasonal</Link>
-                                                        <Link href="#">Fruit</Link>
-                                                    </div>
-                                                    <h4 className="product-title">
-                                                        <Link href="shop-single.html">Fresh Bananah</Link>
-                                                    </h4>
-                                                    <div className="price">
-                                                        <span><del>$18.00</del></span>
-                                                        <span>$13.00</span>
-                                                    </div>
-                                                    <Link href="#" className="cart-btn"><i className="fas fa-shopping-bag"></i> Add to cart</Link>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li className="product">
-                                            <div className="product-contents">
-                                                <div className="product-image">
-                                                    <Link href="shop-single.html">
-                                                        <Image width={100} height={100} src="/assets/img/products/7.png" alt="Product" />
-                                                    </Link>
-                                                    <div className="shop-action">
-                                                        <ul>
-                                                            <li className="cart">
-                                                                <Link href="#"><span>Add to cart</span></Link>
-                                                            </li>
-                                                            <li className="wishlist">
-                                                                <Link href="#"><span>Add to wishlist</span></Link>
-                                                            </li>
-                                                            <li className="quick-view">
-                                                                <Link href="#"><span>Quick view</span></Link>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div className="product-caption">
-                                                    <div className="product-tags">
-                                                        <Link href="#">Seasonal</Link>
-                                                        <Link href="#">Vegetables</Link>
-                                                    </div>
-                                                    <h4 className="product-title">
-                                                        <Link href="shop-single.html">Organic Cucumber</Link>
-                                                    </h4>
-                                                    <div className="price">
-                                                        <span>$3.00</span>
-                                                    </div>
-                                                    <Link href="#" className="cart-btn"><i className="fas fa-shopping-bag"></i> Add to cart</Link>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li className="product">
-                                            <div className="product-contents">
-                                                <div className="product-image">
-                                                    <Link href="shop-single.html">
-                                                        <Image width={100} height={100} src="/assets/img/products/8.png" alt="Product" />
-                                                    </Link>
-                                                    <div className="shop-action">
-                                                        <ul>
-                                                            <li className="cart">
-                                                                <Link href="#"><span>Add to cart</span></Link>
-                                                            </li>
-                                                            <li className="wishlist">
-                                                                <Link href="#"><span>Add to wishlist</span></Link>
-                                                            </li>
-                                                            <li className="quick-view">
-                                                                <Link href="#"><span>Quick view</span></Link>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div className="product-caption">
-                                                    <div className="product-tags">
-                                                        <Link href="#">Vegetables</Link>
-                                                        <Link href="#">Fruit</Link>
-                                                    </div>
-                                                    <h4 className="product-title">
-                                                        <Link href="shop-single.html">Green Avocado</Link>
-                                                    </h4>
-                                                    <div className="price">
-                                                        <span>$6.00</span>
-                                                    </div>
-                                                    <Link href="#" className="cart-btn"><i className="fas fa-shopping-bag"></i> Add to cart</Link>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                    </ul>
-                                </div>
-
-                                <div className="tab-pane fade" id="list-tab" role="tabpanel" aria-labelledby="list-tab-control">
-                                    <ul className="vt-products colums-2">
-
-                                        <li className="product">
-                                            <div className="product-contents">
-                                                <div className="row align-center">
-                                                    <div className="col-lg-5 col-md-5">
-                                                        <div className="product-image">
-                                                            <Link href="shop-single.html">
-                                                                <Image width={100} height={100} src="/assets/img/products/5.png" alt="Product" />
-                                                            </Link>
-                                                            <div className="shop-action">
-                                                                <ul>
-                                                                    <li className="cart">
-                                                                        <Link href="#"><span>Add to cart</span></Link>
-                                                                    </li>
-                                                                    <li className="wishlist">
-                                                                        <Link href="#"><span>Add to wishlist</span></Link>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-lg-7 col-md-7">
-                                                        <div className="product-caption">
-                                                            <div className="product-tags">
-                                                                <Link href="#">Fish</Link>
-                                                                <Link href="#">Health</Link>
-                                                            </div>
-                                                            <h4 className="product-title">
-                                                                <Link href="shop-single.html">Fresh organic Fish</Link>
-                                                            </h4>
-                                                            <div className="price">
-                                                                <span>$26.00</span>
-                                                            </div>
-                                                            <Link href="#" className="cart-btn"><i className="fas fa-shopping-bag"></i> Add to cart</Link>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li className="product">
-                                            <div className="product-contents">
-                                                <div className="row align-center">
-                                                    <div className="col-lg-5 col-md-5">
-                                                        <div className="product-image">
-                                                            <Link href="shop-single.html">
-                                                                <Image width={100} height={100} src="/assets/img/products/1.png" alt="Product" />
-                                                            </Link>
-                                                            <div className="shop-action">
-                                                                <ul>
-                                                                    <li className="cart">
-                                                                        <Link href="#"><span>Add to cart</span></Link>
-                                                                    </li>
-                                                                    <li className="wishlist">
-                                                                        <Link href="#"><span>Add to wishlist</span></Link>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-lg-7 col-md-7">
-                                                        <div className="product-caption">
-                                                            <div className="product-tags">
-                                                                <Link href="#">Crop</Link>
-                                                                <Link href="#">Organic</Link>
-                                                            </div>
-                                                            <h4 className="product-title">
-                                                                <Link href="shop-single.html">Strawberry</Link>
-                                                            </h4>
-                                                            <div className="price">
-                                                                <span><del>$28.00</del></span>
-                                                                <span>$17.00</span>
-                                                            </div>
-                                                            <Link href="#" className="cart-btn"><i className="fas fa-shopping-bag"></i> Add to cart</Link>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                    </ul>
-                                </div>
-
-
-                            </div>
-                            
-                            <nav className="woocommerce-pagination">
-                                <ul className="page-numbers">
-                                    <li><Link className="previous page-numbers" href="#"><i className="fas fa-angle-left"></i></Link></li>
-
-                                    <li><span aria-current="page" className="page-numbers current">1</span></li>
-                                    <li><Link className="page-numbers" href="#">2</Link></li>
-                                    <li><Link className="next page-numbers" href="#"><i className="fas fa-angle-right"></i></Link></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    );
+      </div>
+
+
+      {/* Category Tabs */}
+      <ul className="nav nav-pills navbar-brand mb-4 mt-4">
+        {categories.map(cat => (
+          <li className="nav-item" key={cat}>
+            <button
+              className={`nav-link ${activeCategory === cat ? "active" : ""}`}
+              onClick={() => setActiveCategory(activeCategory === cat ? "" : cat)} // toggle off if clicked again
+            >
+              {cat}
+            </button>
+          </li>
+        ))}
+      </ul>
+
+      {/* Filters and View Toggle */}
+      <div className="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+        <div className="d-flex gap-2">
+          <select className="form-select form-select-sm" style={{ minWidth: "150px" }}>
+            <option>Location</option>
+          </select>
+          <select className="form-select form-select-sm" style={{ minWidth: "150px" }}>
+            <option>Product type</option>
+          </select>
+        </div>
+
+        <div className="btn-group">
+          <button
+            className={`btn btn-sm ${view === "grid" ? "btn-success" : "btn-outline-success"}`}
+            onClick={() => setView("grid")}
+          >
+            <i className="fas fa-th-large"></i>
+          </button>
+          <button
+            className={`btn btn-sm ${view === "list" ? "btn-success" : "btn-outline-success"}`}
+            onClick={() => setView("list")}
+          >
+            <i className="fas fa-th-list"></i>
+          </button>
+        </div>
+      </div>
+
+      {/* GRID VIEW */}
+      {view === "grid" && (
+        <div className="row g-4">
+          {filteredProducts.map((item) => (
+            <div key={item.id} className="col-6 col-md-4 col-lg-3">
+              <div className="card product-card h-100 text-center border-0 shadow-sm">
+                <div className="card-img-top d-flex justify-content-center align-items-center p-3" style={{ height: "150px" }}>
+                  <Image src={item.image} alt={item.name} width={120} height={120} className="img-fluid" />
+                </div>
+                <div className="card-body">
+                  <h6 className="card-title fw-semibold">{item.name}</h6>
+                  <p className="text-success fw-bold mb-3">₦{item.price.toLocaleString()}</p>
+                  <button className="btn btn-success btn-sm w-100">Buy Now</button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* LIST VIEW */}
+      {view === "list" && (
+        <div className="list-group shadow-sm">
+          {filteredProducts.map(item => (
+            <div key={item.id} className="list-group-item d-flex justify-content-between align-items-center">
+              <div>
+                <h6 className="mb-0 fw-semibold">{item.name}</h6>
+                <small className="text-success fw-bold">₦{item.price.toLocaleString()}</small>
+              </div>
+              <Link href="#" className="text-success small text-decoration-none">View Details</Link>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import '../../dashboard.css';
 import { ProgressBar } from 'react-bootstrap';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import Image from 'next/image';
 
 export default function FarmerProfilePage() {
   // Farmer info
@@ -70,7 +71,7 @@ export default function FarmerProfilePage() {
       <div className="profile-header card p-4 mb-4 shadow-sm rounded-4 text-center bg-light-green">
         <div className="d-flex flex-column align-items-center">
           <div className="profile-img-wrapper mb-2">
-            <img
+            <Image
               src="https://media.istockphoto.com/id/2208264034/photo/portrait-of-confident-farmer-in-agriculture-field.webp?a=1&b=1&s=612x612&w=0&k=20&c=SXe0T5TlAhr-B7-Oh-VVslVNr2KMiAAiY53RzrhofcE="
               alt="Farmer"
               className="rounded-circle border border-3 border-success"
