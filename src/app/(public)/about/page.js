@@ -33,6 +33,13 @@ export default function AboutUsPage() {
           </div>
         </div>
 
+        <div className="col-lg-5">
+          <div className="site-heading text-center">
+            <h5 className="sub-title">About the Founder</h5>
+            <h2 className="title">Edward Terungwa Ordams</h2>
+          </div>
+        </div>
+
         <div className="row mt-3">
           <div className="col-lg-7">
             <p>
@@ -50,13 +57,6 @@ export default function AboutUsPage() {
               his many efforts to birth what he calls the ehdillionaire&apos;s
               Generation—a people made wealthy from wealthy ideas on purpose.
             </p>
-          </div>
-
-          <div className="col-lg-5">
-            <div className="site-heading text-center">
-              <h5 className="sub-title">About the Founder</h5>
-              <h2 className="title">Edward Terungwa Ordams</h2>
-            </div>
           </div>
         </div>
       </div>
