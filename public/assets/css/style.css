@@ -4996,6 +4996,24 @@ ul.list-standard {
 	margin-bottom: 0;
 }
 
+
+.product-card {
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+.nav-pills .nav-link.active {
+  background-color: hsl(152, 69%, 31%) !important; /* Bootstrap success green */
+}
+
+.nav-pills .nav-link:hover {
+	color: #fff !important;
+}
+
+
 .mask-text {
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;

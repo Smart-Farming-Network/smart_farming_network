@@ -1,71 +1,77 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { dummyUsers } from "@/app/data/dummyUser";
-import bcrypt from 'bcryptjs';
-
+import bcrypt from "bcryptjs";
+import { prisma } from "@/libs/prisma"; // your Prisma instance (custom path)
+ 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Credentials({
+      name: "Credentials",
       credentials: {
         email: { label: "Email", type: "text" },
-        password: { label: "Password", type: "password" }
+        password: { label: "Password", type: "password" },
       },
-       authorize: async (credentials) => {       
+      authorize: async (credentials) => {
         try {
-          // Validate credentials exist
+          // 1Validate input
           if (!credentials?.email || !credentials?.password) {
-            throw new Error('Email and password are required');
+            throw new Error("Email and password are required");
           }
 
-          // Find user
-          const user = dummyUsers.find(user => 
-            user.email === credentials.email
-          );
-          
+          const user = await prisma.user.findUnique({
+            where: { email: credentials.email.toLowerCase().trim() },
+            include: { profile: true }, // optional: load profile
+          });
+
           if (!user) {
-            throw new Error('Invalid email or password');
+            throw new Error("Invalid email or password");
           }
 
-          // Compare passwords (use async version)
-          const passwordMatch = await bcrypt.compare(
+          const isPasswordValid = await bcrypt.compare(
             credentials.password,
             user.password
           );
 
-          if (!passwordMatch) {
-            throw new Error('Invalid email or password');
+          if (!isPasswordValid) {
+            throw new Error("Invalid email or password");
           }
 
-          // Return user object if everything checks out
-          return user;
-          
+          return {
+            id: user.id,
+            email: user.email,
+            name: user.profile
+              ? `${user.profile.firstName} ${user.profile.lastName}`
+              : user.email,
+          };
         } catch (error) {
-          console.error('Authentication error:', error.message);
+          console.error("Login error:", error.message);
           return null;
         }
-      }
-    })
+      },
+    }),
   ],
+
   session: {
-    strategy: "jwt", // Add this line
+    strategy: "jwt",
   },
-  secret: process.env.AUTH_SECRET, // Make sure you have this
-  trustHost: true, // Add this for development
+  secret: process.env.AUTH_SECRET,
+  trustHost: true,
+
   callbacks: {
     async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id;
-      }
+      if (user) token.id = user.id;
       return token;
     },
     async session({ session, token }) {
       session.user.id = token.id;
       return session;
-    }
+    },
   },
+
   pages: {
     signIn: "/login",
     error: "/login",
   },
+
   debug: process.env.NODE_ENV === "development",
 });
