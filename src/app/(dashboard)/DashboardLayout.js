@@ -3,17 +3,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Logout } from '@/components/Logout';
 import './dashboard.css';
-
-/**
- * Shared Dashboard Layout Component
- * Used by both Farmers and Investors dashboards.
- *
- * Props:
- * - title (string): Navbar title (e.g., "Farmers Board", "Investors Board")
- * - menuItems (array): Sidebar items [{ icon, label, href, active }]
- * - children (ReactNode): Main content
- */
 
 export default function DashboardLayout({ title, menuItems, children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -55,9 +46,9 @@ export default function DashboardLayout({ title, menuItems, children }) {
           <div className="flex-grow-1"></div>
 
           <li className="nav-item">
-            <Link href="#" className="nav-link btn btn-outline-light text-dark">
+            <Logout className="nav-link btn btn-outline-light">
               <i className="fa fa-sign-out me-2"></i> Logout
-            </Link>
+            </Logout>
           </li>
         </ul>
       </aside>
@@ -66,10 +57,7 @@ export default function DashboardLayout({ title, menuItems, children }) {
       <div className="dashboard-main flex-grow-1 d-flex flex-column">
         <nav className="dashboard-navbar d-flex justify-content-between align-items-center px-4 py-3">
           <div className="d-flex align-items-center gap-3">
-            <button
-              className="mobile-menu-btn"
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-            >
+            <button className="mobile-menu-btn" onClick={() => setSidebarOpen(!sidebarOpen)}>
               <i className="fa fa-bars"></i>
             </button>
             <h5 className="fw-semibold mb-0 text-dark">{title}</h5>
@@ -77,11 +65,7 @@ export default function DashboardLayout({ title, menuItems, children }) {
 
           <div className="d-flex align-items-center gap-3">
             <div className="search-box">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Search..."
-              />
+              <input type="text" className="form-control" placeholder="Search..." />
               <i className="fa fa-search search-icon"></i>
             </div>
             <div className="notif-circle">
