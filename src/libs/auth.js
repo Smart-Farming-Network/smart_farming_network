@@ -7,35 +7,49 @@ export const authOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: { label: "Email", type: "text" },
+        email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
+
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) return null;
+        if (!credentials?.email || !credentials?.password) {
+          return null;
+        }
 
         const user = await prisma.user.findUnique({
-          where: { email: credentials.email.toLowerCase().trim() },
-          include: { profile: true },
+          where: {
+            email: credentials.email.toLowerCase().trim(),
+          },
+          include: {
+            profile: true,
+          },
         });
 
         if (!user) return null;
 
-        const valid = await bcrypt.compare(credentials.password, user.password);
-        if (!valid) return null;
+        const isValid = await bcrypt.compare(
+          credentials.password,
+          user.password
+        );
+
+        if (!isValid) return null;
 
         return {
           id: user.id,
           email: user.email,
           name: user.profile
-            ? `${user.profile.firstName} ${user.profile.lastName}`
+            ? `${user.profile.firstName ?? ""} ${user.profile.lastName ?? ""}`.trim()
             : user.email,
-          role: user.role || "user",
+          role: user.role,
         };
       },
     }),
   ],
 
-  session: { strategy: "jwt" },
+  session: {
+    strategy: "jwt",
+  },
+
   secret: process.env.AUTH_SECRET,
 
   callbacks: {
@@ -46,6 +60,7 @@ export const authOptions = {
       }
       return token;
     },
+
     async session({ session, token }) {
       session.user.id = token.id;
       session.user.role = token.role;

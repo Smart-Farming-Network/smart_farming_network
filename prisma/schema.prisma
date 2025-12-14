@@ -10,28 +10,29 @@ generator client {
 
 // Enum for user roles
 enum Role {
+  USER
   ADMIN
   FARMER
   INVESTOR
 }
 
 model User {
-  id       String   @id @default(uuid())
-  email    String   @unique
-  password String
-  role     Role     @default(INVESTOR)  // default role
-  profile  Profile?
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  role      Role     @default(USER)
+  profile   Profile?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt @default(now())
 }
 
 model Profile {
-  id        String  @id @default(uuid())
+  id        String   @id @default(uuid())
   firstName String?
   lastName  String?
   phone     String?
-  userId    String  @unique
-  user      User    @relation(fields: [userId], references: [id])
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt @default(now())
 }
