@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ProductCard from "@/components/ui/ProductCard";
 import Link from "next/link";
 import PageHeader from "@/components/ui/AdminPageHeader";
+import Button from "@/components/ui/Button";
 
 export default function ProductList() {
     const [products, setProducts] = useState([]);
@@ -21,7 +21,7 @@ export default function ProductList() {
     }, []);
 
     const handleEdit = (product) => {
-        window.location.href = `/admin/market-place/edit/${product.id}`;
+        window.location.href = `/admin/market-place/${product.id}/edit`;
     };
 
     const handleDelete = async (product) => {
@@ -39,22 +39,7 @@ export default function ProductList() {
                 backText="Back to Dashboard"
             />
 
-            {loading ? (
-                <p className="text-muted">Loading products...</p>
-            ) : products.length === 0 ? (
-                <p className="text-muted">No products found.</p>
-            ) : (
-                products.map((product) => (
-                    <ProductCard
-                        key={product.id}
-                        product={product}
-                        onEdit={handleEdit}
-                        onDelete={handleDelete}
-                    />
-                ))
-            )}
-
-            <div className="mt-4 text-end">
+            <div className="mt-4 mb-3 text-end">
                 <Link
                     href="/admin/market-place/create"
                     className="btn btn-success fw-bold"
@@ -62,6 +47,52 @@ export default function ProductList() {
                     + Add New Product
                 </Link>
             </div>
+
+            {loading ? (
+                <p className="text-muted">Loading products...</p>
+            ) : products.length === 0 ? (
+                <p className="text-muted">No products found.</p>
+            ) : (
+                <div className="table-responsive">
+                    <table className="table table-striped table-bordered align-middle">
+                        <thead className="table-success">
+                            <tr>
+                                <th>UUID</th>
+                                <th>Name</th>
+                                <th>Price (₦)</th>
+                                <th>Category</th>
+                                <th className="text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {products.map((product) => (
+                                <tr key={product.id}>
+                                    <td>{product.id}</td>
+                                    <td>{product.name}</td>
+                                    <td>{product.price.toLocaleString()}</td>
+                                    <td>{product.category}</td>
+                                    <td className="text-center d-md-flex justify-content-center gap-2">
+                                        <Button
+                                            type="button"
+                                            onClick={() => handleEdit(product)}
+                                            className="btn-sm btn-outline-success me-2 mb-1"
+                                        >
+                                            Edit
+                                        </Button>
+                                        <Button
+                                            type="button"
+                                            onClick={() => handleDelete(product)}
+                                            className="btn-sm btn-outline-danger mb-1"
+                                        >
+                                            Delete
+                                        </Button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            )}
         </div>
     );
 }
