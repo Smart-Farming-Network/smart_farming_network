@@ -11,6 +11,7 @@ export default async function FarmersLayout({ children }) {
     { label: 'Roles', icon: 'fa fa-id-badge', href: '/admin/roles' },
     { label: 'Permissions', icon: 'fa fa-key', href: '/admin/permissions' },
     { label: 'Farms', icon: 'fa fa-leaf', href: '/admin/farms' },
+    { label: 'Marketplace', icon: 'fa fa-store', href: '/admin/market-place' },
     { label: 'Projects', icon: 'fa fa-diagram-project', href: '/admin/projects' },
     { label: 'Analytics', icon: 'fa fa-chart-line', href: '/admin/analytics' },
     { label: 'System Logs', icon: 'fa fa-file-lines', href: '/admin/logs' },
