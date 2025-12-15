@@ -4,7 +4,8 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { ConfirmationModal } from '@/components/ConfirmationModal';
-
+import { getRedirectByRole } from "@/libs/roleRedirect";
+import { getSession } from "next-auth/react";
 
 export default function LoginForm() {
 
@@ -40,8 +41,10 @@ export default function LoginForm() {
       if (res?.error) {
         setError('Invalid email or password');
       } else if (res?.ok) {
+        const session = await getSession();
+        const role = session?.user?.role || "USER";
 
-        setProcessData(res.url);
+        setProcessData(getRedirectByRole(role));
         setShowSuccessModal(true);
 
       }
@@ -54,7 +57,7 @@ export default function LoginForm() {
 
   const handleSuccessConfirm = () => {
     setShowSuccessModal(false);
-    router.push(callbackUrl);
+    setTimeout(() => router.push(processData), 300);
   };
 
   return (
@@ -144,7 +147,7 @@ export default function LoginForm() {
         title="Logic Successful!"
         message={
           <>
-            <p>You&apos;ll now be redirected to home page.</p>
+            <p>You&apos;ll now be redirected to your dashboard.</p>
           </>
         }
         confirmText="Continue.."
