@@ -7,14 +7,16 @@ export default function ProductCard({ product, onEdit, onDelete }) {
     return (
         <div className="card shadow-sm rounded-4 mb-4">
             <div className="row g-0 align-items-center">
-                <div className="col-md-3 text-center p-2">
+                <div className="col-md-3 text-center p-2" style={{ position: "relative", width: "100px", height: "100px" }}>
                     <Image
                         src={product.image || "/assets/img/default-product.png"}
                         alt={product.name}
+                        fill
+                        style={{ objectFit: "cover" }}
                         className="rounded-4"
-                        style={{ width: "100px", height: "100px", objectFit: "cover" }}
                     />
                 </div>
+
                 <div className="col-md-6 p-3">
                     <h5 className="fw-bold text-success mb-1">{product.name}</h5>
                     <p className="mb-1 small text-muted">Category: {product.category}</p>
