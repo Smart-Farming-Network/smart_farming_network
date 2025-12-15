@@ -5,12 +5,16 @@ import { uploadImage, deleteImage } from "@/libs/cloudinary";
 /**
  * GET single product
  */
-export async function GET(_, { params }) {
+export async function GET(req, { params }) {
     const product = await prisma.product.findUnique({
         where: { id: params.id },
     });
 
-    return Response.json(product);
+    if (!product) {
+        return new Response(JSON.stringify({ error: "Product not found" }), { status: 404 });
+    }
+
+    return new Response(JSON.stringify(product), { status: 200 });
 }
 
 /**
@@ -24,20 +28,14 @@ export async function PUT(req, { params }) {
     });
 
     if (!existingProduct) {
-        return Response.json({ error: "Product not found" }, { status: 404 });
+        return new Response(JSON.stringify({ error: "Product not found" }), { status: 404 });
     }
 
     let image = existingProduct.image;
     let imageId = existingProduct.imageId;
 
-    // 🔥 Image changed (base64 sent)
     if (body.image && body.image.startsWith("data:image")) {
-        // Delete old image
-        if (imageId) {
-            await deleteImage(imageId);
-        }
-
-        // Upload new image
+        if (imageId) await deleteImage(imageId);
         const uploaded = await uploadImage(body.image);
         image = uploaded.url;
         imageId = uploaded.publicId;
@@ -55,22 +53,21 @@ export async function PUT(req, { params }) {
         },
     });
 
-    return Response.json(product);
+    return new Response(JSON.stringify(product), { status: 200 });
 }
 
 /**
  * DELETE product + Cloudinary cleanup
  */
-export async function DELETE(_, { params }) {
+export async function DELETE(req, { params }) {
     const product = await prisma.product.findUnique({
         where: { id: params.id },
     });
 
     if (!product) {
-        return Response.json({ error: "Product not found" }, { status: 404 });
+        return new Response(JSON.stringify({ error: "Product not found" }), { status: 404 });
     }
 
-    // 🔥 Delete Cloudinary image first
     if (product.imageId) {
         await deleteImage(product.imageId);
     }
@@ -79,5 +76,5 @@ export async function DELETE(_, { params }) {
         where: { id: params.id },
     });
 
-    return Response.json({ success: true });
+    return new Response(JSON.stringify({ success: true }), { status: 200 });
 }
