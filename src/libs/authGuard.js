@@ -3,16 +3,23 @@ import { authOptions } from "./auth";
 import { redirect } from "next/navigation";
 
 /**
- * Protects a page for specific roles
- * @param {string[]} allowedRoles - array of allowed roles
- * @returns {Promise<Session>} - returns session if authorized, otherwise redirects
+ * Role-based access guard
+ * - Not logged in  → redirect to login with message
+ * - Logged in but forbidden → redirect to home with 403 context
  */
 export async function requireRole(allowedRoles = []) {
     const session = await getServerSession(authOptions);
 
-    if (!session || !allowedRoles.includes(session.user.role)) {
-        redirect("/login"); // redirect unauthorized users
+    // 1️⃣ User NOT logged in
+    if (!session) {
+        redirect("/login?error=AUTH_REQUIRED");
     }
 
+    // 2️⃣ User logged in but NOT authorized
+    if (!allowedRoles.includes(session.user.role)) {
+        redirect("/403?error=FORBIDDEN"); // or /403
+    }
+
+    // 3️⃣ Authorized
     return session;
 }
