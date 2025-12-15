@@ -29,6 +29,7 @@
   position: sticky;
   top: 0;
   height: 100vh;
+  overflow-y: auto;
   transition: all 0.3s ease;
   border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -143,34 +144,35 @@
   border-radius: 50%;
   border: 2px solid #fff;
 }
+
 .badge {
   font-size: 0.85rem;
   padding: 0.4em 0.6em;
   border-radius: 0.4rem;
 }
+
 .verified-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 60px;
   height: 60px;
-  background-color: #0b3d0b; /* deep green */
+  background-color: #0b3d0b;
+  /* deep green */
   color: white;
   border-radius: 50%;
-  clip-path: polygon(
-    50% 0%,
-    80% 10%,
-    100% 40%,
-    100% 60%,
-    80% 90%,
-    50% 100%,
-    20% 90%,
-    0% 60%,
-    0% 40%,
-    20% 10%
-  );
+  clip-path: polygon(50% 0%,
+      80% 10%,
+      100% 40%,
+      100% 60%,
+      80% 90%,
+      50% 100%,
+      20% 90%,
+      0% 60%,
+      0% 40%,
+      20% 10%);
   font-size: 2.2rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s ease;
 }
 
@@ -254,15 +256,15 @@
     z-index: 1000;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
   }
-  
+
   .dashboard-sidebar.mobile-open {
     left: 0;
   }
-  
+
   .mobile-menu-btn {
     display: block !important;
   }
-  
+
   .search-box {
     max-width: 250px;
   }
@@ -272,15 +274,15 @@
   .stat-value {
     font-size: 1.5rem;
   }
-  
+
   .dashboard-navbar {
     padding: 1rem;
   }
-  
+
   .search-box {
     max-width: 200px;
   }
-  
+
   .stat-card {
     min-height: 100px;
   }
@@ -290,11 +292,11 @@
   .dashboard-content {
     padding: 1rem !important;
   }
-  
+
   .search-box {
     display: none;
   }
-  
+
   .mobile-menu-btn {
     margin-right: auto;
   }
