@@ -6,7 +6,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export default function FarmersPage() {
   const [weather, setWeather] = useState({ temp: '', condition: '', icon: 'bi-cloud' });
-  const [verificationStatus, setVerificationStatus] = useState('success'); 
+  const [verificationStatus, setVerificationStatus] = useState('success');
   // options: 'success', 'warning', 'danger'
 
   // Get live weather using browser location + Open-Meteo API
@@ -39,11 +39,11 @@ export default function FarmersPage() {
     { title: 'Total Farms', value: 12 },
     { title: 'Active Crops', value: 34 },
     { title: 'Avg Moisture', value: '42%' },
-    { 
-      title: 'Weather', 
+    {
+      title: 'Weather',
       value: (
         <span className="d-inline-flex align-items-center gap-2">
-          <i className={`bi ${weather.icon} fs-5`}></i> 
+          <i className={`bi ${weather.icon} fs-5`}></i>
           {weather.temp || '--'} {weather.condition || ''}
         </span>
       )

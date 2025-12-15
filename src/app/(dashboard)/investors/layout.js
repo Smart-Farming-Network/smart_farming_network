@@ -1,9 +1,11 @@
-'use client';
-
 import React from 'react';
 import DashboardLayout from '../DashboardLayout';
+import { requireRole } from '@/libs/authGuard';
 
-export default function InvestorsLayout({ children }) {
+export default async function InvestorsLayout({ children }) {
+
+  // Protect all routes under investors/
+  const session = await requireRole(['INVESTOR']);
   const investorMenu = [
     { label: 'Dashboard', icon: 'fa fa-chart-bar', href: '/investors', active: true },
     { label: 'Portfolio', icon: 'fa fa-wallet', href: '#' },

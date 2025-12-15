@@ -1,23 +1,14 @@
 'use client';
-
-import { Suspense } from "react";
-import Preloader from "@/components/Preloader";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import Loading from "../loading";
-
+import { useEffect, useState } from 'react';
 
 export default function AuthLayout({ children }) {
-  return (
-    <div id="auth-layout">
-      <Suspense fallback={<Loading />}>
-        <Preloader />
-      </Suspense>
-      <Header />
-      {children}
-      <Footer />
-      
+  const [mounted, setMounted] = useState(false);
 
-    </div>
-  );
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
+  return <div id="auth-layout">{children}</div>;
 }

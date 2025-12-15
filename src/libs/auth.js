@@ -1,52 +1,47 @@
-import NextAuth from "next-auth";
-import Credentials from "next-auth/providers/credentials";
+import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import { prisma } from "@/libs/prisma"; // your Prisma instance (custom path)
- 
-export const { handlers, signIn, signOut, auth } = NextAuth({
+import { prisma } from "@/libs/prisma";
+
+export const authOptions = {
   providers: [
-    Credentials({
+    CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: { label: "Email", type: "text" },
+        email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
-      authorize: async (credentials) => {
-        try {
-          // 1Validate input
-          if (!credentials?.email || !credentials?.password) {
-            throw new Error("Email and password are required");
-          }
 
-          const user = await prisma.user.findUnique({
-            where: { email: credentials.email.toLowerCase().trim() },
-            include: { profile: true }, // optional: load profile
-          });
-
-          if (!user) {
-            throw new Error("Invalid email or password");
-          }
-
-          const isPasswordValid = await bcrypt.compare(
-            credentials.password,
-            user.password
-          );
-
-          if (!isPasswordValid) {
-            throw new Error("Invalid email or password");
-          }
-
-          return {
-            id: user.id,
-            email: user.email,
-            name: user.profile
-              ? `${user.profile.firstName} ${user.profile.lastName}`
-              : user.email,
-          };
-        } catch (error) {
-          console.error("Login error:", error.message);
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) {
           return null;
         }
+
+        const user = await prisma.user.findUnique({
+          where: {
+            email: credentials.email.toLowerCase().trim(),
+          },
+          include: {
+            profile: true,
+          },
+        });
+
+        if (!user) return null;
+
+        const isValid = await bcrypt.compare(
+          credentials.password,
+          user.password
+        );
+
+        if (!isValid) return null;
+
+        return {
+          id: user.id,
+          email: user.email,
+          name: user.profile
+            ? `${user.profile.firstName ?? ""} ${user.profile.lastName ?? ""}`.trim()
+            : user.email,
+          role: user.role,
+        };
       },
     }),
   ],
@@ -54,24 +49,22 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   session: {
     strategy: "jwt",
   },
+
   secret: process.env.AUTH_SECRET,
-  trustHost: true,
 
   callbacks: {
     async jwt({ token, user }) {
-      if (user) token.id = user.id;
+      if (user) {
+        token.id = user.id;
+        token.role = user.role;
+      }
       return token;
     },
+
     async session({ session, token }) {
       session.user.id = token.id;
+      session.user.role = token.role;
       return session;
     },
   },
-
-  pages: {
-    signIn: "/login",
-    error: "/login",
-  },
-
-  debug: process.env.NODE_ENV === "development",
-});
+};
