@@ -36,3 +36,15 @@ model Profile {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt @default(now())
 }
+
+model Product {
+  id        String   @id @default(uuid())
+  name      String
+  slug      String   @unique
+  price     Float
+  image     String?
+  imageId   String?
+  category  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
