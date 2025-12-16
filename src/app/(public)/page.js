@@ -167,67 +167,225 @@ export default function Home() {
 
       {/* SERVICE SECTION */}
       <div className="services-style-one-area bg-gray default-padding bottom-less">
-        <div className="shape-right-top" style={{ backgroundImage: 'url(/assets/img/shape/9.png)' }}></div>
         <div className="container">
-
           <div className="row">
             <div className="col-lg-6 offset-lg-3">
               <div className="site-heading text-center">
-                <h5 className="sub-title">What we do</h5>
-                <h2 className="title">Smart Farming Network (SFN),  <br /> a pioneering platform revolutionizing agriculture through technology.</h2>
+                <h5 className="sub-title">Platform Features</h5>
+                <h2 className="title">Everything you need to farm Smarter</h2>
+                <span>Comprehensive tools and insights designed to transform your agricultural operations.</span>
               </div>
             </div>
           </div>
 
           <div className="row">
             <div className="col-lg-4 col-md-6 service-one-single">
-              <div className="service-style-one-item">
+              <div className="service-style-one-item bg-black border-20 border-black-300">
                 <div className="thumb">
-                  <Image width={100} height={80} src="/assets/img/illustration/2.png" alt="Image Not Found" />
+                  <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center me-3 mb-5"
+                    style={{ width: 60, height: 60 }}>
+                    <i className="fas fa-tachometer-alt fs-3"></i>
+                  </div>
                 </div>
                 <div className="info">
                   <div className="top">
-                    <h4><a href="#">Smart <span>Farming Solutions</span></a></h4>
+                    <h4><a className="text-white" href="#">Smart Dashboard</a></h4>
                   </div>
-                  <p>
-                    Implement our cutting-edge techniques to enhance crop yields and streamline farm management with real-time data insights.
+                  <p className="mb-3 text-white">
+                    Real-time overview of all you farming operations, from crop health to weather conditions in one centralized dashboard.
                   </p>
                 </div>
-                <a href="#" className="btn-angle"><i className="fas fa-arrow-right"></i></a>
+                <a href="#" className="text-warning">Explore Dashboard <i className="fas fa-arrow-right"></i></a>
               </div>
             </div>
 
             <div className="col-lg-4 col-md-6 service-one-single">
-              <div className="service-style-one-item">
+              <div className="service-style-one-item bg-black border-20 border-black-300">
                 <div className="thumb">
-                  <Image width={100} height={80} src="/assets/img/illustration/3.png" alt="Image Not Found" />
+                  <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center me-3 mb-5"
+                    style={{ width: 60, height: 60 }}>
+                    <i className="fas fa-cloud-sun fs-3"></i>
+                  </div>
                 </div>
                 <div className="info">
                   <div className="top">
-                    <h4><a href="#">Market &  <span>Investment Hub</span></a></h4>
+                    <h4><a className="text-white" href="#">Weather Intelligence</a></h4>
                   </div>
-                  <p>
-                    Seamlessly connect with key stakeholders—buyers, suppliers, and investors—to expand your market reach and secure growth opportunities.
+                  <p className="mb-3 text-white">
+                    Advanced weather forecasting with agricultural insights, helping you make informed decisions about planting, harvesting and protection.
                   </p>
-                  <a href="#" className="btn-angle"><i className="fas fa-arrow-right"></i></a>
+                  <a href="#" className="text-warning">View Weather Tool <i className="fas fa-arrow-right"></i></a>
                 </div>
               </div>
             </div>
 
             <div className="col-lg-4 col-md-6 service-one-single">
-              <div className="service-style-one-item">
+              <div className="service-style-one-item bg-black border-20 border-black-300">
                 <div className="thumb">
-                  <Image width={100} height={80} src="/assets/img/illustration/4.png" alt="Image Not Found" />
+                  <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center me-3 mb-5"
+                    style={{ width: 60, height: 60 }}>
+                    <i className="fas fa-clipboard fs-3"></i>
+                  </div>
                 </div>
                 <div className="info">
                   <div className="top">
-                    <h4><a href="#">Land  <span>Brokerage Services</span></a></h4>
+                    <h4><a className="text-white" href="#">Activity Tracking</a></h4>
                   </div>
-                  <p>
-                    Navigate farmland acquisitions with ease, backed by our expert guidance to simplify the purchasing process.
+                  <p className="mb-3 text-white">
+                    Log and monitor all farming activities, including planting, fertilization, pest control, and harvesting with detailed analytics.
                   </p>
-                  <a href="#" className="btn-angle"><i className="fas fa-arrow-right"></i></a>
+                  <a href="#" className="text-warning">Start Logging <i className="fas fa-arrow-right"></i></a>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="row mb-5">
+            <div className="col-lg-3 col-md-3 service-one-single">
+              <div className="service-style-one-item-small bg-black border-20 border-black-300">
+                <div className="thumb justify-content-center d-flex">
+                  <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center mb-2"
+                    style={{ width: 45, height: 45 }}>
+                    <i className="fas fa-tachometer-alt fs-3"></i>
+                  </div>
+                </div>
+                <div className="text-center">
+                  <h4><a className="text-white" href="#">Knowledge Base</a></h4>
+                  <p className="mb-3 text-white">
+                    Access farming guides and best practices.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-lg-3 col-md-3 service-one-single">
+              <div className="service-style-one-item-small bg-black border-20 border-black-300">
+                <div className="thumb justify-content-center d-flex">
+                  <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center me-3 mb-2"
+                    style={{ width: 45, height: 45 }}>
+                    <i className="fas fa-cloud-sun fs-3"></i>
+                  </div>
+                </div>
+                <div className="text-center">
+                  <h4><a className="text-white" href="#">Community Forum</a></h4>
+                  <p className="mb-3 text-white">
+                    Connect with fellow farmers worlwide.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-lg-3 col-md-3 service-one-single">
+              <div className="service-style-one-item-small bg-black">
+                <div className="thumb justify-content-center d-flex">
+                  <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center me-3 mb-2"
+                    style={{ width: 45, height: 45 }}>
+                    <i className="fas fa-clipboard fs-3"></i>
+                  </div>
+                </div>
+                <div className="text-center">
+                  <h4><a className="text-white" href="#">Profile & Achievement</a></h4>
+                  <p className="mb-3 text-white">
+                    Track progress and earn regocnition.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-lg-3 col-md-3 service-one-single">
+              <div className="service-style-one-item-small bg-black border-20 border-black-300">
+                <div className="thumb justify-content-center d-flex">
+                  <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center me-3 mb-2"
+                    style={{ width: 45, height: 45 }}>
+                    <i className="fas fa-clipboard fs-3"></i>
+                  </div>
+                </div>
+                <div className="text-center">
+                  <h4><a className="text-white" href="#">24/7 Support</a></h4>
+                  <p className="mb-3 text-white">
+                    Get help when you need it the most.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-lg-6 col-md-12">
+              <div className="site-heading text-center">
+                <h2 className="title">Powered by Cutting-edge Technology</h2>
+              </div>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-lg-6 col-md-12">
+              <ul className="list-unstyled mt-3 mb-4">
+                <li className="d-flex align-items-start mb-4">
+                  <div className="bg-success bg-success-10 text-white rounded d-flex align-items-center justify-content-center me-3"
+                    style={{ width: 45, height: 45 }}>
+                    <i className="fas fa-brain"></i>
+                  </div>
+                  <div>
+                    <strong className="d-block text-dark mb-1">
+                      Artificial Intelligence
+                    </strong>
+                    <span>
+                      Machine learning algorithms analyze patterns to provide personalized recomendations for your farm.
+                    </span>
+                  </div>
+                </li>
+
+                <li className="d-flex align-items-start mb-4">
+                  <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center me-3"
+                    style={{ width: 45, height: 45 }}>
+                    <i className="fas fa-satellite"></i>
+                  </div>
+                  <div>
+                    <strong className="d-block text-dark mb-1">
+                      Satellite Imagery
+                    </strong>
+                    <span>
+                      High-resolution setellite data provides insight into crop health and soil conditions.
+                    </span>
+                  </div>
+                </li>
+
+                <li className="d-flex align-items-start mb-4">
+                  <div className="bg-info text-white rounded d-flex align-items-center justify-content-center me-3"
+                    style={{ width: 45, height: 45 }}>
+                    <i className="fas fa-wifi"></i>
+                  </div>
+                  <div>
+                    <strong className="d-block text-dark mb-1">
+                      IOT Integration
+                    </strong>
+                    <span>
+                      Connect sensors and devices for real-time monitoring of soil, weather and crop conditions.
+                    </span>
+                  </div>
+                </li>
+
+                <li className="d-flex align-items-start">
+                  <div className="bg-danger text-white rounded d-flex align-items-center justify-content-center me-3"
+                    style={{ width: 45, height: 45 }}>
+                    <i className="fas fa-mobile-alt"></i>
+                  </div>
+                  <div>
+                    <strong className="d-block text-dark mb-1">
+                      Mobile First Design
+                    </strong>
+                    <span>
+                      Access all features from any where with our responsive mobile application.
+                    </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div className="col-xl-6 col-lg-5">
+              <div className="about-style-one-thumb">
+                <Image width={800} height={350} src="/assets/img/smart_farm.jpg" alt="Image Not Found" className="rounded" />
               </div>
             </div>
           </div>
@@ -317,65 +475,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      {/* FARMING SOLUTIONS SECTION */}
-      <div className="services-style-one-area bg-gray default-padding bottom-less">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-4 col-md-6 service-one-single">
-              <div className="service-style-one-item">
-                <div className="thumb">
-                  <Image width={100} height={80} src="/assets/img/illustration/2.png" alt="Image Not Found" />
-                </div>
-                <div className="info">
-                  <div className="top">
-                    <h4><a href="#">Smart <span>Farming Solutions</span></a></h4>
-                  </div>
-                  <p>
-                    Implement our cutting-edge techniques to enhance crop yields and streamline farm management with real-time data insights.
-                  </p>
-                </div>
-                <a href="#" className="btn-angle"><i className="fas fa-arrow-right"></i></a>
-              </div>
-            </div>
-
-            <div className="col-lg-4 col-md-6 service-one-single">
-              <div className="service-style-one-item">
-                <div className="thumb">
-                  <Image width={100} height={80} src="/assets/img/illustration/3.png" alt="Image Not Found" />
-                </div>
-                <div className="info">
-                  <div className="top">
-                    <h4><a href="#">Market &  <span>Investment Hub</span></a></h4>
-                  </div>
-                  <p>
-                    Seamlessly connect with key stakeholders—buyers, suppliers, and investors—to expand your market reach and secure growth opportunities.
-                  </p>
-                  <a href="#" className="btn-angle"><i className="fas fa-arrow-right"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-4 col-md-6 service-one-single">
-              <div className="service-style-one-item">
-                <div className="thumb">
-                  <Image width={100} height={80} src="/assets/img/illustration/4.png" alt="Image Not Found" />
-                </div>
-                <div className="info">
-                  <div className="top">
-                    <h4><a href="#">Land  <span>Brokerage Services</span></a></h4>
-                  </div>
-                  <p>
-                    Navigate farmland acquisitions with ease, backed by our expert guidance to simplify the purchasing process.
-                  </p>
-                  <a href="#" className="btn-angle"><i className="fas fa-arrow-right"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
 
       {/* BENEFIT SECTION */}
       <div className="benifits-area default-padding-top video-bg-live bg-cover mt--50 mt-md-0 mt-xs-0" style={{ backgroundImage: 'url(/assets/img/6.jpeg)' }}>
