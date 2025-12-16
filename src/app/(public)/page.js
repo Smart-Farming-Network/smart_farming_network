@@ -41,7 +41,7 @@ export default function Home() {
                 <div className="row align-center justify-content-between">
                   <div className="col-xl-11">
                     <div className="content">
-                      
+
                       <div className="info">
                         <h2>Elevate Your Agricultural Operations with SFN</h2>
                         <p>
@@ -113,7 +113,7 @@ export default function Home() {
           <div className="row align-center">
             <div className="col-xl-6 col-lg-5">
               <div className="about-style-one-thumb">
-                <Image width={800} height={500} src="/assets/img/55.jpeg" alt="Image Not Found" />
+                <Image width={800} height={500} src="/assets/img/green-house.jpeg" alt="Image Not Found" />
                 <div className="animation-shape">
                   <Image fill src="/assets/img/illustration/1.png" alt="Image Not Found" />
                 </div>
@@ -179,6 +179,148 @@ export default function Home() {
             </div>
           </div>
 
+          <div className="row">
+            <div className="col-lg-4 col-md-6 service-one-single">
+              <div className="service-style-one-item">
+                <div className="thumb">
+                  <Image width={100} height={80} src="/assets/img/illustration/2.png" alt="Image Not Found" />
+                </div>
+                <div className="info">
+                  <div className="top">
+                    <h4><a href="#">Smart <span>Farming Solutions</span></a></h4>
+                  </div>
+                  <p>
+                    Implement our cutting-edge techniques to enhance crop yields and streamline farm management with real-time data insights.
+                  </p>
+                </div>
+                <a href="#" className="btn-angle"><i className="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+
+            <div className="col-lg-4 col-md-6 service-one-single">
+              <div className="service-style-one-item">
+                <div className="thumb">
+                  <Image width={100} height={80} src="/assets/img/illustration/3.png" alt="Image Not Found" />
+                </div>
+                <div className="info">
+                  <div className="top">
+                    <h4><a href="#">Market &  <span>Investment Hub</span></a></h4>
+                  </div>
+                  <p>
+                    Seamlessly connect with key stakeholders—buyers, suppliers, and investors—to expand your market reach and secure growth opportunities.
+                  </p>
+                  <a href="#" className="btn-angle"><i className="fas fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-lg-4 col-md-6 service-one-single">
+              <div className="service-style-one-item">
+                <div className="thumb">
+                  <Image width={100} height={80} src="/assets/img/illustration/4.png" alt="Image Not Found" />
+                </div>
+                <div className="info">
+                  <div className="top">
+                    <h4><a href="#">Land  <span>Brokerage Services</span></a></h4>
+                  </div>
+                  <p>
+                    Navigate farmland acquisitions with ease, backed by our expert guidance to simplify the purchasing process.
+                  </p>
+                  <a href="#" className="btn-angle"><i className="fas fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/*DATA-DRIVEN SECTION */}
+      <div className="services-style-one-area bg-white default-padding bottom-less">
+        <div className="container">
+          <div className="site-heading text-center">
+            <h5 className="sub-title">Analytics and Insight</h5>
+            <h2 className="title">Data-Driving Farming Intelligence</h2>
+            <span>Transform raw agricultural data into actionable insights with our advanced analytics platform</span>
+          </div>
+
+          <div className="row">
+            <div className="col-lg-6 col-md-12">
+              {/* DATA-DRIVEN FARMING INTELLIGENCE */}
+              <ul className="list-unstyled mt-4 mb-4">
+                <li className="d-flex align-items-start mb-4">
+                  <div className="bg-success bg-success-10 text-white rounded d-flex align-items-center justify-content-center me-3"
+                    style={{ width: 45, height: 45 }}>
+                    <i className="fas fa-seedling"></i>
+                  </div>
+                  <div>
+                    <strong className="d-block text-dark mb-1">
+                      Crop Health Monitoring
+                    </strong>
+                    <span>
+                      Real-time monitoring using IoT sensors and satellite imagery.
+                    </span>
+                  </div>
+                </li>
+
+                <li className="d-flex align-items-start mb-4">
+                  <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center me-3"
+                    style={{ width: 45, height: 45 }}>
+                    <i className="fas fa-cloud-sun"></i>
+                  </div>
+                  <div>
+                    <strong className="d-block text-dark mb-1">
+                      Weather Intelligence
+                    </strong>
+                    <span>
+                      Predictive weather analytics with farming-specific recommendations.
+                    </span>
+                  </div>
+                </li>
+
+                <li className="d-flex align-items-start mb-4">
+                  <div className="bg-info text-white rounded d-flex align-items-center justify-content-center me-3"
+                    style={{ width: 45, height: 45 }}>
+                    <i className="fas fa-chart-line"></i>
+                  </div>
+                  <div>
+                    <strong className="d-block text-dark mb-1">
+                      Yield Predictions
+                    </strong>
+                    <span>
+                      AI-powered yield forecasting based on historical and current data.
+                    </span>
+                  </div>
+                </li>
+
+                <li className="d-flex align-items-start">
+                  <div className="bg-danger text-white rounded d-flex align-items-center justify-content-center me-3"
+                    style={{ width: 45, height: 45 }}>
+                    <i className="fas fa-dollar-sign"></i>
+                  </div>
+                  <div>
+                    <strong className="d-block text-dark mb-1">
+                      Market Analytics
+                    </strong>
+                    <span>
+                      Real-time pricing and demand forecasting for optimal decisions.
+                    </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div className="col-xl-6 col-lg-5">
+              <div className="about-style-one-thumb">
+                <Image width={800} height={350} src="/assets/img/data.jpg" alt="Image Not Found" className="rounded" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* FARMING SOLUTIONS SECTION */}
+      <div className="services-style-one-area bg-gray default-padding bottom-less">
+        <div className="container">
           <div className="row">
             <div className="col-lg-4 col-md-6 service-one-single">
               <div className="service-style-one-item">
