@@ -476,6 +476,65 @@ export default function Home() {
         </div>
       </div>
 
+      {/* FARMING SOLUTIONS SECTION */}
+      <div className="services-style-one-area bg-gray default-padding bottom-less">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-4 col-md-6 service-one-single">
+              <div className="service-style-one-item">
+                <div className="thumb">
+                  <Image width={100} height={80} src="/assets/img/illustration/2.png" alt="Image Not Found" />
+                </div>
+                <div className="info">
+                  <div className="top">
+                    <h4><a href="#">Smart <span>Farming Solutions</span></a></h4>
+                  </div>
+                  <p>
+                    Implement our cutting-edge techniques to enhance crop yields and streamline farm management with real-time data insights.
+                  </p>
+                </div>
+                <a href="#" className="btn-angle"><i className="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+
+            <div className="col-lg-4 col-md-6 service-one-single">
+              <div className="service-style-one-item">
+                <div className="thumb">
+                  <Image width={100} height={80} src="/assets/img/illustration/3.png" alt="Image Not Found" />
+                </div>
+                <div className="info">
+                  <div className="top">
+                    <h4><a href="#">Market &  <span>Investment Hub</span></a></h4>
+                  </div>
+                  <p>
+                    Seamlessly connect with key stakeholders—buyers, suppliers, and investors—to expand your market reach and secure growth opportunities.
+                  </p>
+                  <a href="#" className="btn-angle"><i className="fas fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-lg-4 col-md-6 service-one-single">
+              <div className="service-style-one-item">
+                <div className="thumb">
+                  <Image width={100} height={80} src="/assets/img/illustration/4.png" alt="Image Not Found" />
+                </div>
+                <div className="info">
+                  <div className="top">
+                    <h4><a href="#">Land  <span>Brokerage Services</span></a></h4>
+                  </div>
+                  <p>
+                    Navigate farmland acquisitions with ease, backed by our expert guidance to simplify the purchasing process.
+                  </p>
+                  <a href="#" className="btn-angle"><i className="fas fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
       {/* BENEFIT SECTION */}
       <div className="benifits-area default-padding-top video-bg-live bg-cover mt--50 mt-md-0 mt-xs-0" style={{ backgroundImage: 'url(/assets/img/6.jpeg)' }}>
         <div className="player" data-property="{videoURL:'w9eRIGTHKJM',containment:'.video-bg-live', showControls:false, autoPlay:true, zoom:0, loop:true, mute:true, startAt:13, opacity:1, quality:'default'}"></div>
