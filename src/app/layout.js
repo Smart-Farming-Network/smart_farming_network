@@ -1,5 +1,6 @@
 import '@/app/globals.css';
-import ClientScriptsSafe from '@/components/ClientScriptsSafe';
+import Script from "next/script";
+import Preloader from '@/components/Preloader';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
@@ -30,14 +31,33 @@ export const metadata = {
 
 export const viewport = { width: 'device-width', initialScale: 1.0, maximumScale: 1.0 };
 
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+
+        <Preloader duration={3000} fadeDuration={500} />
+
+        {/* REACT APP */}
         <div id="app-root">
           {children}
-          <ClientScriptsSafe />
         </div>
+
+        {/* SCRIPTS */}
+        <Script src="/assets/js/jquery-3.6.0.min.js" strategy="beforeInteractive" />
+        <Script src="/assets/js/bootstrap.bundle.min.js" strategy="afterInteractive" />
+
+
+        {/* Plugins */}
+        <Script src="/assets/js/jquery.appear.js" strategy="afterInteractive" />
+        <Script src="/assets/js/swiper-bundle.min.js" strategy="afterInteractive" />
+        <Script src="/assets/js/magnific-popup.min.js" strategy="afterInteractive" />
+        <Script src="/assets/js/progress-bar.min.js" strategy="afterInteractive" />
+
+        {/* <Script src="/assets/js/validnavs.js" strategy="afterInteractive" /> */}
+        <Script src="/assets/js/main.js" strategy="afterInteractive" />
+
       </body>
     </html>
   );
