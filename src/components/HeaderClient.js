@@ -87,7 +87,7 @@ export default function HeaderClient({ session }) {
             <li><Link href="/about" onClick={() => setOpen(false)}>About</Link></li>
             <li><Link href="/contact" onClick={() => setOpen(false)}>Contact</Link></li>
             <li><Link href="#">Services</Link></li>
-            <li><Link href="#">Marketplace</Link></li>
+            <li><Link href="/market-place">Marketplace</Link></li>
             {session && role && dashboardUrl !== "/" && (
               <li className="button"><Link href={dashboardUrl} onClick={() => setOpen(false)}>Dashboard</Link></li>
             )}
