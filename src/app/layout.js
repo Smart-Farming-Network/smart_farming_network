@@ -56,7 +56,7 @@ export default function RootLayout({ children }) {
         <Script src="/assets/js/progress-bar.min.js" strategy="afterInteractive" />
 
         {/* <Script src="/assets/js/validnavs.js" strategy="afterInteractive" /> */}
-        <Script src="/assets/js/main.js" strategy="afterInteractive" />
+        {/* <Script src="/assets/js/main.js" strategy="afterInteractive" /> */}
 
       </body>
     </html>

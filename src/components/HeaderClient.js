@@ -47,7 +47,7 @@ export default function HeaderClient({ session }) {
           <li><Link href="/about">About</Link></li>
           <li><Link href="/contact">Contact</Link></li>
           <li><Link href="#">Services</Link></li>
-          <li><Link href="#">Marketplace</Link></li>
+          <li><Link href="/market-place">Marketplace</Link></li>
         </ul>
 
         {/* Right side / desktop */}
