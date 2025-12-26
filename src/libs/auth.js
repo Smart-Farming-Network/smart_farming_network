@@ -48,7 +48,6 @@ export const authOptions = {
         token.permissions = user.permissions || [];
       }
 
-      console.log(user, token);
       return token;
     },
 
