@@ -1,25 +1,47 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "./auth";
+import { ROLE_PERMISSIONS } from "@/auth/permissions/role-map";
 import { redirect } from "next/navigation";
 
 /**
  * Role-based access guard
- * - Not logged in  → redirect to login with message
- * - Logged in but forbidden → redirect to home with 403 context
+ * @param {string[]} allowedRoles - Roles allowed to access the page
  */
 export async function requireRole(allowedRoles = []) {
     const session = await getServerSession(authOptions);
 
-    // 1️⃣ User NOT logged in
     if (!session) {
         redirect("/login?error=AUTH_REQUIRED");
     }
 
-    // 2️⃣ User logged in but NOT authorized
     if (!allowedRoles.includes(session.user.role)) {
-        redirect("/403?error=FORBIDDEN"); // or /403
+        redirect("/403?error=FORBIDDEN");
     }
 
-    // 3️⃣ Authorized
+    return session;
+}
+
+/**
+ * Permission-based access guard
+ * @param {string[]} requiredPermissions - Permissions required to access the page
+ */
+export async function requirePermission(requiredPermissions = []) {
+    const session = await getServerSession(authOptions);
+
+    if (!session) {
+        redirect("/login?error=AUTH_REQUIRED");
+    }
+
+    const userRole = session.user.role;
+    const userExtraPermissions = session.user.permissions || [];
+
+    const rolePerms = ROLE_PERMISSIONS[userRole] === "*" ? ["*"] : ROLE_PERMISSIONS[userRole] || [];
+    const effectivePerms = new Set([...rolePerms, ...userExtraPermissions]);
+
+    const allowed = effectivePerms.has("*") || requiredPermissions.some(p => effectivePerms.has(p));
+    if (!allowed) {
+        redirect("/403?error=FORBIDDEN");
+    }
+
     return session;
 }
