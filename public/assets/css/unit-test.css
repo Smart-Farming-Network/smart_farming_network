@@ -5,7 +5,8 @@
     # Blog
 =================================================================== */
 
-button.btn {
+button.btn,
+a.btn {
 	display: inline-block;
 	font-weight: 600;
 	text-transform: capitalize;
@@ -25,7 +26,8 @@ button.btn {
 	border: none !important;
 }
 
-button.btn::after {
+button.btn::after,
+a.btn::after {
 	position: absolute;
 	top: inherit;
 	right: inherit;
@@ -40,17 +42,19 @@ button.btn::after {
 	transform: translateY(-45%) skew(25deg) scale(0);
 }
 
-button.btn:hover {
+button.btn:hover,
+a.btn:hover {
 	color: #ffffff;
 }
 
-button.btn:hover::after {
+button.btn:hover::after,
+a.btn:hover::after {
 	-webkit-transform: translateY(-45%) skew(25deg) scale(1.2);
 	transform: translateY(-45%) skew(25deg) scale(1.2);
 }
 
 .blog-area {
-	background-size: 30%,  contain;
+	background-size: 30%, contain;
 	background-repeat: no-repeat;
 	background-position: top right;
 }
@@ -160,12 +164,12 @@ button.btn:hover::after {
 
 .blog-area .post-title a {
 	display: inline;
-	background-image: linear-gradient(to right,var(--color-secondary) 0,var(--color-secondary) 100%);
+	background-image: linear-gradient(to right, var(--color-secondary) 0, var(--color-secondary) 100%);
 	background-position: 0 100%;
 	background-repeat: no-repeat;
 	background-size: 0 2px;
-	-webkit-transition: .3s,background-size .8s;
-	transition: all .3s,background-size .8s;
+	-webkit-transition: .3s, background-size .8s;
+	transition: all .3s, background-size .8s;
 }
 
 .blog-area .post-title a:hover {
@@ -273,7 +277,7 @@ button.btn:hover::after {
 	transform: scale(1.1);
 }
 
-  /* ============================================================== 
+/* ============================================================== 
     # Breadcrumb Styles
 =================================================================== */
 .breadcrumb-area {
@@ -302,7 +306,7 @@ button.btn:hover::after {
 	z-index: 1;
 }
 
-.breadcrumb-area .breadcrumb > li + li::before {
+.breadcrumb-area .breadcrumb>li+li::before {
 	content: "\f105";
 	font-family: "Font Awesome 5 Pro";
 	font-weight: 700;
@@ -842,7 +846,7 @@ a.button-regular i {
 	font-size: 15px;
 }
 
-.home-blog .thumb > a {
+.home-blog .thumb>a {
 	overflow: hidden;
 	display: block;
 }
@@ -888,7 +892,7 @@ a.button-regular:hover i::after {
 	font-size: 24px;
 }
 
-.blog-area  .overlay {
+.blog-area .overlay {
 	position: absolute;
 	left: 0;
 	bottom: 0;
@@ -923,12 +927,12 @@ a.button-regular:hover i::after {
 
 .blog-area .overlay .post-title a {
 	display: inline;
-	background-image: linear-gradient(to right,var(--color-primary) 0,var(--color-primary) 100%);
+	background-image: linear-gradient(to right, var(--color-primary) 0, var(--color-primary) 100%);
 	background-position: 0 100%;
 	background-repeat: no-repeat;
 	background-size: 0 2px;
-	-webkit-transition: .3s,background-size .8s;
-	transition: all .3s,background-size .8s;
+	-webkit-transition: .3s, background-size .8s;
+	transition: all .3s, background-size .8s;
 }
 
 .blog-area .overlay .post-title a:hover {
@@ -999,14 +1003,14 @@ a.button-regular:hover i::after {
 	font-weight: 3;
 }
 
-.blog-area.single .info > ul {
+.blog-area.single .info>ul {
 	margin-bottom: 25px;
 	margin-top: 25px;
 	list-style: disc;
 	padding-left: 20px;
 }
 
-.blog-area.single .info > ul li {
+.blog-area.single .info>ul li {
 	list-style: disc;
 }
 
@@ -1061,7 +1065,7 @@ a.button-regular:hover i::after {
 .responsive-video {
 	position: relative;
 	padding-bottom: 56.25%;
-  /* 16:9 */
+	/* 16:9 */
 	padding-top: 25px;
 	height: 0;
 }
@@ -1263,7 +1267,7 @@ a.button-regular:hover i::after {
 	width: 100%;
 }
 
-.post-pagi-area > div {
+.post-pagi-area>div {
 	width: 50%;
 	margin-right: 15px;
 }
@@ -1295,14 +1299,14 @@ a.button-regular:hover i::after {
 	color: var(--color-optional);
 }
 
-.post-pagi-area > div:nth-child(2) {
+.post-pagi-area>div:nth-child(2) {
 	text-align: right;
 	margin-right: 0;
 	margin-left: 15px;
 }
 
 .post-pagi-area h5,
-  .breadcrumb-area h2 {
+.breadcrumb-area h2 {
 	word-break: break-word;
 }
 
@@ -1350,16 +1354,16 @@ a.button-regular:hover i::after {
 	letter-spacing: 0.6px;
 }
 
-.post-pagi-area > div:nth-child(2) a {
+.post-pagi-area>div:nth-child(2) a {
 	justify-content: right;
 }
 
-.post-pagi-area > div:nth-child(2) a .icon {
+.post-pagi-area>div:nth-child(2) a .icon {
 	margin-right: 0;
 	margin-left: 15px;
 }
 
-  /* Comments */
+/* Comments */
 
 .blog-comments {
 	float: left;
@@ -1704,7 +1708,7 @@ a.button-regular:hover i::after {
 		right: inherit;
 	}
 
-	.post-pagi-area > div:nth-child(2) a .icon {
+	.post-pagi-area>div:nth-child(2) a .icon {
 		margin-left: 5px;
 	}
 
@@ -1722,7 +1726,7 @@ a.button-regular:hover i::after {
 		color: var(--color-heading);
 	}
 
-	.post-pagi-area > div:nth-child(2) a {
+	.post-pagi-area>div:nth-child(2) a {
 		justify-content: center;
 	}
 
@@ -1736,7 +1740,7 @@ a.button-regular:hover i::after {
 }
 
 @media (max-width: 450px) {
-	.post-pagi-area > div {
+	.post-pagi-area>div {
 		width: 100%;
 	}
 
@@ -1744,7 +1748,7 @@ a.button-regular:hover i::after {
 		display: block;
 	}
 
-	.post-pagi-area > div:nth-child(2) {
+	.post-pagi-area>div:nth-child(2) {
 		margin: 0;
 		margin-top: 15px;
 	}
