@@ -10,6 +10,6 @@ export function getRedirectByRole(role) {
             return "/investors";
 
         default:
-            return "/"; // USER or unknown
+            return "/dashboard"; // USER or unknown
     }
 }
