@@ -8,7 +8,7 @@ generator client {
   output   = "../src/generated/prisma"
 }
 
-// Enum for user roles
+// --- Enums ---
 enum Role {
   USER
   ADMIN
@@ -16,28 +16,43 @@ enum Role {
   INVESTOR
 }
 
+enum VerificationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+// --- User model ---
 model User {
-  id          String           @id @default(uuid())
-  email       String           @unique
-  password    String
-  role        Role             @default(USER)
-  profile     Profile?
-  permissions UserPermission[]
-  createdAt   DateTime         @default(now())
-  updatedAt   DateTime         @default(now()) @updatedAt
+  id                    String           @id @default(uuid())
+  email                 String           @unique
+  password              String
+  role                  Role             @default(USER) // current assigned role
+  requestedRole         Role?            // role user applied for
+  verificationStatus    VerificationStatus @default(PENDING)
+  profileStage          Int              @default(0) // 0-started, 1-personal, 2-role-specific, 3-documents, 4-completed
+  profileCompletionPct  Int              @default(0)
+  profile               Profile?
+  permissions           UserPermission[]
+  createdAt             DateTime         @default(now())
+  updatedAt             DateTime         @default(now()) @updatedAt
 }
 
+// --- Profile model ---
 model Profile {
-  id        String   @id @default(uuid())
-  firstName String?
-  lastName  String?
-  phone     String?
-  userId    String   @unique
-  user      User     @relation(fields: [userId], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
+  id          String   @id @default(uuid())
+  firstName   String?
+  lastName    String?
+  phone       String?
+  roleSpecific Json?    // role-specific info (Farmer / Investor)
+  documents    Json?    // uploaded documents metadata
+  userId      String   @unique
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
 }
 
+// --- Permission model ---
 model Permission {
   id        String           @id @default(uuid())
   key       String           @unique
@@ -46,6 +61,7 @@ model Permission {
   updatedAt DateTime         @updatedAt
 }
 
+// --- UserPermission model ---
 model UserPermission {
   id           String     @id @default(uuid())
   user         User       @relation(fields: [userId], references: [id])
@@ -58,6 +74,7 @@ model UserPermission {
   @@unique([userId, permissionId])
 }
 
+// --- Product model ---
 model Product {
   id        String   @id @default(uuid())
   name      String
