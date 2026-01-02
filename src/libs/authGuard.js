@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "./auth";
 import { ROLE_PERMISSIONS } from "@/auth/permissions/role-map";
 import { redirect } from "next/navigation";
+import { prisma } from "@/libs/prisma";
 
 /**
  * Role-based access guard
@@ -45,3 +46,32 @@ export async function requirePermission(requiredPermissions = []) {
 
     return session;
 }
+
+
+export async function requireAuth() {
+    const session = await getServerSession(authOptions);
+
+    if (!session) {
+        redirect("/login?error=AUTH_REQUIRED");
+    }
+
+    return session;
+}
+
+
+export async function getCurrentUser() {
+    const session = await getServerSession(authOptions);
+
+    if (!session) return null;
+
+    return prisma.user.findUnique({
+        where: { id: session.user.id },
+        include: {
+            profile: true,
+            permissions: {
+                include: { permission: true }
+            }
+        }
+    });
+}
+

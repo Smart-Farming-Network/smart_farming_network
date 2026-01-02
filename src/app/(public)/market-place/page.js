@@ -161,7 +161,7 @@ export default function MarketPlacePage() {
               </div>
               <Link
                 href={`/marketplace/${product.slug}`}
-                className="text-success text-decoration-none small"
+                className="text-success text-decoration-none small text-nowrap"
               >
                 View Details
               </Link>

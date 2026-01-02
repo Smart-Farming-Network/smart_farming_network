@@ -1663,6 +1663,12 @@ a.button-regular:hover i::after {
 
 @media (max-width: 767px) {
 
+	button.btn,
+	a.btn {
+		padding: 10px 10px !important;
+	}
+
+
 	.blog-area.full-blog .pagination {
 		margin-top: 20px;
 	}
