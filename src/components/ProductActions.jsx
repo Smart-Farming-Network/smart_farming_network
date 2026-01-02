@@ -10,14 +10,14 @@ export default function ProductActions() {
         <>
             <div className="d-flex gap-3 mt-4">
                 <button
-                    className="btn btn-success px-4"
+                    className="btn btn-success px-4 text-nowrap"
                     onClick={() => setShowModal(true)}
                 >
                     Buy Now
                 </button>
 
                 <button
-                    className="btn btn-outline-success px-4"
+                    className="btn btn-outline-success px-4 text-nowrap"
                     onClick={() => setShowModal(true)}
                 >
                     Contact Seller
