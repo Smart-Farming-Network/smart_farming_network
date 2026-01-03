@@ -5,7 +5,7 @@ export default function StartProfile() {
         <div className="card p-4">
             <h4>Welcome 👋</h4>
             <p>To continue, please complete your profile.</p>
-            <Link href="/dashboard/profile" className="btn btn-primary">
+            <Link href="/dashboard/profile-completion" className="btn btn-primary">
                 Start Profile
             </Link>
         </div>
