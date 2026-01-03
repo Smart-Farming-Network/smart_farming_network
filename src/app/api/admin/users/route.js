@@ -1,9 +1,18 @@
 import { prisma } from "@/libs/prisma";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/libs/auth";
 import { NextResponse } from "next/server";
 
-export async function GET(request) {
-    const { searchParams } = new URL(request.url);
+/**
+ * GET – List users with profile info
+ */
+export async function GET(req) {
+    const session = await getServerSession(authOptions);
+    if (!session || session.user.role !== 'ADMIN') {
+        return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
 
+    const { searchParams } = new URL(req.url);
     const page = parseInt(searchParams.get("page") || "1");
     const pageSize = parseInt(searchParams.get("pageSize") || "10");
     const search = searchParams.get("search") || "";
@@ -25,7 +34,8 @@ export async function GET(request) {
             where,
             skip,
             take,
-            orderBy: { id: "asc" },
+            orderBy: { createdAt: "desc" },
+            include: { profile: true },
         }),
         prisma.user.count({ where }),
     ]);
