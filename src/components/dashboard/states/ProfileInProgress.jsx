@@ -13,7 +13,7 @@ export default function ProfileInProgress({ user }) {
                 />
             </div>
 
-            <Link href="/dashboard/profile" className="btn btn-warning">
+            <Link href="/dashboard/profile-completion" className="btn btn-warning">
                 Continue Profile
             </Link>
         </div>
