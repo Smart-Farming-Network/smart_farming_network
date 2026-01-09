@@ -1,120 +1,148 @@
+import Image from "next/image";
+import Link from "next/link";
+
 export default function AboutUsPage() {
   return (
-    <div className="bg-white">
-      <div className="container py-5">
-        {/* Page Heading */}
-        <div className="site-heading text-center mb-5">
-          <h2 className="title">About Us</h2>
+    <div>
+      {/* ================= VISION SECTION ================= */}
+      <section className="bg-white min-vh-100 d-flex align-items-center">
+        <div className="container">
+          <div className="site-heading text-center mb-4">
+            <h2 className="title">Our Vision</h2>
+          </div>
+
+          <p className="fs-5 text-center">
+            “Redefining and revolutionizing the traditional method of farming
+            across the African continent.”
+            <br />
+            <br />
+            With Goody.AI in every farmer&apos;s pocket and SFN as the bridge,
+            this vision is not futuristic — it is already here.
+            <br />
+            <br />
+            <strong>Goodlife Smart Farming Network</strong>
+            <br />
+            <em>&quot;The Amazon of Africa&apos;s Farming&quot;</em>
+          </p>
         </div>
+      </section>
 
-        {/* ===== Our Project ===== */}
-        <div className="row align-items-center mb-5">
-          <div className="col-lg-5">
-            <div className="site-heading text-center text-lg-start">
-              <h5 className="sub-title">Our Project</h5>
-              <h2 className="title">
-                Goodlife Smart Farming Network (SFN)
-              </h2>
-            </div>
+      {/* ================= OUR TEAM SECTION ================= */}
+      {/* ================= OUR TEAM SECTION ================= */}
+      <section className="bg-gray min-vh-100 d-flex align-items-center">
+        <div className="container">
+          <div className="site-heading text-center mb-5">
+            <h2 className="title">Our Team</h2>
           </div>
 
-          <div className="col-lg-7">
-            <p>
-              The Goodlife Smart Farming Network (SFN) is a revolutionary
-              digital ecosystem built to transform agriculture across Africa
-              through technology, connectivity, and knowledge. At its core is
-              AgriGo—an intelligent chatbot assistant designed to engage farmers
-              in a personal, data-driven way, delivering timely farm updates,
-              smart insights, and expert guidance through a simple chat
-              experience.
-            </p>
-            <p>
-              From crop tracking to climate alerts and market access, SFN
-              empowers farmers to make informed decisions, improve yields, and
-              participate confidently in modern agricultural value chains. SFN
-              bridges rural farming communities with digital innovation—turning
-              farming into a sustainable and prosperous lifestyle.
-            </p>
-          </div>
-        </div>
+          <div className="row text-center">
+            {[
+              {
+                name: "Edward Terungwa Ordams",
+                role: "Founder & Vision Lead",
+              },
+              {
+                name: "Project Manager",
+                role: "Operations & Delivery",
+              },
+              {
+                name: "Engineering Team",
+                role: "Web, AI & IoT",
+              },
+              {
+                name: "Secretary",
+                role: "Admin & Communications",
+              },
+            ].map((member, index) => (
+              <div className="col-md-3 mb-4" key={index}>
+                <div className="card border-0 shadow-sm h-100 py-4">
 
-        {/* ===== Vision ===== */}
-        <div className="bg-gray py-5 mb-5 rounded">
-          <div className="text-center mb-4">
-            <h5 className="sub-title">Our Vision</h5>
-            <h2 className="title">The Future of African Farming</h2>
-          </div>
+                  {/* Profile Image */}
+                  <div className="d-flex justify-content-center mb-3">
+                    <div
+                      className="position-relative rounded-circle overflow-hidden"
+                      style={{ width: "180px", height: "180px" }}
+                    >
+                      <Image
+                        src="/assets/img/profile.png"
+                        alt={member.name}
+                        fill
+                        style={{ objectFit: "cover", objectPosition: "top" }}
+                      />
+                    </div>
+                  </div>
 
-          <div className="container">
-            <p className="fs-5 text-center">
-              “Redefining and revolutionizing the traditional method of farming
-              across the African continent.”
-              <br />
-              <br />
-              With Goody.AI in every farmer&apos;s pocket and SFN as the bridge,
-              this vision is not futuristic—it is already unfolding.
-              <br />
-              <br />
-              <strong>Goodlife Smart Farming Network</strong>
-              <br />
-              Tagline: <em>&quot;The Amazon of Africa&apos;s Farming&quot;</em>
-            </p>
-          </div>
-        </div>
+                  {/* Content */}
+                  <div className="card-body pt-0">
+                    <h5 className="card-title mb-1">{member.name}</h5>
+                    <small className="text-muted">{member.role}</small>
+                  </div>
 
-        {/* ===== Our Team ===== */}
-        <div className="row mb-5">
-          <div className="col-lg-5">
-            <div className="site-heading text-center text-lg-start">
-              <h5 className="sub-title">Our Team</h5>
-              <h2 className="title">People Behind the Vision</h2>
-            </div>
-          </div>
-
-          <div className="col-lg-7">
-            <p>
-              SFN is powered by a growing team of technologists, agricultural
-              thinkers, creatives, and purpose-driven leaders committed to
-              solving real-world problems in African agriculture. Our approach
-              combines innovation, ethics, and deep cultural understanding to
-              build solutions that truly serve farmers and communities.
-            </p>
-            <p>
-              As the network expands, SFN continues to collaborate with
-              partners, advisors, and local champions who share a common belief:
-              Africa’s land and people hold untapped potential—and technology
-              can unlock it responsibly.
-            </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
+      </section>
 
-        {/* ===== About the Founder (Commented for Future Use) ===== */}
-        {/*
-        <div className="row mt-5">
-          <div className="col-lg-5">
-            <div className="site-heading text-center text-lg-start">
-              <h5 className="sub-title">About the Founder</h5>
-              <h2 className="title">Edward Terungwa Ordams</h2>
-            </div>
+
+      {/* ================= OUR PROJECTS SECTION ================= */}
+      <section className="bg-white min-vh-100 d-flex align-items-center">
+        <div className="container mt-5">
+          <div className="site-heading text-center mb-5">
+            <h2 className="title">Our Projects</h2>
           </div>
 
-          <div className="col-lg-7">
-            <p>
-              Edward Terungwa Ordams is more than a tech visionary—he is a bridge
-              between purpose and progress. A Christian leader, philosopher, and
-              entrepreneur, he is the founder of The Goodlife Company, a parent
-              venture focused on purpose-driven innovation across agriculture,
-              food, and lifestyle sectors.
-            </p>
-            <p>
-              As the creator of the Smart Farming Network, Edward believes that
-              Africa&apos;s true wealth lies in its land and people—and that
-              digital intelligence can reshape farming for generations to come.
-            </p>
+          <div className="row">
+            {[
+              {
+                title: "AgriGo AI Assistant",
+                image: "/assets/img/smart_farm.jpg",
+                description:
+                  "An intelligent farming assistant providing insights, alerts, and guidance through conversational AI.",
+                link: "/projects/agrigo",
+              },
+              {
+                title: "IoT Smart Farming",
+                image: "/assets/img/smart_farm.jpg",
+                description:
+                  "Real-time soil, weather, and crop monitoring using IoT devices for precision farming.",
+                link: "/projects/iot",
+              },
+              {
+                title: "Digital Market Access",
+                image: "/assets/img/smart_farm.jpg",
+                description:
+                  "Connecting farmers directly to verified buyers, improving transparency and profitability.",
+                link: "/projects/marketplace",
+              },
+            ].map((project, index) => (
+              <div className="col-md-4 mb-4" key={index}>
+                <div className="card h-100 shadow-sm">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={600}
+                    height={400}
+                    className="card-img-top"
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title">{project.title}</h5>
+                    <p className="card-text">{project.description}</p>
+
+                    <Link
+                      href={project.link}
+                      className="btn btn-outline-success btn-sm"
+                    >
+                      View Project
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-        */}
-      </div>
+      </section>
     </div>
   );
 }
