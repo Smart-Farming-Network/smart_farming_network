@@ -4,9 +4,9 @@ import Link from "next/link";
 
 
 
-export default function Footer(){
+export default function Footer() {
     return (
-        <footer className="bg-dark text-light" style={{backgroundImage: 'url(/assets/img/shape/8.png)'}}>
+        <footer className="bg-dark text-light">
             <div className="container">
                 <div className="f-items default-padding">
                     <div className="row">
@@ -15,7 +15,7 @@ export default function Footer(){
                         <div className="col-lg-4 col-md-6 item">
                             <div className="footer-item about">
                                 {/*<Image  fill className="logo" src="/assets/img/logo-light.png" alt="Logo" /> */}
-                                <h2>Smart Farming Network (SFN)</h2>
+                                <h2>Goodlife Smart Farming Network (SFN)</h2>
                                 <p>
                                     Seamlessly connect with key stakeholders—buyers, suppliers, and investors—to expand your market reach and secure growth opportunities.
                                 </p>
@@ -108,7 +108,7 @@ export default function Footer(){
                                         </Link>
                                     </li>
                                     <li className="me-3">
-                                        <Link href="#">
+                                        <Link href="https://youtube.com/@goodlifesmartfarmer">
                                             <i className="fab fa-youtube"></i>
                                         </Link>
                                     </li>
@@ -122,7 +122,7 @@ export default function Footer(){
                 </div>
             </div>
             <div className="shape-right-bottom">
-            <Image  width={50} height={50} src="/assets/img/shape/7.png" alt="Image Not Found" />
+                <Image width={50} height={50} src="/assets/img/shape/7.png" alt="Image Not Found" />
             </div>
         </footer>
     )
