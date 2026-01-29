@@ -410,8 +410,8 @@ export default function Home() {
               <div className="col-lg-5 product-cat-info">
                 <h2 className="mask-text" style={{ backgroundImage: 'url(/assets/img/shape/28.jpg)' }}>Healthy Life With Fresh Products</h2>
               </div>
-              <div className="col-lg-6 offset-lg-1 row align-item-center">
-                <div className="product-cat-lists text-light col-10">
+              <div className="col-lg-6 offset-lg-1 row align-item-center justify-content-center">
+                <div className="product-cat-lists text-light col-12 col-md-10">
                   <div className="product-list-box">
                     <div className="product-list-item">
                       <Link href="services-details.html">

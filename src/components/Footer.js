@@ -84,6 +84,47 @@ export default function Footer() {
                             </div>
                         </div>
 
+                        <div className="col-lg-3 col-md-6 col-12 item">
+                            <div className="footer-item apps">
+                                <h4 className="widget-title">Download Apps</h4>
+                                <ul className="d-flex flex-column gap-2">
+                                    <li>
+                                        <Link
+                                            href="#"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <Image
+                                                src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                                                alt="Get it on Google Play"
+                                                width={150}
+                                                height={60}
+                                                priority
+                                                className="h-100 w-100"
+                                            />
+                                        </Link>
+                                    </li>
+
+                                    <li>
+                                        <Link
+                                            href="#"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <Image
+                                                src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                                                alt="Download on the App Store"
+                                                width={150}
+                                                height={45}
+                                                className="h-100 w-100 container"
+                                            />
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
 
