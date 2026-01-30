@@ -48,12 +48,18 @@ export default function HeaderClient({ session }) {
           <li><Link href="/contact">Contact</Link></li>
           <li><Link href="#">Services</Link></li>
           <li><Link href="/market-place">Marketplace</Link></li>
+          <li>
+            <Link href="/checkout" className="">
+              🛒 Cart
+            </Link>
+          </li>
         </ul>
 
         {/* Right side / desktop */}
         <div className="attr-right">
           <div className="attr-nav">
             <ul className="flex gap-2 items-center">
+
               {session && role && dashboardUrl !== "/" && (
                 <li className="button"><Link href={dashboardUrl} >Dashboard</Link></li>
               )}
@@ -88,6 +94,7 @@ export default function HeaderClient({ session }) {
             <li><Link href="/contact" onClick={() => setOpen(false)}>Contact</Link></li>
             <li><Link href="#">Services</Link></li>
             <li><Link href="/market-place">Marketplace</Link></li>
+            <li><Link href="/checkout" onClick={() => setOpen(false)}>🛒 Checkout</Link></li>
             {session && role && dashboardUrl !== "/" && (
               <li className="button"><Link href={dashboardUrl} onClick={() => setOpen(false)}>Dashboard</Link></li>
             )}

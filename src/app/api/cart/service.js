@@ -5,130 +5,100 @@ const CART_COOKIE = "guest_cart";
 const COOKIE_TTL_DAYS = 7;
 
 /**
- * Normalize cart shape so UI doesn't care
- * whether cart is from DB or cookie
+ * Normalize cart items to always include product data
  */
 function normalizeCartItems(items, products) {
     return items.map(item => ({
         productId: item.productId,
         quantity: item.quantity,
-        product: products.find(p => p.id === item.productId) || null
+        product: products.find(p => p.id === item.productId) || null,
     }));
 }
 
 /**
- * GET CART
+ * Get the cart
  */
 export async function getCart(session) {
-    // ===============================
-    // LOGGED-IN USER → DB CART
-    // ===============================
+    // Logged-in user → DB
     if (session?.user?.id) {
         let cart = await prisma.cart.findUnique({
             where: { userId: session.user.id },
-            include: {
-                items: {
-                    include: { product: true }
-                }
-            }
+            include: { items: { include: { product: true } } },
         });
 
         if (!cart) {
             cart = await prisma.cart.create({
                 data: { userId: session.user.id },
-                include: {
-                    items: { include: { product: true } }
-                }
+                include: { items: { include: { product: true } } },
             });
         }
 
-        return cart;
+        return {
+            items: normalizeCartItems(cart.items, cart.items.map(i => i.product)),
+        };
     }
 
-    // ===============================
-    // GUEST USER → COOKIE CART
-    // ===============================
+    // Guest → Cookie
     const cookieStore = await cookies();
     const cookie = cookieStore.get(CART_COOKIE);
-
     let items = [];
 
     if (cookie?.value) {
         try {
             const parsed = JSON.parse(cookie.value);
-            if (Array.isArray(parsed)) {
-                items = parsed.filter(
-                    i => i?.productId && Number.isInteger(i.quantity)
-                );
-            }
+            if (Array.isArray(parsed)) items = parsed;
         } catch {
             items = [];
         }
     }
 
-    if (items.length === 0) {
-        return { items: [] };
-    }
+    if (items.length === 0) return { items: [] };
 
     const productIds = items.map(i => i.productId);
-
     const products = await prisma.product.findMany({
-        where: { id: { in: productIds } }
+        where: { id: { in: productIds } },
     });
 
-    return {
-        items: normalizeCartItems(items, products)
-    };
+    return { items: normalizeCartItems(items, products) };
 }
 
 /**
- * ADD TO CART
+ * Add to cart
  */
 export async function addToCart(session, productId) {
-    // ===============================
-    // LOGGED-IN USER → DB CART
-    // ===============================
+    // Logged-in → DB
     if (session?.user?.id) {
         let cart = await prisma.cart.findUnique({
             where: { userId: session.user.id },
-            include: { items: true }
+            include: { items: { include: { product: true } } },
         });
 
         if (!cart) {
             cart = await prisma.cart.create({
                 data: { userId: session.user.id },
-                include: { items: true }
+                include: { items: { include: { product: true } } },
             });
         }
 
-        const existingItem = cart.items.find(
-            item => item.productId === productId
-        );
+        const existingItem = cart.items.find(i => i.productId === productId);
 
         if (existingItem) {
-            return prisma.cartItem.update({
+            await prisma.cartItem.update({
                 where: { id: existingItem.id },
-                data: {
-                    quantity: { increment: 1 }
-                }
+                data: { quantity: { increment: 1 } },
+            });
+        } else {
+            await prisma.cartItem.create({
+                data: { cartId: cart.id, productId, quantity: 1 },
             });
         }
 
-        return prisma.cartItem.create({
-            data: {
-                cartId: cart.id,
-                productId,
-                quantity: 1
-            }
-        });
+        return getCart(session);
     }
 
-    // ===============================
-    // GUEST USER → COOKIE CART
-    // ===============================
+    // Guest → Cookie
     const cookieStore = await cookies();
     const cookie = cookieStore.get(CART_COOKIE);
-
     let items = [];
 
     if (cookie?.value) {
@@ -141,7 +111,6 @@ export async function addToCart(session, productId) {
     }
 
     const existingItem = items.find(i => i.productId === productId);
-
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
@@ -153,8 +122,8 @@ export async function addToCart(session, productId) {
         maxAge: COOKIE_TTL_DAYS * 24 * 60 * 60,
         httpOnly: true,
         sameSite: "lax",
-        secure: process.env.NODE_ENV === "production"
+        secure: process.env.NODE_ENV === "production",
     });
 
-    return items;
+    return getCart(session);
 }
