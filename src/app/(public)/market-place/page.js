@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import styles from "@/components/styles/Button.module.css";
+import AddToCartButton from "@/components/AddToCartButton";
 
 export default function MarketPlacePage() {
   const [view, setView] = useState("grid");
@@ -80,12 +82,14 @@ export default function MarketPlacePage() {
         <div className="btn-group">
           <button
             className={`btn btn-sm ${view === "grid" ? "btn-success" : "btn-outline-success"}`}
+            style={{ fontSize: '10px' }}
             onClick={() => setView("grid")}
           >
             <i className="fas fa-th-large"></i>
           </button>
           <button
             className={`btn btn-sm ${view === "list" ? "btn-success" : "btn-outline-success"}`}
+            style={{ fontSize: '10px' }}
             onClick={() => setView("list")}
           >
             <i className="fas fa-th-list"></i>
@@ -106,10 +110,7 @@ export default function MarketPlacePage() {
           {filteredProducts.map(product => (
             <div key={product.id} className="col-6 col-md-4 col-lg-3">
               <div className="card h-100 text-center shadow-sm border-0">
-                <div
-                  className="p-3 position-relative"
-                  style={{ height: "150px" }}
-                >
+                <div className="p-3 position-relative" style={{ height: "150px" }}>
                   {product.image && (
                     <Image
                       src={product.image}
@@ -121,17 +122,21 @@ export default function MarketPlacePage() {
                   )}
                 </div>
 
-                <div className="card-body">
+                <div className="card-body d-flex flex-column">
                   <h6 className="fw-semibold">{product.name}</h6>
                   <p className="text-success fw-bold">
                     ₦{Number(product.price).toLocaleString()}
                   </p>
-                  <Link
-                    href={`/market-place/${product.slug}`}
-                    className="btn btn-success btn-sm w-100"
-                  >
-                    Buy Now
-                  </Link>
+
+                  <div className="row">
+                    <Link
+                      href={`/market-place/${product.slug}`}
+                      className={`btn btn-outline-success btn-sm col-5 container ${styles.btn}`}
+                    >
+                      View
+                    </Link>
+                    <AddToCartButton productId={product.id} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -145,7 +150,7 @@ export default function MarketPlacePage() {
           {filteredProducts.map(product => (
             <div
               key={product.id}
-              className="list-group-item d-flex justify-content-between align-items-center"
+              className="list-group-item d-flex justify-content-between align-items-center flex-wrap"
             >
               <div className="d-flex align-items-center gap-3">
                 {product.image && (
@@ -163,12 +168,16 @@ export default function MarketPlacePage() {
                   </small>
                 </div>
               </div>
-              <Link
-                href={`/marketplace/${product.slug}`}
-                className="text-success text-decoration-none small text-nowrap"
-              >
-                View Details
-              </Link>
+
+              <div className="row">
+                <Link
+                  href={`/market-place/${product.slug}`}
+                  className={`btn btn-outline-success btn-sm col-5 container ${styles.btn}`}
+                >
+                  View
+                </Link>
+                <AddToCartButton productId={product.id} />
+              </div>
             </div>
           ))}
         </div>
