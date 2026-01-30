@@ -73,11 +73,11 @@ export default function Contact() {
                                 </li>
                                 <li className="mb-3">
                                     <i className="bi bi-geo-alt-fill text-primary me-3"></i>
-                                    <strong>HeadQuarters Address:</strong> 82A Js Tarkaa Railway Bye Pass, Makurdi, Benue State.
+                                    <strong>HeadQuarters Address:</strong> No.4 SFN SUITE @ Atom Kpera Road, Beside Monatel Hotel, Makurdi, Benue State.
                                 </li>
                                 <li className="mb-3">
                                     <i className="bi bi-geo-alt-fill text-primary me-3"></i>
-                                    <strong>Branch Address:</strong> Suite 002B, Smafa Plaza Wuse Zone 5, Abuja.
+                                    <strong>Branch Address:</strong> Suite 002B, smafa plaza Wuse zone 5, Abuja.
                                 </li>
                                 <li>
                                     <i className="bi bi-envelope-fill text-primary me-3"></i>

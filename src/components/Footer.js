@@ -59,7 +59,7 @@ export default function Footer() {
                                         </div>
                                         <div className="content">
                                             <strong>Address:</strong>
-                                            82A Js Tarkaa Railway Bye Pass, Makurdi, Benue State.
+                                            No.4 SFN SUITE @ Atom Kpera Road, Beside Monatel Hotel, Makurdi, Benue State.
                                         </div>
                                     </li>
                                     <li>
