@@ -106,17 +106,21 @@ export default function MarketPlacePage() {
           {filteredProducts.map(product => (
             <div key={product.id} className="col-6 col-md-4 col-lg-3">
               <div className="card h-100 text-center shadow-sm border-0">
-                <div className="p-3" style={{ height: "150px" }}>
+                <div
+                  className="p-3 position-relative"
+                  style={{ height: "150px" }}
+                >
                   {product.image && (
                     <Image
                       src={product.image}
                       alt={product.name}
-                      width={120}
-                      height={120}
-                      className="img-fluid"
+                      fill
+                      className="rounded"
+                      style={{ objectFit: "cover" }}
                     />
                   )}
                 </div>
+
                 <div className="card-body">
                   <h6 className="fw-semibold">{product.name}</h6>
                   <p className="text-success fw-bold">
