@@ -39,6 +39,8 @@ model User {
   profileStage          Int              @default(0) // 0-started, 1-personal, 2-role-specific, 3-documents, 4-completed
   profileCompletionPct  Int              @default(0)
   profile               Profile?
+  cart                  Cart? 
+  orders    Order[] 
   permissions           UserPermission[]
   createdAt             DateTime         @default(now())
   updatedAt             DateTime         @default(now()) @updatedAt
@@ -89,6 +91,8 @@ model Product {
   image     String?
   imageId   String?
   category  String
+  cartItems CartItem[] 
+  orderItems OrderItem[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
