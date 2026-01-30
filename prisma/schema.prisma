@@ -22,6 +22,12 @@ enum VerificationStatus {
   REJECTED
 }
 
+enum OrderStatus {
+  PENDING
+  PAID
+  FAILED
+}
+
 // --- User model ---
 model User {
   id                    String           @id @default(uuid())
@@ -85,4 +91,50 @@ model Product {
   category  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+// --- Cart model ---
+model Cart {
+  id        String     @id @default(uuid())
+  userId    String     @unique
+  user      User       @relation(fields: [userId], references: [id])
+  items     CartItem[]
+  updatedAt DateTime   @updatedAt
+  createdAt DateTime   @default(now())
+}
+
+model CartItem {
+  id        String   @id @default(uuid())
+  cartId   String
+  productId String
+  quantity Int      @default(1)
+
+  cart     Cart     @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  product  Product  @relation(fields: [productId], references: [id])
+
+  @@unique([cartId, productId])
+}
+
+// --- Order model ---
+model Order {
+  id          String       @id @default(uuid())
+  userId      String?
+  user        User?        @relation(fields: [userId], references: [id])
+  reference   String       @unique
+  totalAmount Float
+  status      OrderStatus  @default(PENDING)
+  items       OrderItem[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model OrderItem {
+  id        String   @id @default(uuid())
+  orderId  String
+  productId String
+  quantity Int
+  unitPrice Float
+
+  order    Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product  Product  @relation(fields: [productId], references: [id])
 }
