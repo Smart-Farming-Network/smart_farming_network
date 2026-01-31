@@ -124,6 +124,7 @@ model Order {
   id          String       @id @default(uuid())
   userId      String?
   user        User?        @relation(fields: [userId], references: [id])
+  email       String
   reference   String       @unique
   totalAmount Float
   status      OrderStatus  @default(PENDING)
