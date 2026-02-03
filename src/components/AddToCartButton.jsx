@@ -3,7 +3,7 @@
 import { useState } from "react";
 import styles from "./styles/Button.module.css";
 
-export default function AddToCartButton({ productId }) {
+export default function AddToCartButton({ productId, className = "" }) {
     const [loading, setLoading] = useState(false);
     const [added, setAdded] = useState(false);
 
@@ -37,7 +37,12 @@ export default function AddToCartButton({ productId }) {
     return (
         <button
             onClick={handleAdd}
-            className={`btn btn-success btn-sm col-5 container ${styles.btn} ${loading ? "disabled" : ""}`}
+            className={`
+                btn btn-success btn-sm col-md-5 container
+                ${styles.btn}
+                ${loading ? "disabled" : ""}
+                ${className}
+            `}
         >
             {loading ? (
                 <span className="spinner-border spinner-border-sm"></span>
@@ -47,5 +52,6 @@ export default function AddToCartButton({ productId }) {
                 "Add to Cart"
             )}
         </button>
+
     );
 }

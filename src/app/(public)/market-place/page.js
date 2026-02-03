@@ -135,7 +135,7 @@ export default function MarketPlacePage() {
                     >
                       View
                     </Link>
-                    <AddToCartButton productId={product.id} />
+                    <AddToCartButton className="col-5" productId={product.id} />
                   </div>
                 </div>
               </div>
@@ -150,38 +150,50 @@ export default function MarketPlacePage() {
           {filteredProducts.map(product => (
             <div
               key={product.id}
-              className="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+              className="list-group-item d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center"
             >
-              <div className="d-flex align-items-center gap-3">
+              {/* LEFT: Image + Title */}
+              <div className="d-flex align-items-center gap-3 w-100 w-md-auto">
                 {product.image && (
                   <Image
                     src={product.image}
                     alt={product.name}
                     width={50}
                     height={50}
+                    className="flex-shrink-0"
                   />
                 )}
-                <div>
-                  <h6 className="mb-0">{product.name}</h6>
+
+                <div className="flex-grow-1">
+                  <h6 className={`mb-0 ${styles.productTitle}`}>
+                    {product.name}
+                  </h6>
                   <small className="text-success fw-bold">
                     ₦{Number(product.price).toLocaleString()}
                   </small>
                 </div>
               </div>
 
-              <div className="row">
-                <Link
-                  href={`/market-place/${product.slug}`}
-                  className={`btn btn-outline-success btn-sm col-5 container ${styles.btn}`}
-                >
-                  View
-                </Link>
-                <AddToCartButton productId={product.id} />
+              {/* RIGHT: ACTION BUTTONS */}
+              <div className="row w-100 mt-3 mt-md-0">
+                <div className="col-12 col-md-5 mb-2 mb-md-0">
+                  <Link
+                    href={`/market-place/${product.slug}`}
+                    className={`btn btn-outline-success btn-sm w-100 ${styles.btn}`}
+                  >
+                    View
+                  </Link>
+                </div>
+
+                <div className="col-12 col-md-7">
+                  <AddToCartButton className="col-12 col-md-5" productId={product.id} />
+                </div>
               </div>
             </div>
           ))}
         </div>
       )}
+
 
       {/* PAGINATION */}
       {!loading && lastPage > 1 && (
