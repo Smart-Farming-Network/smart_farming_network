@@ -41,6 +41,7 @@ model User {
   profile               Profile?
   cart                  Cart? 
   orders    Order[] 
+  passwordResetTokens PasswordResetToken[]
   permissions           UserPermission[]
   createdAt             DateTime         @default(now())
   updatedAt             DateTime         @default(now()) @updatedAt
@@ -80,6 +81,19 @@ model UserPermission {
   updatedAt    DateTime   @updatedAt
 
   @@unique([userId, permissionId])
+}
+
+// -- passwordResetTokens model --
+model PasswordResetToken {
+  id        String   @id @default(uuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 // --- Product model ---
