@@ -106,7 +106,7 @@ export default function LoginForm() {
                       <div className="form-group remember d-flex align-items-center">
                         <input type="checkbox" id="remember" />
                         <label className='mx-1 mb-0' htmlFor="remember">Remember me</label>
-                        <Link href="#" className="forgot-pass">
+                        <Link href="/forgot-password" className="forgot-pass">
                           Forgot password?
                         </Link>
                       </div>
