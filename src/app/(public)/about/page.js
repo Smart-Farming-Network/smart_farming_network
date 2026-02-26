@@ -40,19 +40,24 @@ export default function AboutUsPage() {
               {
                 name: "Edward Terungwa Ordams",
                 role: "Founder & Vision Lead",
+                image: "/assets/img/founder.jpg",
               },
               {
-                name: "Project Manager",
-                role: "Operations & Delivery",
+                name: "Grace Onahi Odeh",
+                role: "Operations & HR Director",
+                image: "/assets/img/project_manager.jpg",
               },
               {
-                name: "Engineering Team",
-                role: "Web, AI & IoT",
+                name: "Vivian Omenka",
+                role: "Secetary",
+                image: "",
               },
               {
-                name: "Secretary",
-                role: "Admin & Communications",
+                name: "Nathaniel Egbodo",
+                role: "Lead Tech Engineer",
+                image: "",
               },
+
             ].map((member, index) => (
               <div className="col-md-3 mb-4" key={index}>
                 <div className="card border-0 shadow-sm h-100 py-4">
@@ -64,7 +69,7 @@ export default function AboutUsPage() {
                       style={{ width: "180px", height: "180px" }}
                     >
                       <Image
-                        src="/assets/img/profile.png"
+                        src={member.image || "/assets/img/profile.png"}
                         alt={member.name}
                         fill
                         style={{ objectFit: "cover", objectPosition: "top" }}
