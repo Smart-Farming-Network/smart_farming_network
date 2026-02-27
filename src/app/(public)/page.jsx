@@ -101,6 +101,39 @@ export default function Home() {
               </div>
             </div>
 
+            <div className="swiper-slide banner-style-one">
+              <div className="banner-thumb bg-cover shadow dark" style={{ background: 'url(/assets/img/farm-project.jpeg)' }}></div>
+              <div className="shape">
+                <Image fill src="/assets/img/shape/2.png" alt="Image Not Found" />
+              </div>
+              <div className="container">
+                <div className="row align-center justify-content-between">
+                  <div className="col-xl-11">
+                    <div className="content">
+                      <div className="badge">
+                        <div className="curve-text">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150" version="1.1">
+                            <path id="textPath2" d="M 0,75 a 75,75 0 1,1 0,1 z"></path>
+                            <text><textPath href="#textPath">100 Project Farm</textPath></text>
+                          </svg>
+                          <Link href="https://youtube.com/@goodlifesmartfarmer?" className="popup-youtube"><i className="fas fa-arrow-right"></i></Link>
+                        </div>
+                      </div>
+                      <div className="info">
+                        <h2>Project Farm 100</h2>
+                        <p>
+                          Building Africa’s Smart Agricultural Infrastructure.
+                        </p>
+                        <div className="button">
+                          <Link className="btn btn-theme btn-md radius animation" href="/project-farm-100">About the Project</Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           <div className="swiper-button-prev"></div>
