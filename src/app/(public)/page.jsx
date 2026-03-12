@@ -7,12 +7,13 @@ export default function Home() {
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.Swiper) {
+
       new window.Swiper(".banner-fade", {
         direction: "horizontal",
         loop: true,
         effect: "fade",
         autoplay: {
-          delay: 5000, // 5 seconds
+          delay: 5000,
           disableOnInteraction: false,
         },
         fadeEffect: { crossFade: true },
@@ -30,7 +31,7 @@ export default function Home() {
         loop: true,
 
         autoplay: {
-          delay: 10000, // 5 seconds
+          delay: 10000, // 10 seconds
           disableOnInteraction: false,
         },
 
@@ -48,8 +49,73 @@ export default function Home() {
 
       });
 
+      galleryEvents.forEach((event) => {
+        new window.Swiper(`.gallery-swiper-${event.id}`, {
+          loop: true,
+          navigation: {
+            nextEl: `.gallery-next-${event.id}`,
+            prevEl: `.gallery-prev-${event.id}`,
+          },
+        });
+      });
+
     }
+
+    const counters = document.querySelectorAll(".stat-number");
+
+    const animateCounters = () => {
+      counters.forEach(counter => {
+
+        const target = +counter.getAttribute("data-count");
+        const suffix = counter.getAttribute("data-suffix") || "";
+
+        let current = 0;
+        const increment = target / 80;
+
+        const updateCounter = () => {
+          current += increment;
+
+          if (current < target) {
+            counter.innerText = Math.ceil(current) + suffix;
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.innerText = target + suffix;
+          }
+        };
+
+        updateCounter();
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounters();
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    const section = document.querySelector(".impact-stats-area");
+    if (section) observer.observe(section);
+
   }, []);
+
+  const galleryEvents = [
+    {
+      id: 1,
+      title: "Training Women in Tech & Business",
+      description: "In partnership with Yonash Skill Empowerment Services, we conducted a capacity-building session focused on empowering women with practical knowledge in technology and business development. During the program, over 50 widows were trained on foundational digital skills and entrepreneurial thinking to help them create sustainable income opportunities and participate confidently in today’s digital economy.",
+      cover: "/assets/img/gallery/1.jpeg",
+      images: [
+        "/assets/img/gallery/1.jpeg",
+        "/assets/img/gallery/2.jpeg",
+      ],
+    },
+  ];
 
   return (
 
@@ -248,7 +314,7 @@ export default function Home() {
                       href="https://www.smartfarmingnetwork.com/SFM2026"
                       className="btn btn-theme"
                     >
-                      Learn More
+                      Register
                     </Link>
                   </div>
                 </div>
@@ -270,7 +336,7 @@ export default function Home() {
                       href="https://www.smartfarmingnetwork.com/L&P2026"
                       className="btn btn-theme"
                     >
-                      Register Now
+                      Sign-up to the Waitlist
                     </Link>
                   </div>
                 </div>
@@ -304,37 +370,37 @@ export default function Home() {
 
           <div className="row g-4">
 
-            <div className="col-lg-3 col-md-6">
+            <div className="col-xl col-md-6 col-12">
               <div className="impact-card text-center p-4">
-                <h2 className="stat-number">10,000</h2>
+                <h2 className="stat-number" data-count="20">0</h2>
                 <p>Farmers Digitized</p>
               </div>
             </div>
 
-            <div className="col-lg-3 col-md-6">
+            <div className="col-xl col-md-6 col-12">
               <div className="impact-card text-center p-4">
-                <h2 className="stat-number">30%</h2>
-                <p>Yield Increase Within 2 Seasons</p>
+                <h2 className="stat-number" data-count="30" data-suffix="%">0</h2>
+                <p>Yield Increase</p>
               </div>
             </div>
 
-            <div className="col-lg-3 col-md-6">
+            <div className="col-xl col-md-6 col-12">
               <div className="impact-card text-center p-4">
-                <h2 className="stat-number">3,000</h2>
+                <h2 className="stat-number" data-count="30">0</h2>
                 <p>Youth-Led Agri Businesses</p>
               </div>
             </div>
 
-            <div className="col-lg-3 col-md-6">
+            <div className="col-xl col-md-6 col-12">
               <div className="impact-card text-center p-4">
-                <h2 className="stat-number">25%</h2>
+                <h2 className="stat-number" data-count="25" data-suffix="%">0</h2>
                 <p>Post-Harvest Loss Reduction</p>
               </div>
             </div>
 
-            <div className="col-lg-3 col-md-6">
+            <div className="col-xl col-md-6 col-12">
               <div className="impact-card text-center p-4">
-                <h2 className="stat-number">50,000</h2>
+                <h2 className="stat-number" data-count="10">0</h2>
                 <p>Hectares Digitally Mapped</p>
               </div>
             </div>
@@ -629,6 +695,108 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* GALLERY SECTION */}
+      <div className="gallery-area default-padding bg-gray">
+        <div className="container">
+
+          <div className="row mb-5">
+            <div className="col-lg-6 offset-lg-3 text-center">
+              <h5 className="sub-title">Our Moments</h5>
+              <h2 className="title">Gallery & Highlights</h2>
+            </div>
+          </div>
+
+          <div className="row g-4">
+
+            {galleryEvents.map((event) => (
+              <div key={event.id} className="col-lg-4 col-md-6">
+
+                <div
+                  className="gallery-card"
+                  data-bs-toggle="modal"
+                  data-bs-target={`#galleryModal${event.id}`}
+                >
+
+                  <div className="gallery-img">
+                    <Image
+                      src={event.cover}
+                      width={600}
+                      height={400}
+                      alt={event.title}
+                      className="img-fluid"
+                    />
+                  </div>
+
+                  <div className="gallery-info">
+                    <h5>{event.title}</h5>
+                    <p>{event.description}</p>
+                  </div>
+
+                </div>
+
+              </div>
+            ))}
+
+          </div>
+        </div>
+      </div>
+
+      {galleryEvents.map((event) => (
+
+        <div
+          key={event.id}
+          className="modal fade"
+          id={`galleryModal${event.id}`}
+          tabIndex="-1"
+        >
+
+          <div className="modal-dialog modal-xl modal-dialog-centered">
+            <div className="modal-content">
+
+              <div className="modal-header">
+                <h5 className="modal-title">{event.title}</h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                ></button>
+              </div>
+
+              <div className="modal-body">
+
+                <div className={`swiper gallery-swiper-${event.id}`}>
+                  <div className="swiper-wrapper">
+
+                    {event.images.map((img, index) => (
+                      <div key={index} className="swiper-slide text-center">
+
+                        <Image
+                          src={img}
+                          width={900}
+                          height={600}
+                          alt="Gallery Image"
+                          className="img-fluid rounded"
+                        />
+
+                      </div>
+                    ))}
+
+                  </div>
+
+                  <div className={`swiper-button-next gallery-next-${event.id}`}></div>
+                  <div className={`swiper-button-prev gallery-prev-${event.id}`}></div>
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      ))}
 
       {/* CONTACT SECTION */}
       {/* <div className="contact-area overflow-hidden bg-gray default-padding">
