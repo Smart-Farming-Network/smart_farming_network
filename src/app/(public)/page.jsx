@@ -226,7 +226,7 @@ export default function Home() {
       </div>
 
       {/* EVENT CAROUSEL */}
-      <div className="event-carousel-area py-5 bg-light">
+      <div className="event-carousel-area py-5 bg-gray">
         <div className="container">
 
           <div className="event-carousel swiper">
@@ -284,6 +284,60 @@ export default function Home() {
 
             {/* Pagination */}
             <div className="swiper-pagination"></div>
+
+          </div>
+
+        </div>
+      </div>
+
+      {/* IMPACT STATISTICS */}
+      <div className="impact-stats-area default-padding bg-light">
+        <div className="container">
+
+          {/* Section Heading */}
+          <div className="row mb-5">
+            <div className="col-lg-6 offset-lg-3 text-center">
+              <h5 className="sub-title">Our Impact</h5>
+              <h2 className="title">Transforming Agriculture Through Data</h2>
+            </div>
+          </div>
+
+          <div className="row g-4">
+
+            <div className="col-lg-3 col-md-6">
+              <div className="impact-card text-center p-4">
+                <h2 className="stat-number">10,000</h2>
+                <p>Farmers Digitized</p>
+              </div>
+            </div>
+
+            <div className="col-lg-3 col-md-6">
+              <div className="impact-card text-center p-4">
+                <h2 className="stat-number">30%</h2>
+                <p>Yield Increase Within 2 Seasons</p>
+              </div>
+            </div>
+
+            <div className="col-lg-3 col-md-6">
+              <div className="impact-card text-center p-4">
+                <h2 className="stat-number">3,000</h2>
+                <p>Youth-Led Agri Businesses</p>
+              </div>
+            </div>
+
+            <div className="col-lg-3 col-md-6">
+              <div className="impact-card text-center p-4">
+                <h2 className="stat-number">25%</h2>
+                <p>Post-Harvest Loss Reduction</p>
+              </div>
+            </div>
+
+            <div className="col-lg-3 col-md-6">
+              <div className="impact-card text-center p-4">
+                <h2 className="stat-number">50,000</h2>
+                <p>Hectares Digitally Mapped</p>
+              </div>
+            </div>
 
           </div>
 

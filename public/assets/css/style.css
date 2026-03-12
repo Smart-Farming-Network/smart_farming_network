@@ -9312,3 +9312,28 @@ footer {
   object-fit: contain;
   width: 100%;
 }
+
+.impact-card {
+  background: #ffffff;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  height: 100%;
+}
+
+.impact-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.stat-number {
+  font-size: 40px;
+  font-weight: 700;
+  color: #fbbf24;
+}
+
+.impact-card p {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #555;
+}
