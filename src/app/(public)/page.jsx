@@ -11,6 +11,10 @@ export default function Home() {
         direction: "horizontal",
         loop: true,
         effect: "fade",
+        autoplay: {
+          delay: 5000, // 5 seconds
+          disableOnInteraction: false,
+        },
         fadeEffect: { crossFade: true },
         navigation: {
           nextEl: ".swiper-button-next",
@@ -21,6 +25,29 @@ export default function Home() {
           clickable: true,
         },
       });
+
+      new window.Swiper(".event-carousel", {
+        loop: true,
+
+        autoplay: {
+          delay: 10000, // 5 seconds
+          disableOnInteraction: false,
+        },
+
+        speed: 900,
+
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+
+      });
+
     }
   }, []);
 
@@ -198,6 +225,70 @@ export default function Home() {
         </div>
       </div>
 
+      {/* EVENT CAROUSEL */}
+      <div className="event-carousel-area py-5 bg-light">
+        <div className="container">
+
+          <div className="event-carousel swiper">
+            <div className="swiper-wrapper">
+
+              {/* Smart Farmer Movement */}
+              <div className="swiper-slide">
+                <div className="text-center">
+                  <Image
+                    src="/assets/img/events/smart-farmer-2026.jpg"
+                    width={1200}
+                    height={800}
+                    className="img-fluid rounded shadow"
+                    alt="Smart Farmer Movement 2026"
+                  />
+
+                  <div className="mt-4">
+                    <Link
+                      href="https://www.smartfarmingnetwork.com/SFM2026"
+                      className="btn btn-theme"
+                    >
+                      Learn More
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              {/* Investors Soiree */}
+              <div className="swiper-slide">
+                <div className="text-center">
+                  <Image
+                    src="/assets/img/events/investors-soiree.jpg"
+                    width={1200}
+                    height={800}
+                    className="img-fluid rounded shadow"
+                    alt="Investors & Partners Soiree"
+                  />
+
+                  <div className="mt-4">
+                    <Link
+                      href="https://www.smartfarmingnetwork.com/L&P2026"
+                      className="btn btn-theme"
+                    >
+                      Register Now
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Navigation */}
+            <div className="swiper-button-prev"></div>
+            <div className="swiper-button-next"></div>
+
+            {/* Pagination */}
+            <div className="swiper-pagination"></div>
+
+          </div>
+
+        </div>
+      </div>
 
       {/* SERVICE SECTION */}
 

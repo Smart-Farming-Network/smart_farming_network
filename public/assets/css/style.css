@@ -9306,3 +9306,9 @@ footer {
     width: 7em;
   }
 }
+
+.event-carousel img {
+  max-height: 650px;
+  object-fit: contain;
+  width: 100%;
+}
