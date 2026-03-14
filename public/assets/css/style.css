@@ -9370,3 +9370,54 @@ footer {
   font-size: 14px;
   color: #6b7280;
 }
+
+/* Base animation state */
+.transform-el {
+  opacity: 0;
+  transition: all 0.9s ease;
+  will-change: transform, opacity;
+}
+
+/* Activated state */
+.transform-el.active {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* Directions */
+.transform-x-left {
+  transform: translateX(-80px);
+}
+
+.transform-x-right {
+  transform: translateX(80px);
+}
+
+.transform-y-up {
+  transform: translateY(-80px);
+}
+
+.transform-y-down {
+  transform: translateY(80px);
+}
+
+/* Scale animation */
+.transform-scale {
+  transform: scale(0.9);
+}
+
+.delay-1 {
+  transition-delay: 0.1s;
+}
+
+.delay-2 {
+  transition-delay: 0.2s;
+}
+
+.delay-3 {
+  transition-delay: 0.3s;
+}
+
+.delay-4 {
+  transition-delay: 0.4s;
+}

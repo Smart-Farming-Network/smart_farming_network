@@ -87,6 +87,26 @@ export default function Home() {
       });
     };
 
+    // Scroll animations
+    const animatedElements = document.querySelectorAll(".transform-el");
+
+    const animationObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+      }
+    );
+
+    animatedElements.forEach((el) => {
+      animationObserver.observe(el);
+    });
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
@@ -240,7 +260,7 @@ export default function Home() {
           <div className="row align-start">
             <div className="col-xl-6 col-lg-5">
               <div className="about-style-one-thumb d-none d-md-block">
-                <Image width={750} height={800} src="/assets/img/smart_farm_portrait.jpg" alt="Image Not Found" />
+                <Image width={750} height={800} className="transform-el transform-y-up delay-2" src="/assets/img/smart_farm_portrait.jpg" alt="Image Not Found" />
                 <div className="animation-shape">
                   <Image fill src="/assets/img/illustration/1.png" alt="Image Not Found" />
                 </div>
@@ -261,7 +281,7 @@ export default function Home() {
                   <span className="medium">Growth Tonns <br /> of Harvest</span>
                 </div>
                 <ul className="top-feature">
-                  <li>
+                  <li className="transform-el transform-x-left delay-2">
                     <div className="icon">
                       <Image width={80} height={80} src="/assets/img/icon/3.png" alt="Image Not Found" />
                     </div>
@@ -272,7 +292,7 @@ export default function Home() {
                       </p>
                     </div>
                   </li>
-                  <li>
+                  <li className="transform-el transform-x-right delay-2">
                     <div className="icon">
                       <Image width={80} height={80} src="/assets/img/icon/2.png" alt="Image Not Found" />
                     </div>
@@ -426,7 +446,7 @@ export default function Home() {
           </div>
 
           <div className="row">
-            <div className="col-lg-4 col-md-6 service-one-single">
+            <div className="col-lg-4 col-md-6 service-one-single transform-el transform-x-right delay-2">
               <div className="service-style-one-item bg-black border-20 border-black-300">
                 <div className="thumb">
                   <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center me-3 mb-5"
@@ -446,7 +466,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="col-lg-4 col-md-6 service-one-single">
+            <div className="col-lg-4 col-md-6 service-one-single transform-el transform-y-down delay-2">
               <div className="service-style-one-item bg-black border-20 border-black-300">
                 <div className="thumb">
                   <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center me-3 mb-5"
@@ -466,7 +486,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="col-lg-4 col-md-6 service-one-single">
+            <div className="col-lg-4 col-md-6 service-one-single transform-el transform-x-left delay-2">
               <div className="service-style-one-item bg-black border-20 border-black-300">
                 <div className="thumb">
                   <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center me-3 mb-5"
@@ -488,7 +508,7 @@ export default function Home() {
           </div>
 
           <div className="row mb-5">
-            <div className="col-lg-3 col-md-3 service-one-single">
+            <div className="col-lg-3 col-md-3 service-one-single transform-el transform-x-left delay-2">
               <div className="service-style-one-item-small bg-black border-20 border-black-300">
                 <div className="thumb justify-content-center d-flex">
                   <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center mb-2"
@@ -505,7 +525,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="col-lg-3 col-md-3 service-one-single">
+            <div className="col-lg-3 col-md-3 service-one-single transform-el transform-y-top delay-2">
               <div className="service-style-one-item-small bg-black border-20 border-black-300">
                 <div className="thumb justify-content-center d-flex">
                   <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center me-3 mb-2"
@@ -522,7 +542,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="col-lg-3 col-md-3 service-one-single">
+            <div className="col-lg-3 col-md-3 service-one-single transform-el transform-y-bottom delay-2">
               <div className="service-style-one-item-small bg-black">
                 <div className="thumb justify-content-center d-flex">
                   <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center me-3 mb-2"
@@ -539,7 +559,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="col-lg-3 col-md-3 service-one-single">
+            <div className="col-lg-3 col-md-3 service-one-single transform-el transform-x-right delay-2">
               <div className="service-style-one-item-small bg-black border-20 border-black-300">
                 <div className="thumb justify-content-center d-flex">
                   <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center me-3 mb-2"
@@ -563,24 +583,24 @@ export default function Home() {
       <div className="services-style-one-area bg-gray default-padding bottom-less">
         <div className="container">
           <div className="row">
-            <div className="col-lg-4 col-md-6 service-one-single">
+            <div className="col-lg-4 col-md-6 service-one-single transform-el transform-y-down delay-3">
               <div className="service-style-one-item">
                 <div className="thumb">
                   <Image width={100} height={80} src="/assets/img/illustration/2.png" alt="Image Not Found" />
                 </div>
                 <div className="info">
                   <div className="top">
-                    <h4><Link href="/market-place">Smart <span>Farming Solutions</span></Link></h4>
+                    <h4><Link href="#">Smart <span>Farming Solutions</span></Link></h4>
                   </div>
                   <p>
                     Access modern farm machinery and tools through SFN to improve efficiency, reduce manual labor, and increase yields—without the heavy upfront cost.
                   </p>
                 </div>
-                <Link href="/market-place" className="btn-angle"><i className="fas fa-arrow-right"></i></Link>
+                <Link href="#" className="btn-angle"><i className="fas fa-arrow-right"></i></Link>
               </div>
             </div>
 
-            <div className="col-lg-4 col-md-6 service-one-single">
+            <div className="col-lg-4 col-md-6 service-one-single transform-el transform-y-down delay-3">
               <div className="service-style-one-item">
                 <div className="thumb">
                   <Image width={100} height={80} src="/assets/img/illustration/3.png" alt="Image Not Found" />
@@ -597,19 +617,19 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="col-lg-4 col-md-6 service-one-single">
+            <div className="col-lg-4 col-md-6 service-one-single transform-el transform-y-down delay-3">
               <div className="service-style-one-item">
                 <div className="thumb">
                   <Image width={100} height={80} src="/assets/img/illustration/4.png" alt="Image Not Found" />
                 </div>
                 <div className="info">
                   <div className="top">
-                    <h4><Link href="/market-place">Livestock  <span>Farm Services</span></Link></h4>
+                    <h4><Link href="#">Livestock  <span>Farm Services</span></Link></h4>
                   </div>
                   <p>
                     Data-guided livestock services covering feeding, health, and farm management—powered by verified partners
                   </p>
-                  <Link href="/market-place" className="btn-angle"><i className="fas fa-arrow-right"></i></Link>
+                  <Link href="#" className="btn-angle"><i className="fas fa-arrow-right"></i></Link>
                 </div>
               </div>
             </div>
