@@ -1,6 +1,7 @@
 import '@/app/globals.css';
 import Script from "next/script";
 import Preloader from '@/components/Preloader';
+import ChatBot from '@/components/ChatBot';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
@@ -43,6 +44,9 @@ export default function RootLayout({ children }) {
         <div id="app-root">
           {children}
         </div>
+
+        {/* AI CHATBOT — visible on every page */}
+        <ChatBot />
 
         {/* SCRIPTS */}
         <Script src="/assets/js/jquery-3.6.0.min.js" strategy="beforeInteractive" />
