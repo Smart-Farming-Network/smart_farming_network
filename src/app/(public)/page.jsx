@@ -7,10 +7,15 @@ export default function Home() {
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.Swiper) {
+
       new window.Swiper(".banner-fade", {
         direction: "horizontal",
         loop: true,
         effect: "fade",
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
         fadeEffect: { crossFade: true },
         navigation: {
           nextEl: ".swiper-button-next",
@@ -21,8 +26,116 @@ export default function Home() {
           clickable: true,
         },
       });
+
+      new window.Swiper(".event-carousel", {
+        loop: true,
+
+        autoplay: {
+          delay: 10000, // 10 seconds
+          disableOnInteraction: false,
+        },
+
+        speed: 900,
+
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+
+      });
+
+      galleryEvents.forEach((event) => {
+        new window.Swiper(`.gallery-swiper-${event.id}`, {
+          loop: true,
+          navigation: {
+            nextEl: `.gallery-next-${event.id}`,
+            prevEl: `.gallery-prev-${event.id}`,
+          },
+        });
+      });
+
     }
+
+    const counters = document.querySelectorAll(".stat-number");
+
+    const animateCounters = () => {
+      counters.forEach(counter => {
+
+        const target = +counter.getAttribute("data-count");
+        const suffix = counter.getAttribute("data-suffix") || "";
+
+        let current = 0;
+        const increment = target / 80;
+
+        const updateCounter = () => {
+          current += increment;
+
+          if (current < target) {
+            counter.innerText = Math.ceil(current) + suffix;
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.innerText = target + suffix;
+          }
+        };
+
+        updateCounter();
+      });
+    };
+
+    // Scroll animations
+    const animatedElements = document.querySelectorAll(".transform-el");
+
+    const animationObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+      }
+    );
+
+    animatedElements.forEach((el) => {
+      animationObserver.observe(el);
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounters();
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    const section = document.querySelector(".impact-stats-area");
+    if (section) observer.observe(section);
+
   }, []);
+
+  const galleryEvents = [
+    {
+      id: 1,
+      title: "Training Women in Tech & Business",
+      description: "In partnership with Yonash Skill Empowerment Services, we conducted a capacity-building session focused on empowering women with practical knowledge in technology and business development. During the program, over 50 widows were trained on foundational digital skills and entrepreneurial thinking to help them create sustainable income opportunities and participate confidently in today’s digital economy.",
+      cover: "/assets/img/gallery/1.jpeg",
+      images: [
+        "/assets/img/gallery/1.jpeg",
+        "/assets/img/gallery/2.jpeg",
+      ],
+    },
+  ];
 
   return (
 
@@ -101,6 +214,39 @@ export default function Home() {
               </div>
             </div>
 
+            <div className="swiper-slide banner-style-one">
+              <div className="banner-thumb bg-cover shadow dark" style={{ background: 'url(/assets/img/farm-project.jpeg)' }}></div>
+              <div className="shape">
+                <Image fill src="/assets/img/shape/2.png" alt="Image Not Found" />
+              </div>
+              <div className="container">
+                <div className="row align-center justify-content-between">
+                  <div className="col-xl-11">
+                    <div className="content">
+                      <div className="badge">
+                        <div className="curve-text">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150" version="1.1">
+                            <path id="textPath2" d="M 0,75 a 75,75 0 1,1 0,1 z"></path>
+                            <text><textPath href="#textPath">100 Project Farm</textPath></text>
+                          </svg>
+                          <Link href="https://youtube.com/@goodlifesmartfarmer?" className="popup-youtube"><i className="fas fa-arrow-right"></i></Link>
+                        </div>
+                      </div>
+                      <div className="info">
+                        <h2>Project Farm 100</h2>
+                        <p>
+                          Building Africa’s Smart Agricultural Infrastructure.
+                        </p>
+                        <div className="button">
+                          <Link className="btn btn-theme btn-md radius animation" href="/project-farm-100">About the Project</Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           <div className="swiper-button-prev"></div>
@@ -114,7 +260,7 @@ export default function Home() {
           <div className="row align-start">
             <div className="col-xl-6 col-lg-5">
               <div className="about-style-one-thumb d-none d-md-block">
-                <Image width={750} height={800} src="/assets/img/smart_farm_portrait.jpg" alt="Image Not Found" />
+                <Image width={750} height={800} className="transform-el transform-y-up delay-2" src="/assets/img/smart_farm_portrait.jpg" alt="Image Not Found" />
                 <div className="animation-shape">
                   <Image fill src="/assets/img/illustration/1.png" alt="Image Not Found" />
                 </div>
@@ -135,7 +281,7 @@ export default function Home() {
                   <span className="medium">Growth Tonns <br /> of Harvest</span>
                 </div>
                 <ul className="top-feature">
-                  <li>
+                  <li className="transform-el transform-x-left delay-2">
                     <div className="icon">
                       <Image width={80} height={80} src="/assets/img/icon/3.png" alt="Image Not Found" />
                     </div>
@@ -146,7 +292,7 @@ export default function Home() {
                       </p>
                     </div>
                   </li>
-                  <li>
+                  <li className="transform-el transform-x-right delay-2">
                     <div className="icon">
                       <Image width={80} height={80} src="/assets/img/icon/2.png" alt="Image Not Found" />
                     </div>
@@ -165,6 +311,124 @@ export default function Home() {
         </div>
       </div>
 
+      {/* EVENT CAROUSEL */}
+      <div className="event-carousel-area py-5 bg-gray">
+        <div className="container">
+
+          <div className="event-carousel swiper">
+            <div className="swiper-wrapper">
+
+              {/* Smart Farmer Movement */}
+              <div className="swiper-slide">
+                <div className="text-center">
+                  <Image
+                    src="/assets/img/events/smart-farmer-2026.jpg"
+                    width={1200}
+                    height={800}
+                    className="img-fluid rounded shadow"
+                    alt="Smart Farmer Movement 2026"
+                  />
+
+                  <div className="mt-4">
+                    <Link
+                      href="https://www.smartfarmingnetwork.com/SFM2026"
+                      className="btn btn-theme"
+                    >
+                      Register
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              {/* Investors Soiree */}
+              <div className="swiper-slide">
+                <div className="text-center">
+                  <Image
+                    src="/assets/img/events/investors-soiree.jpg"
+                    width={1200}
+                    height={800}
+                    className="img-fluid rounded shadow"
+                    alt="Investors & Partners Soiree"
+                  />
+
+                  <div className="mt-4">
+                    <Link
+                      href="https://www.smartfarmingnetwork.com/L&P2026"
+                      className="btn btn-theme"
+                    >
+                      Sign-up to the Waitlist
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Navigation */}
+            <div className="swiper-button-prev"></div>
+            <div className="swiper-button-next"></div>
+
+            {/* Pagination */}
+            <div className="swiper-pagination"></div>
+
+          </div>
+
+        </div>
+      </div>
+
+      {/* IMPACT STATISTICS */}
+      <div className="impact-stats-area default-padding bg-light">
+        <div className="container">
+
+          {/* Section Heading */}
+          <div className="row mb-5">
+            <div className="col-lg-6 offset-lg-3 text-center">
+              <h5 className="sub-title">Our Impact</h5>
+              <h2 className="title">Transforming Agriculture Through Data</h2>
+            </div>
+          </div>
+
+          <div className="row g-4">
+
+            <div className="col-xl col-md-6 col-12">
+              <div className="impact-card text-center p-4">
+                <h2 className="stat-number" data-count="20">0</h2>
+                <p>Farmers Digitized</p>
+              </div>
+            </div>
+
+            <div className="col-xl col-md-6 col-12">
+              <div className="impact-card text-center p-4">
+                <h2 className="stat-number" data-count="30" data-suffix="%">0</h2>
+                <p>Yield Increase</p>
+              </div>
+            </div>
+
+            <div className="col-xl col-md-6 col-12">
+              <div className="impact-card text-center p-4">
+                <h2 className="stat-number" data-count="30">0</h2>
+                <p>Youth-Led Agri Businesses</p>
+              </div>
+            </div>
+
+            <div className="col-xl col-md-6 col-12">
+              <div className="impact-card text-center p-4">
+                <h2 className="stat-number" data-count="25" data-suffix="%">0</h2>
+                <p>Post-Harvest Loss Reduction</p>
+              </div>
+            </div>
+
+            <div className="col-xl col-md-6 col-12">
+              <div className="impact-card text-center p-4">
+                <h2 className="stat-number" data-count="10">0</h2>
+                <p>Hectares Digitally Mapped</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
 
       {/* SERVICE SECTION */}
 
@@ -182,7 +446,7 @@ export default function Home() {
           </div>
 
           <div className="row">
-            <div className="col-lg-4 col-md-6 service-one-single">
+            <div className="col-lg-4 col-md-6 service-one-single transform-el transform-x-right delay-2">
               <div className="service-style-one-item bg-black border-20 border-black-300">
                 <div className="thumb">
                   <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center me-3 mb-5"
@@ -202,7 +466,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="col-lg-4 col-md-6 service-one-single">
+            <div className="col-lg-4 col-md-6 service-one-single transform-el transform-y-down delay-2">
               <div className="service-style-one-item bg-black border-20 border-black-300">
                 <div className="thumb">
                   <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center me-3 mb-5"
@@ -222,7 +486,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="col-lg-4 col-md-6 service-one-single">
+            <div className="col-lg-4 col-md-6 service-one-single transform-el transform-x-left delay-2">
               <div className="service-style-one-item bg-black border-20 border-black-300">
                 <div className="thumb">
                   <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center me-3 mb-5"
@@ -244,7 +508,7 @@ export default function Home() {
           </div>
 
           <div className="row mb-5">
-            <div className="col-lg-3 col-md-3 service-one-single">
+            <div className="col-lg-3 col-md-3 service-one-single transform-el transform-x-left delay-2">
               <div className="service-style-one-item-small bg-black border-20 border-black-300">
                 <div className="thumb justify-content-center d-flex">
                   <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center mb-2"
@@ -261,7 +525,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="col-lg-3 col-md-3 service-one-single">
+            <div className="col-lg-3 col-md-3 service-one-single transform-el transform-y-top delay-2">
               <div className="service-style-one-item-small bg-black border-20 border-black-300">
                 <div className="thumb justify-content-center d-flex">
                   <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center me-3 mb-2"
@@ -278,7 +542,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="col-lg-3 col-md-3 service-one-single">
+            <div className="col-lg-3 col-md-3 service-one-single transform-el transform-y-bottom delay-2">
               <div className="service-style-one-item-small bg-black">
                 <div className="thumb justify-content-center d-flex">
                   <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center me-3 mb-2"
@@ -295,7 +559,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="col-lg-3 col-md-3 service-one-single">
+            <div className="col-lg-3 col-md-3 service-one-single transform-el transform-x-right delay-2">
               <div className="service-style-one-item-small bg-black border-20 border-black-300">
                 <div className="thumb justify-content-center d-flex">
                   <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center me-3 mb-2"
@@ -319,24 +583,24 @@ export default function Home() {
       <div className="services-style-one-area bg-gray default-padding bottom-less">
         <div className="container">
           <div className="row">
-            <div className="col-lg-4 col-md-6 service-one-single">
+            <div className="col-lg-4 col-md-6 service-one-single transform-el transform-y-down delay-3">
               <div className="service-style-one-item">
                 <div className="thumb">
                   <Image width={100} height={80} src="/assets/img/illustration/2.png" alt="Image Not Found" />
                 </div>
                 <div className="info">
                   <div className="top">
-                    <h4><Link href="/market-place">Smart <span>Farming Solutions</span></Link></h4>
+                    <h4><Link href="#">Smart <span>Farming Solutions</span></Link></h4>
                   </div>
                   <p>
                     Access modern farm machinery and tools through SFN to improve efficiency, reduce manual labor, and increase yields—without the heavy upfront cost.
                   </p>
                 </div>
-                <Link href="/market-place" className="btn-angle"><i className="fas fa-arrow-right"></i></Link>
+                <Link href="#" className="btn-angle"><i className="fas fa-arrow-right"></i></Link>
               </div>
             </div>
 
-            <div className="col-lg-4 col-md-6 service-one-single">
+            <div className="col-lg-4 col-md-6 service-one-single transform-el transform-y-down delay-3">
               <div className="service-style-one-item">
                 <div className="thumb">
                   <Image width={100} height={80} src="/assets/img/illustration/3.png" alt="Image Not Found" />
@@ -353,19 +617,19 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="col-lg-4 col-md-6 service-one-single">
+            <div className="col-lg-4 col-md-6 service-one-single transform-el transform-y-down delay-3">
               <div className="service-style-one-item">
                 <div className="thumb">
                   <Image width={100} height={80} src="/assets/img/illustration/4.png" alt="Image Not Found" />
                 </div>
                 <div className="info">
                   <div className="top">
-                    <h4><Link href="/market-place">Livestock  <span>Farm Services</span></Link></h4>
+                    <h4><Link href="#">Livestock  <span>Farm Services</span></Link></h4>
                   </div>
                   <p>
                     Data-guided livestock services covering feeding, health, and farm management—powered by verified partners
                   </p>
-                  <Link href="/market-place" className="btn-angle"><i className="fas fa-arrow-right"></i></Link>
+                  <Link href="#" className="btn-angle"><i className="fas fa-arrow-right"></i></Link>
                 </div>
               </div>
             </div>
@@ -451,6 +715,108 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* GALLERY SECTION */}
+      <div className="gallery-area default-padding bg-gray">
+        <div className="container">
+
+          <div className="row mb-5">
+            <div className="col-lg-6 offset-lg-3 text-center">
+              <h5 className="sub-title">Our Moments</h5>
+              <h2 className="title">Gallery & Highlights</h2>
+            </div>
+          </div>
+
+          <div className="row g-4">
+
+            {galleryEvents.map((event) => (
+              <div key={event.id} className="col-lg-4 col-md-6">
+
+                <div
+                  className="gallery-card"
+                  data-bs-toggle="modal"
+                  data-bs-target={`#galleryModal${event.id}`}
+                >
+
+                  <div className="gallery-img">
+                    <Image
+                      src={event.cover}
+                      width={600}
+                      height={400}
+                      alt={event.title}
+                      className="img-fluid"
+                    />
+                  </div>
+
+                  <div className="gallery-info">
+                    <h5>{event.title}</h5>
+                    <p>{event.description}</p>
+                  </div>
+
+                </div>
+
+              </div>
+            ))}
+
+          </div>
+        </div>
+      </div>
+
+      {galleryEvents.map((event) => (
+
+        <div
+          key={event.id}
+          className="modal fade"
+          id={`galleryModal${event.id}`}
+          tabIndex="-1"
+        >
+
+          <div className="modal-dialog modal-xl modal-dialog-centered">
+            <div className="modal-content">
+
+              <div className="modal-header">
+                <h5 className="modal-title">{event.title}</h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                ></button>
+              </div>
+
+              <div className="modal-body">
+
+                <div className={`swiper gallery-swiper-${event.id}`}>
+                  <div className="swiper-wrapper">
+
+                    {event.images.map((img, index) => (
+                      <div key={index} className="swiper-slide text-center">
+
+                        <Image
+                          src={img}
+                          width={900}
+                          height={600}
+                          alt="Gallery Image"
+                          className="img-fluid rounded"
+                        />
+
+                      </div>
+                    ))}
+
+                  </div>
+
+                  <div className={`swiper-button-next gallery-next-${event.id}`}></div>
+                  <div className={`swiper-button-prev gallery-prev-${event.id}`}></div>
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      ))}
 
       {/* CONTACT SECTION */}
       {/* <div className="contact-area overflow-hidden bg-gray default-padding">

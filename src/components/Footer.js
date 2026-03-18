@@ -157,7 +157,7 @@ export default function Footer() {
                             </div>
                         </div>
                         <div className="col-lg-12">
-                            <p>&copy; Copyright 2023. All Rights Reserved by <Link href="#">validthemes</Link></p>
+                            <p>&copy; Copyright 2023. All Rights Reserved by <Link href="#">SFN</Link></p>
                         </div>
                     </div>
                 </div>
