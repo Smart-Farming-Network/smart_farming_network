@@ -1,6 +1,7 @@
 'use client';
 import Link from "next/link";
 import Image from "next/image";
+import ServiceModern from "@/components/ServiceCard";
 
 export default function ServicesPage() {
     return (
@@ -34,17 +35,17 @@ export default function ServicesPage() {
             <section className="py-5 bg-light">
                 <div className="container">
 
-                    <SectionHeader
-                        title="Our Services"
-                        subtitle="A complete ecosystem powering modern agriculture"
-                    />
+                    <div className="text-center mb-4">
+                        <h2 className="fw-bold">Our Services</h2>
+                        <p className="text-muted">A complete ecosystem powering modern agriculture</p>
+                    </div>
 
                     <div className="row g-4 mt-3">
 
                         <ServiceModern
                             title="Smart Farm Development"
                             price="₦750K – ₦13M"
-                            image="/assets/img/services/800x700.png"
+                            image="/assets/img/services/1.jpeg"
                             desc="Technology-driven farm installations powered by automation and IoT."
                             features={[
                                 "Smart irrigation",
@@ -58,7 +59,7 @@ export default function ServicesPage() {
                         <ServiceModern
                             title="Smart Farmer Academy"
                             price="₦10K – ₦120K"
-                            image="/assets/img/services/800x700.png"
+                            image="/assets/img/services/2.jpeg"
                             desc="Hands-on training programs for modern agriculture."
                             features={[
                                 "Precision farming",
@@ -72,7 +73,7 @@ export default function ServicesPage() {
                         <ServiceModern
                             title="Verification & Certification"
                             price="₦5K – ₦25K"
-                            image="/assets/img/services/800x700.png"
+                            image="/assets/img/services/3.jpeg"
                             desc="Build trust and attract investors with verified profiles."
                             features={[
                                 "Verified badge",
@@ -85,7 +86,7 @@ export default function ServicesPage() {
                         <ServiceModern
                             title="Farm Marketplace"
                             price="₦5K – ₦30K /yr"
-                            image="/assets/img/services/800x700.png"
+                            image="/assets/img/services/5.jpeg"
                             desc="List farms and connect with buyers and investors."
                             features={[
                                 "Farm visibility",
@@ -98,7 +99,7 @@ export default function ServicesPage() {
                         <ServiceModern
                             title="Farm Management Tech"
                             price="₦2.5K – ₦10K /mo"
-                            image="/assets/img/services/800x700.png"
+                            image="/assets/img/services/2.jpeg"
                             desc="Smart dashboards for tracking and optimizing farm operations."
                             features={[
                                 "Analytics",
@@ -111,7 +112,7 @@ export default function ServicesPage() {
                         <ServiceModern
                             title="IoT Monitoring"
                             price="₦250K + ₦5K/mo"
-                            image="/assets/img/services/800x700.png"
+                            image="/assets/img/services/6.jpeg"
                             desc="Monitor your farm remotely with real-time alerts."
                             features={[
                                 "Soil sensors",
@@ -124,7 +125,7 @@ export default function ServicesPage() {
                         <ServiceModern
                             title="Agricultural Consultancy"
                             price="₦50K – ₦250K+"
-                            image="/assets/img/services/800x700.png"
+                            image="/assets/img/services/7.jpeg"
                             desc="Expert advisory for large-scale farm planning."
                             features={[
                                 "Planning",
@@ -137,7 +138,7 @@ export default function ServicesPage() {
                         <ServiceModern
                             title="Investor Matchmaking"
                             price="15% Fee"
-                            image="/assets/img/services/800x700.png"
+                            image="/assets/img/services/8.jpeg"
                             desc="We connect investors with verified farmers."
                             features={[
                                 "Matching",
@@ -150,7 +151,7 @@ export default function ServicesPage() {
                         <ServiceModern
                             title="Corporate Training"
                             price="₦500K – ₦3M"
-                            image="/assets/img/services/800x700.png"
+                            image="/assets/img/services/9.jpeg"
                             desc="Agritech training programs for institutions."
                             features={[
                                 "NGOs",
@@ -183,48 +184,5 @@ export default function ServicesPage() {
                 </div>
             </section>
         </>
-    );
-}
-
-
-/* HEADER */
-function SectionHeader({ title, subtitle }) {
-    return (
-        <div className="text-center mb-4">
-            <h2 className="fw-bold">{title}</h2>
-            <p className="text-muted">{subtitle}</p>
-        </div>
-    );
-}
-
-
-/* MODERN CARD */
-function ServiceModern({ title, price, image, desc, features, button }) {
-    return (
-        <div className="col-md-6 col-lg-4">
-            <div className="card modern-card h-100 border-0">
-
-                <div className="card-img-wrapper">
-                    <Image width={500} height={300} src={image} className="card-img-top" alt={title} />
-                    <span className="price-badge">{price}</span>
-                </div>
-
-                <div className="card-body">
-                    <h5 className="fw-bold">{title}</h5>
-                    <p className="text-muted small">{desc}</p>
-
-                    <ul className="list-unstyled small">
-                        {features.map((f, i) => (
-                            <li key={i}>• {f}</li>
-                        ))}
-                    </ul>
-
-                    <Link href="#" className="btn btn-success w-100 mt-3">
-                        {button}
-                    </Link>
-                </div>
-
-            </div>
-        </div>
     );
 }
