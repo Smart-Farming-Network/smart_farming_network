@@ -9421,3 +9421,71 @@ footer {
 .delay-4 {
   transition-delay: 0.4s;
 }
+
+/* HERO */
+.hero-modern {
+  height: 100vh;
+  position: relative;
+  background: url('../img/services/2.jpeg') center/cover no-repeat;
+}
+
+.hero-modern::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.hero-modern .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-text {
+  max-width: 700px;
+}
+
+/* CARDS */
+.modern-card {
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+.modern-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-wrapper {
+  position: relative;
+}
+
+.card-img-top {
+  height: 220px;
+  object-fit: cover;
+}
+
+/* PRICE BADGE */
+.price-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #198754;
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+/* CTA */
+.cta-modern {
+  height: 60vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url('../img/services/1.jpeg') center/cover no-repeat;
+}
+
+.cta-text {
+  max-width: 600px;
+}
