@@ -135,6 +135,21 @@ export default function Home() {
         "/assets/img/gallery/2.jpeg",
       ],
     },
+
+    {
+      id: 2,
+      title: "Own or Co-Own a Smart Farm",
+      description: "Through Goodlife Smart Farming Network, individuals and investors can now own or co-own a structured smart farm unit designed for modern, technology-driven agriculture. Each farm unit is part of a connected ecosystem where data, infrastructure, and market access work together to help farmers and investors produce more efficiently and profitably. Explore our Smart Farm Services to see how our digital platform, infrastructure, and farmer support systems work together to power this ecosystem.",
+      cover: "/assets/img/gallery/g1.jpeg",
+      images: [
+        "/assets/img/gallery/g3.jpeg",
+        "/assets/img/gallery/g4.jpeg",
+        "/assets/img/gallery/g5.jpeg",
+        "/assets/img/gallery/g6.jpeg",
+        "/assets/img/gallery/g7.jpeg",
+        "/assets/img/gallery/g8.jpeg",
+      ],
+    },
   ];
 
   return (
