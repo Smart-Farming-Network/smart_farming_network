@@ -2,7 +2,7 @@
 
 **Empowering Farmers, Connecting Investors, Revolutionizing Agriculture**
 
-Smart Farming Network (SFN) is a platform that connects farmers and investors globally. It uses IoT, AI, and blockchain to optimize farming, improve transparency, and create profitable agricultural opportunities.
+Goodlife Smart Farming Network Ltd (GSFN) is a platform that connects farmers and investors globally. It uses IoT, AI, and blockchain to optimize farming, improve transparency, and create profitable agricultural opportunities.
 
 ---
 
