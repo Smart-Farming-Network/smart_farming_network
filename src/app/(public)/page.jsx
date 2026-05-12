@@ -346,7 +346,7 @@ export default function Home() {
 
                   <div className="mt-4">
                     <Link
-                      href="https://www.smartfarmingnetwork.com/SFM2026"
+                      href="/SFM2026"
                       className="btn btn-theme"
                     >
                       Register
@@ -368,7 +368,7 @@ export default function Home() {
 
                   <div className="mt-4">
                     <Link
-                      href="https://www.smartfarmingnetwork.com/L&P2026"
+                      href="/L&P2026"
                       className="btn btn-theme"
                     >
                       Sign-up to the Waitlist
@@ -382,9 +382,6 @@ export default function Home() {
             {/* Navigation */}
             <div className="swiper-button-prev"></div>
             <div className="swiper-button-next"></div>
-
-            {/* Pagination */}
-            <div className="swiper-pagination"></div>
 
           </div>
 

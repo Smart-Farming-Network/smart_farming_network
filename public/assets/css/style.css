@@ -9489,3 +9489,7 @@ footer {
 .cta-text {
   max-width: 600px;
 }
+
+.ticket ul li {
+  list-style-type: circle !important;
+}
