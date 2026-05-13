@@ -1,10 +1,16 @@
 'use client';
-import { useState, useEffect } from "react";
+
+import { useEffect, useState } from "react";
+import Script from "next/script";
 
 export default function SFM2026Tickets() {
 
     const [selectedTier, setSelectedTier] = useState(null);
     const [showModal, setShowModal] = useState(false);
+
+    const [loading, setLoading] = useState(false);
+
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     const [form, setForm] = useState({
         fullName: "",
@@ -12,36 +18,188 @@ export default function SFM2026Tickets() {
         role: "Farmer"
     });
 
-    // Prevent background scroll when modal is open
+    // =========================
+    // FETCH LOGGED-IN USER
+    // =========================
+
     useEffect(() => {
-        document.body.style.overflow = showModal ? "hidden" : "auto";
+
+        async function fetchUser() {
+
+            try {
+
+                const res = await fetch("/api/user/profile");
+
+                if (!res.ok) return;
+
+                const data = await res.json();
+
+                const userEmail =
+                    data.profile?.email ||
+                    data.email ||
+                    "";
+
+                if (userEmail) {
+
+                    setIsAuthenticated(true);
+
+                    setForm((prev) => ({
+                        ...prev,
+                        email: userEmail
+                    }));
+                }
+
+            } catch (error) {
+
+                console.error("Failed to fetch user:", error);
+
+            }
+        }
+
+        fetchUser();
+
+    }, []);
+
+    // =========================
+    // PREVENT BODY SCROLL
+    // =========================
+
+    useEffect(() => {
+
+        document.body.style.overflow =
+            showModal ? "hidden" : "auto";
+
     }, [showModal]);
 
+    // =========================
+    // OPEN MODAL
+    // =========================
+
     const openModal = (tier) => {
+
         setSelectedTier(tier);
+
         setShowModal(true);
+
     };
+
+    // =========================
+    // FORM CHANGE
+    // =========================
 
     const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
+
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        });
+
     };
 
-    const handleSubmit = (e) => {
+    // =========================
+    // PAYMENT SUBMIT
+    // =========================
+
+    const handleSubmit = async (e) => {
+
         e.preventDefault();
 
-        const payload = {
-            ...form,
-            tier: selectedTier.name,
-            amount: selectedTier.price
-        };
+        try {
 
-        console.log("Submitting:", payload);
+            setLoading(true);
 
-        // 👉 Connect Paystack / API here
+            const payload = {
+                ...form,
+                tier: selectedTier.name
+            };
+
+            const res = await fetch(
+                "/api/payment/sfm2026/initialize",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(payload)
+                }
+            );
+
+            const data = await res.json();
+
+            if (!data.success) {
+
+                alert(data.message);
+
+                return;
+            }
+
+            const handler = window.PaystackPop.setup({
+
+                key: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
+
+                email: data.data.email,
+
+                amount: data.data.amount * 100,
+
+                ref: data.data.reference,
+
+                metadata: {
+                    custom_fields: [
+                        {
+                            display_name: "Full Name",
+                            variable_name: "full_name",
+                            value: form.fullName
+                        },
+                        {
+                            display_name: "Category",
+                            variable_name: "category",
+                            value: form.role
+                        },
+                        {
+                            display_name: "Ticket Tier",
+                            variable_name: "ticket_tier",
+                            value: selectedTier.name
+                        }
+                    ]
+                },
+
+                callback: function (response) {
+
+                    window.location.href =
+                        `/SFM2026/success?reference=${response.reference}`;
+
+                },
+
+                onClose: function () {
+
+                    alert("Payment cancelled");
+
+                }
+            });
+
+            handler.openIframe();
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert("Failed to initialize payment");
+
+        } finally {
+
+            setLoading(false);
+
+        }
     };
 
     return (
         <main>
+
+            {/* PAYSTACK */}
+            <Script
+                src="https://js.paystack.co/v1/inline.js"
+                strategy="afterInteractive"
+            />
 
             {/* HERO */}
             <section className="text-white text-center d-flex align-items-center"
@@ -289,8 +447,8 @@ export default function SFM2026Tickets() {
                                     <tr>
                                         <td className="text-start fw-semibold">Souvenirs</td>
                                         <td>✅</td>
-                                        <td>✅ Premium</td>
-                                        <td>✅ Premium</td>
+                                        <td><div className="d-grid justify-content-center"><span>✅</span> <span>Premium</span></div></td>
+                                        <td><div className="d-grid justify-content-center"><span>✅</span> <span>Premium</span></div></td>
                                     </tr>
 
                                     <tr>
@@ -359,68 +517,6 @@ export default function SFM2026Tickets() {
                 </div>
             </section>
 
-            {/* MODAL */}
-            {showModal && (
-                <div className="modal fade show d-block" tabIndex="1">
-                    <div className="modal-dialog modal-dialog-centered">
-                        <div className="modal-content">
-
-                            <div className="modal-header">
-                                <h5 className="modal-title">Complete Registration</h5>
-                                <button className="btn-close" onClick={() => setShowModal(false)}></button>
-                            </div>
-
-                            <div className="modal-body">
-
-                                <div className="mb-3 p-3 border rounded bg-light">
-                                    <strong>{selectedTier?.name} Pass</strong>
-                                    <div className="text-success">
-                                        ₦{selectedTier?.price?.toLocaleString()}
-                                    </div>
-                                    <small className="text-muted">
-                                        Secure your access. Limited slots available.
-                                    </small>
-                                </div>
-
-                                <form onSubmit={handleSubmit}>
-
-                                    <div className="mb-3">
-                                        <label className="form-label">Full Name</label>
-                                        <input type="text" name="fullName" className="form-control" required onChange={handleChange} />
-                                    </div>
-
-                                    <div className="mb-3">
-                                        <label className="form-label">Email Address</label>
-                                        <input type="email" name="email" className="form-control" required onChange={handleChange} />
-                                    </div>
-
-                                    <div className="mb-3">
-                                        <label className="form-label">Category</label>
-                                        <select name="role" className="form-select" onChange={handleChange}>
-                                            <option>Farmer</option>
-                                            <option>Agribusiness</option>
-                                            <option>Investor</option>
-                                            <option>Agri-Tech</option>
-                                            <option>Organization</option>
-                                        </select>
-                                    </div>
-
-                                    <button className="btn btn-success w-100">
-                                        Proceed to Payment
-                                    </button>
-
-                                </form>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div className="modal-backdrop fade show" style={{ zIndex: -1 }} onClick={() => setShowModal(false)}></div>
-                </div>
-            )}
-
-
             {/* INVESTMENT POSITIONING */}
             <section className="py-5 bg-dark text-white position-relative overflow-hidden">
 
@@ -476,7 +572,6 @@ export default function SFM2026Tickets() {
 
             </section>
 
-
             {/* URGENCY SECTION */}
             <section className="py-5 bg-light position-relative overflow-hidden">
 
@@ -531,7 +626,6 @@ export default function SFM2026Tickets() {
                 </div>
 
             </section>
-
 
             {/* BONUS SECTION */}
             <section className="py-5 bg-white">
@@ -591,7 +685,6 @@ export default function SFM2026Tickets() {
                 </div>
 
             </section>
-
 
             {/* FINAL CTA */}
             <section
@@ -675,6 +768,143 @@ export default function SFM2026Tickets() {
                 </div>
 
             </section>
+
+            {/* MODAL */}
+            {showModal && (
+                <div className="modal fade show d-block" tabIndex="1">
+
+                    <div className="modal-dialog modal-dialog-centered">
+
+                        <div className="modal-content">
+
+                            <div className="modal-header">
+
+                                <h5 className="modal-title">
+                                    Complete Registration
+                                </h5>
+
+                                <button
+                                    className="btn-close"
+                                    onClick={() => setShowModal(false)}
+                                ></button>
+
+                            </div>
+
+                            <div className="modal-body">
+
+                                <div className="mb-3 p-3 border rounded bg-light">
+
+                                    <strong>
+                                        {selectedTier?.name} Pass
+                                    </strong>
+
+                                    <div className="text-success">
+                                        ₦{selectedTier?.price?.toLocaleString()}
+                                    </div>
+
+                                    <small className="text-muted">
+                                        Secure your access. Limited slots available.
+                                    </small>
+
+                                </div>
+
+                                <form onSubmit={handleSubmit}>
+
+                                    <div className="mb-3" hidden={isAuthenticated}>
+
+                                        <label className="form-label">
+                                            Full Name
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            name="fullName"
+                                            className="form-control"
+                                            required={!isAuthenticated}
+                                            value={form.fullName}
+                                            onChange={handleChange}
+                                            hidden={isAuthenticated}
+                                        />
+
+                                    </div>
+
+                                    <div className="mb-3">
+
+                                        <label className="form-label">
+                                            Email Address
+                                        </label>
+
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            className="form-control"
+                                            required
+                                            value={form.email}
+                                            onChange={handleChange}
+                                            readOnly={isAuthenticated}
+                                        />
+
+                                        {isAuthenticated && (
+                                            <small className="text-muted">
+                                                Using your logged-in account email.
+                                            </small>
+                                        )}
+
+                                    </div>
+
+                                    <div className="mb-3">
+
+                                        <label className="form-label">
+                                            Category
+                                        </label>
+
+                                        <select
+                                            name="role"
+                                            className="form-select"
+                                            value={form.role}
+                                            onChange={handleChange}
+                                        >
+                                            <option>Farmer</option>
+                                            <option>Agribusiness</option>
+                                            <option>Investor</option>
+                                            <option>Agri-Tech</option>
+                                            <option>Organization</option>
+                                        </select>
+
+                                    </div>
+
+                                    <button
+                                        className="btn btn-success w-100"
+                                        disabled={loading}
+                                    >
+
+                                        {loading ? (
+                                            <>
+                                                <span className="spinner-border spinner-border-sm me-2"></span>
+                                                Processing...
+                                            </>
+                                        ) : (
+                                            "Proceed to Payment"
+                                        )}
+
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        className="modal-backdrop fade show"
+                        style={{ zIndex: -1 }}
+                        onClick={() => setShowModal(false)}
+                    ></div>
+
+                </div>
+            )}
 
         </main>
     );

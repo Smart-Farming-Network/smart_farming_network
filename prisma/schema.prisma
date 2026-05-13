@@ -28,6 +28,18 @@ enum OrderStatus {
   FAILED
 }
 
+enum TicketTier {
+  STARTER
+  PROFESSIONAL
+  ADVANCED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+}
+
 // --- User model ---
 model User {
   id                    String           @id @default(uuid())
@@ -41,6 +53,7 @@ model User {
   profile               Profile?
   cart                  Cart? 
   orders    Order[] 
+  sfmRegistrations      SFMRegistration[]
   passwordResetTokens PasswordResetToken[]
   permissions           UserPermission[]
   createdAt             DateTime         @default(now())
@@ -156,4 +169,46 @@ model OrderItem {
 
   order    Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
   product  Product  @relation(fields: [productId], references: [id])
+}
+
+// =========================
+// SFM REGISTRATION MODEL
+// =========================
+
+model SFMRegistration {
+  id                 String          @id @default(uuid())
+
+  // USER RELATION
+  userId             String?
+  user               User?           @relation(fields: [userId], references: [id])
+
+  // USER DETAILS
+  fullName           String
+  email              String
+  role               String
+
+  // TICKET INFO
+  tier               TicketTier
+  amount             Float
+
+  // PAYMENT
+  reference          String          @unique
+
+  transactionId      String?
+  gatewayResponse    String?
+  paymentChannel     String?
+
+  paymentStatus      PaymentStatus   @default(PENDING)
+
+  paidAt             DateTime?
+
+  // OPTIONAL METADATA
+  metadata           Json?
+
+  createdAt          DateTime        @default(now())
+  updatedAt          DateTime        @updatedAt
+
+  @@index([email])
+  @@index([reference])
+  @@index([paymentStatus])
 }
