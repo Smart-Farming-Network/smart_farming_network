@@ -236,6 +236,181 @@ export default function SFM2026Tickets() {
                 </div>
             </section>
 
+            {/* HOSTS, SPEAKERS & GUESTS */}
+            <section className="py-5 bg-white overflow-hidden">
+
+                <div className="container">
+
+                    <div className="text-center mb-5">
+
+                        <span className="badge bg-success px-3 py-2 mb-3">
+                            FEATURED PERSONALITIES
+                        </span>
+
+                        <h2 className="fw-bold">
+                            Hosts, Keynote Speakers & Special Guests
+                        </h2>
+
+                        <p
+                            className="text-muted mx-auto"
+                            style={{ maxWidth: "800px" }}
+                        >
+                            Learn directly from visionary leaders, innovators,
+                            investors, policymakers, and ecosystem builders shaping
+                            the future of agriculture and smart farming across Africa.
+                        </p>
+
+                    </div>
+
+                    <div className="row g-4 justify-content-center">
+
+                        {/* SPEAKER 1 */}
+                        <div className="col-md-4">
+
+                            <div className="card border-0 shadow-sm rounded-4 h-100 text-center p-4">
+
+                                <div className="d-flex justify-content-center mb-4">
+
+                                    <div
+                                        className="rounded-circle overflow-hidden shadow"
+                                        style={{
+                                            width: "220px",
+                                            height: "220px"
+                                        }}
+                                    >
+                                        <img
+                                            src="/assets/img/speakers/speaker-1.jpeg"
+                                            alt="Speaker"
+                                            className="w-100 h-100"
+                                            style={{
+                                                objectFit: "cover",
+                                                objectPosition: "top"
+                                            }}
+                                        />
+                                    </div>
+
+                                </div>
+
+                                <div className="card-body pt-0">
+
+                                    <span className="badge bg-success mb-3">
+                                        HOST
+                                    </span>
+
+                                    <h5 className="fw-bold mb-1">
+                                        Edward Terungwa Ordams
+                                    </h5>
+
+                                    <p className="text-muted small mb-0">
+                                        Founder, Smart Farmers Network
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        {/* SPEAKER 2 */}
+                        <div className="col-md-4">
+
+                            <div className="card border-0 shadow-sm rounded-4 h-100 text-center p-4">
+
+                                <div className="d-flex justify-content-center mb-4">
+
+                                    <div
+                                        className="rounded-circle overflow-hidden shadow"
+                                        style={{
+                                            width: "220px",
+                                            height: "220px"
+                                        }}
+                                    >
+                                        <img
+                                            src="/assets/img/speakers/speaker-2.jpeg"
+                                            alt="Speaker"
+                                            className="w-100 h-100"
+                                            style={{
+                                                objectFit: "cover",
+                                                objectPosition: "top"
+                                            }}
+                                        />
+                                    </div>
+
+                                </div>
+
+                                <div className="card-body pt-0">
+
+                                    <span className="badge bg-dark mb-3">
+                                        KEYNOTE SPEAKER
+                                    </span>
+
+                                    {/* <h5 className="fw-bold mb-1">
+                                        Jane Smith
+                                    </h5>
+
+                                    <p className="text-muted small mb-0">
+                                        Agricultural Investor & Policy Advisor
+                                    </p> */}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        {/* SPEAKER 3 */}
+                        <div className="col-md-4">
+
+                            <div className="card border-0 shadow-sm rounded-4 h-100 text-center p-4">
+
+                                <div className="d-flex justify-content-center mb-4">
+
+                                    <div
+                                        className="rounded-circle overflow-hidden shadow"
+                                        style={{
+                                            width: "220px",
+                                            height: "220px"
+                                        }}
+                                    >
+                                        <img
+                                            src="/assets/img/speakers/speaker-3.jpeg"
+                                            alt="Speaker"
+                                            className="w-100 h-100"
+                                            style={{
+                                                objectFit: "cover",
+                                                objectPosition: "top"
+                                            }}
+                                        />
+                                    </div>
+
+                                </div>
+
+                                <div className="card-body pt-0">
+
+                                    <span className="badge bg-warning text-dark mb-3">
+                                        SPECIAL GUEST
+                                    </span>
+
+                                    {/* <h5 className="fw-bold mb-1">
+                                        Michael Adams
+                                    </h5>
+
+                                    <p className="text-muted small mb-0">
+                                        CEO, AgriTech Africa
+                                    </p> */}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
             {/* TICKETS */}
             <section id="tickets" className="py-5 bg-light">
                 <div className="container">
@@ -677,6 +852,105 @@ export default function SFM2026Tickets() {
                                 <p className="text-muted small mb-0">
                                     Get early notifications about SFN programs and opportunities.
                                 </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            {/* PARTNERS & COLLABORATORS */}
+            <section className="py-5 bg-light border-top">
+
+                <div className="container">
+
+                    <div className="text-center mb-5">
+
+                        <span className="badge bg-dark px-3 py-2 mb-3">
+                            TRUSTED COLLABORATORS
+                        </span>
+
+                        <h2 className="fw-bold">
+                            Our Collaborators & Partners
+                        </h2>
+
+                        <p className="text-muted mx-auto" style={{ maxWidth: "700px" }}>
+                            SFM2026 is supported by visionary organizations, ecosystem leaders,
+                            innovators, and institutions committed to transforming the future
+                            of agriculture and smart farming across Africa.
+                        </p>
+
+                    </div>
+
+                    <div className="row g-4 justify-content-center align-items-center">
+
+                        {/* PARTNER 1 */}
+                        <div className="col-6 col-md-4 col-lg-2">
+                            <div className="bg-white border rounded-4 shadow-sm p-4 text-center h-100 d-flex align-items-center justify-content-center">
+
+                                <img
+                                    src="/assets/img/partners/partner-1.png"
+                                    alt="Partner 1"
+                                    className="img-fluid"
+                                    style={{
+                                        maxHeight: "100px",
+                                        objectFit: "contain",
+                                    }}
+                                />
+
+                            </div>
+                        </div>
+
+                        {/* PARTNER 2 */}
+                        <div className="col-6 col-md-4 col-lg-2">
+                            <div className="bg-white border rounded-4 shadow-sm p-4 text-center h-100 d-flex align-items-center justify-content-center">
+
+                                <img
+                                    src="/assets/img/partners/partner-2.png"
+                                    alt="Partner 2"
+                                    className="img-fluid"
+                                    style={{
+                                        maxHeight: "100px",
+                                        objectFit: "contain",
+                                    }}
+                                />
+
+                            </div>
+                        </div>
+
+                        {/* PARTNER 3 */}
+                        <div className="col-6 col-md-4 col-lg-2">
+                            <div className="bg-white border rounded-4 shadow-sm p-4 text-center h-100 d-flex align-items-center justify-content-center">
+
+                                <img
+                                    src="/assets/img/partners/partner-3.png"
+                                    alt="Partner 3"
+                                    className="img-fluid"
+                                    style={{
+                                        maxHeight: "100px",
+                                        objectFit: "contain",
+                                    }}
+                                />
+
+                            </div>
+                        </div>
+
+                        {/* PARTNER 4 */}
+                        <div className="col-6 col-md-4 col-lg-2">
+                            <div className="bg-white border rounded-4 shadow-sm p-4 text-center h-100 d-flex align-items-center justify-content-center">
+
+                                <img
+                                    src="/assets/img/partners/partner-4.png"
+                                    alt="Partner 4"
+                                    className="img-fluid"
+                                    style={{
+                                        maxHeight: "100px",
+                                        objectFit: "contain",
+                                    }}
+                                />
+
                             </div>
                         </div>
 
