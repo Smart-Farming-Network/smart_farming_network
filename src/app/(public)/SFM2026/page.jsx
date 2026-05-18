@@ -344,13 +344,13 @@ export default function SFM2026Tickets() {
                                         KEYNOTE SPEAKER
                                     </span>
 
-                                    {/* <h5 className="fw-bold mb-1">
-                                        Jane Smith
+                                    <h5 className="fw-bold mb-1">
+                                        Emm
                                     </h5>
 
                                     <p className="text-muted small mb-0">
-                                        Agricultural Investor & Policy Advisor
-                                    </p> */}
+                                        Manager Sterling Bank Plc, Makurdi Branch
+                                    </p>
 
                                 </div>
 
@@ -391,13 +391,13 @@ export default function SFM2026Tickets() {
                                         SPECIAL GUEST
                                     </span>
 
-                                    {/* <h5 className="fw-bold mb-1">
-                                        Michael Adams
+                                    <h5 className="fw-bold mb-1">
+                                        Shidoo Tarkaa
                                     </h5>
 
                                     <p className="text-muted small mb-0">
-                                        CEO, AgriTech Africa
-                                    </p> */}
+                                        Manager Victoria Travels
+                                    </p>
 
                                 </div>
 
