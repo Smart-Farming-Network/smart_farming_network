@@ -345,7 +345,7 @@ export default function SFM2026Tickets() {
                                     </span>
 
                                     <h5 className="fw-bold mb-1">
-                                        Emm
+                                        Emmanuel Ordams
                                     </h5>
 
                                     <p className="text-muted small mb-0">
