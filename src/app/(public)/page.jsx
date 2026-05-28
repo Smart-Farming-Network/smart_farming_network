@@ -377,6 +377,45 @@ export default function Home() {
                 </div>
               </div>
 
+              {/* ads 1 */}
+              <div className="swiper-slide">
+                <div className="text-center">
+                  <Image
+                    src="/assets/img/events/3.jpeg"
+                    width={1200}
+                    height={800}
+                    className="img-fluid rounded shadow"
+                    alt="Investors & Partners Soiree"
+                  />
+                </div>
+              </div>
+
+              {/* ads 2 */}
+              <div className="swiper-slide">
+                <div className="text-center">
+                  <Image
+                    src="/assets/img/events/2.jpeg"
+                    width={1200}
+                    height={800}
+                    className="img-fluid rounded shadow"
+                    alt="Investors & Partners Soiree"
+                  />
+                </div>
+              </div>
+
+              {/* ads 3 */}
+              <div className="swiper-slide">
+                <div className="text-center">
+                  <Image
+                    src="/assets/img/events/1.jpeg"
+                    width={1200}
+                    height={800}
+                    className="img-fluid rounded shadow"
+                    alt="Investors & Partners Soiree"
+                  />
+                </div>
+              </div>
+
             </div>
 
             {/* Navigation */}
