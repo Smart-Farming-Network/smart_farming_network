@@ -201,8 +201,8 @@ export default function AboutUsPage() {
                 image: "/assets/img/project_manager.jpg",
               },
               {
-                name: "Vivian Omenka",
-                role: "Secretary",
+                name: "Esther Iyoo",
+                role: "Project Manager",
                 image: "",
               },
               {

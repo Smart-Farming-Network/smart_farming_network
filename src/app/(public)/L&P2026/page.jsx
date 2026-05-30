@@ -1,4 +1,5 @@
 'use client';
+import Image from "next/image";
 
 export default function LP2026Page() {
 
@@ -138,7 +139,7 @@ export default function LP2026Page() {
                             <div className="border rounded-4 shadow-sm p-4 h-100">
 
                                 <div style={{ fontSize: "2.5rem" }}>
-                                    
+
                                 </div>
 
                                 <h5 className="fw-bold mt-3">
@@ -157,7 +158,7 @@ export default function LP2026Page() {
                             <div className="border rounded-4 shadow-sm p-4 h-100">
 
                                 <div style={{ fontSize: "2.5rem" }}>
-                                    
+
                                 </div>
 
                                 <h5 className="fw-bold mt-3">
@@ -176,7 +177,7 @@ export default function LP2026Page() {
                             <div className="border rounded-4 shadow-sm p-4 h-100">
 
                                 <div style={{ fontSize: "2.5rem" }}>
-                                    
+
                                 </div>
 
                                 <h5 className="fw-bold mt-3">
@@ -195,7 +196,7 @@ export default function LP2026Page() {
                             <div className="border rounded-4 shadow-sm p-4 h-100">
 
                                 <div style={{ fontSize: "2.5rem" }}>
-                                    
+
                                 </div>
 
                                 <h5 className="fw-bold mt-3">
@@ -214,7 +215,7 @@ export default function LP2026Page() {
                             <div className="border rounded-4 shadow-sm p-4 h-100">
 
                                 <div style={{ fontSize: "2.5rem" }}>
-                                    
+
                                 </div>
 
                                 <h5 className="fw-bold mt-3">
@@ -243,7 +244,7 @@ export default function LP2026Page() {
                     <div className="text-center mb-5">
 
                         <span className="badge bg-warning text-dark px-3 py-2 mb-3">
-                             WHAT TO EXPECT
+                            WHAT TO EXPECT
                         </span>
 
                         <h2 className="fw-bold">
@@ -259,7 +260,7 @@ export default function LP2026Page() {
                             <div className="bg-white text-dark rounded-4 p-4 h-100 shadow">
 
                                 <h5 className="fw-bold mb-3">
-                                     High-Level Networking
+                                    High-Level Networking
                                 </h5>
 
                                 <p className="mb-0">
@@ -277,7 +278,7 @@ export default function LP2026Page() {
                             <div className="bg-white text-dark rounded-4 p-4 h-100 shadow">
 
                                 <h5 className="fw-bold mb-3">
-                                     Strategic Conversations
+                                    Strategic Conversations
                                 </h5>
 
                                 <ul className="small ps-3 d-flex flex-column gap-2 mb-0">
@@ -298,7 +299,7 @@ export default function LP2026Page() {
                             <div className="bg-white text-dark rounded-4 p-4 h-100 shadow">
 
                                 <h5 className="fw-bold mb-3">
-                                     Investment & Partnership Opportunities
+                                    Investment & Partnership Opportunities
                                 </h5>
 
                                 <p className="mb-0">
@@ -316,7 +317,7 @@ export default function LP2026Page() {
                             <div className="bg-white text-dark rounded-4 p-4 h-100 shadow">
 
                                 <h5 className="fw-bold mb-3">
-                                     Executive Experience
+                                    Executive Experience
                                 </h5>
 
                                 <p className="mb-0">
@@ -342,7 +343,7 @@ export default function LP2026Page() {
                     <div className="text-center mb-5">
 
                         <span className="badge bg-success px-3 py-2 mb-3">
-                             FEATURED ACCESS
+                            FEATURED ACCESS
                         </span>
 
                         <h2 className="fw-bold">
@@ -392,7 +393,7 @@ export default function LP2026Page() {
                 <div className="container text-center">
 
                     <span className="badge bg-danger px-3 py-2 mb-3">
-                         EXCLUSIVE VENUE EXPERIENCE
+                        EXCLUSIVE VENUE EXPERIENCE
                     </span>
 
                     <h2 className="fw-bold mb-4">
@@ -434,7 +435,7 @@ export default function LP2026Page() {
                     <div className="text-center mb-5">
 
                         <span className="badge bg-dark px-3 py-2 mb-3">
-                             ACCESS LEVELS
+                            ACCESS LEVELS
                         </span>
 
                         <h2 className="fw-bold">
@@ -453,11 +454,11 @@ export default function LP2026Page() {
                                 <div className="mb-4">
 
                                     <h5 className="fw-bold">
-                                         STANDARD ACCESS
+                                        STANDARD ACCESS
                                     </h5>
 
                                     <h2 className="fw-bold text-success">
-                                        ₦25,000
+                                        FREE
                                     </h2>
 
                                     <p className="text-muted">
@@ -471,7 +472,6 @@ export default function LP2026Page() {
                                     <li>General Soirée Access</li>
                                     <li>Networking Opportunities</li>
                                     <li>Executive Refreshments</li>
-                                    <li>Strategic Introductions</li>
                                     <li>Access to Selected Conversations</li>
 
                                 </ul>
@@ -492,7 +492,7 @@ export default function LP2026Page() {
                                 <div className="mb-4">
 
                                     <h5 className="fw-bold">
-                                         EXECUTIVE ACCESS
+                                        EXECUTIVE ACCESS
                                     </h5>
 
                                     <h2 className="fw-bold">
@@ -528,7 +528,7 @@ export default function LP2026Page() {
                                 <div className="mb-4">
 
                                     <h5 className="fw-bold">
-                                         INNER CIRCLE ACCESS
+                                        INNER CIRCLE ACCESS
                                     </h5>
 
                                     <h2 className="fw-bold text-warning">
@@ -569,7 +569,7 @@ export default function LP2026Page() {
                 <div className="container text-center">
 
                     <span className="badge bg-success px-3 py-2 mb-3">
-                         WHY THIS MATTERS
+                        WHY THIS MATTERS
                     </span>
 
                     <h2 className="fw-bold display-5 mb-4">
@@ -602,7 +602,7 @@ export default function LP2026Page() {
                 <div className="container text-center">
 
                     <span className="badge bg-dark px-3 py-2 mb-3">
-                         ABOUT SFM2026
+                        ABOUT SFM2026
                     </span>
 
                     <h2 className="fw-bold mb-4">
@@ -637,7 +637,7 @@ export default function LP2026Page() {
                 <div className="container text-center">
 
                     <span className="badge bg-danger px-3 py-2 mb-3">
-                         LIMITED REGISTRATION
+                        LIMITED REGISTRATION
                     </span>
 
                     <h2 className="fw-bold mb-4">
@@ -660,13 +660,13 @@ export default function LP2026Page() {
 
             </section>
 
-            {/* FINAL CTA */}
+            {/* FINAL CTA 
             <section
                 className="py-5 text-white position-relative overflow-hidden"
                 style={{
                     backgroundImage: `
                         linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.82)),
-                        url('/assets/img/sm-2.jpeg')
+                        url('/assets/img/events/investors-soiree.jpg')
                     `,
                     backgroundSize: "cover",
                     backgroundPosition: "center"
@@ -676,7 +676,7 @@ export default function LP2026Page() {
                 <div className="container text-center position-relative" style={{ zIndex: 2 }}>
 
                     <span className="badge bg-warning text-dark px-3 py-2 mb-3">
-                         FINAL CALL TO ACTION
+                        FINAL CALL TO ACTION
                     </span>
 
                     <h2 className="fw-bold display-5 mb-4 text-light">
@@ -697,7 +697,7 @@ export default function LP2026Page() {
                             href="https://smartfarmingnetwork.com/I&P2026"
                             className="btn btn-warning text-dark btn-lg rounded-pill px-5 fw-bold"
                         >
-                             REGISTER NOW
+                            REGISTER NOW
                         </a>
 
                     </div>
@@ -732,6 +732,19 @@ export default function LP2026Page() {
 
                 </div>
 
+            </section>*/}
+
+            <section className="py-5 text-white position-relative overflow-hidden"
+                style={{
+                    backgroundImage: `
+                        url('/assets/img/events/investors-soiree.jpg')
+                    `,
+                    height: "100vh",
+                    width: "100%",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center"
+                }}
+            >
             </section>
 
         </main>

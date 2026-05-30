@@ -31,7 +31,7 @@ export default function Home() {
         loop: true,
 
         autoplay: {
-          delay: 50000, // 10 seconds
+          delay: 20000, // 10 seconds
           disableOnInteraction: false,
         },
 
