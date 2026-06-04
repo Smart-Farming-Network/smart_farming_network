@@ -62,7 +62,7 @@ export default async function ProductDetailPage({ params }) {
                         High-quality agricultural product available on Smart Farming Network.
                     </p>
 
-                    <ProductActions />
+                    <ProductActions productId={product.id} />
                 </div>
             </div>
         </div>
