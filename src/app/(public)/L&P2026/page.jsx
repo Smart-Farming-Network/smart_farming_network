@@ -1,7 +1,97 @@
 'use client';
+
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 export default function LP2026Page() {
+    const [showModal, setShowModal] = useState(false);
+
+    const [loading, setLoading] = useState(false);
+
+    const [form, setForm] = useState({
+        fullName: "",
+        company: "",
+        email: "",
+        accessLevel: "",
+        financialCapacity: "",
+        strategicVision: "",
+        engagementTimeline: "",
+        referralSource: ""
+    });
+
+    useEffect(() => {
+
+        document.body.style.overflow =
+            showModal ? "hidden" : "auto";
+
+    }, [showModal]);
+
+    const handleChange = (e) => {
+
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        });
+
+    };
+
+    const openRegistration = (accessLevel = "") => {
+
+        setForm((prev) => ({
+            ...prev,
+            accessLevel
+        }));
+
+        setShowModal(true);
+
+    };
+
+    const handleSubmit = async (e) => {
+
+        e.preventDefault();
+
+        try {
+
+            setLoading(true);
+
+            const res = await fetch(
+                "/api/lp2026/register",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(form)
+                }
+            );
+
+            const data = await res.json();
+
+            if (!data.success) {
+
+                alert(data.message);
+
+                return;
+            }
+
+            window.location.href =
+                "/L&P2026/success";
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert(
+                "Unable to submit application. Please try again."
+            );
+
+        } finally {
+
+            setLoading(false);
+
+        }
+
+    };
 
     return (
         <main>
@@ -58,12 +148,12 @@ export default function LP2026Page() {
 
                     <div className="mt-5">
 
-                        <a
-                            href="#access-levels"
+                        <button
+                            onClick={() => openRegistration("")}
                             className="btn btn-warning text-dark btn-lg rounded-pill px-5 fw-semibold"
                         >
-                            Explore Access Levels
-                        </a>
+                            Apply For Access
+                        </button>
 
                     </div>
 
@@ -476,6 +566,17 @@ export default function LP2026Page() {
 
                                 </ul>
 
+                                <div className="mt-auto pt-3">
+
+                                    <button
+                                        className="btn btn-warning text-dark w-100 rounded-pill fw-semibold"
+                                        onClick={() => openRegistration("Standard")}
+                                    >
+                                        Apply Now
+                                    </button>
+
+                                </div>
+
                             </div>
 
                         </div>
@@ -516,6 +617,18 @@ export default function LP2026Page() {
 
                                 </ul>
 
+                                <div className="mt-auto pt-3">
+
+                                    <button
+                                        className="btn btn-warning text-dark w-100 rounded-pill fw-semibold"
+                                        onClick={() => openRegistration("Executive")}
+                                    >
+                                        Apply Now
+                                    </button>
+
+                                </div>
+
+
                             </div>
 
                         </div>
@@ -552,6 +665,17 @@ export default function LP2026Page() {
                                     <li>Strategic Visibility within SFM2026 Ecosystem</li>
 
                                 </ul>
+
+                                <div className="mt-auto pt-3">
+
+                                    <button
+                                        className="btn btn-dark w-100 rounded-pill"
+                                        onClick={() => openRegistration("Inner Circle")}
+                                    >
+                                        Apply Now
+                                    </button>
+
+                                </div>
 
                             </div>
 
@@ -746,6 +870,241 @@ export default function LP2026Page() {
                 }}
             >
             </section>
+
+            {showModal && (
+
+                <div className="modal fade show d-block">
+
+                    <div className="modal-dialog modal-lg modal-dialog-centered">
+
+                        <div className="modal-content">
+
+                            <div className="modal-header">
+
+                                <h5 className="modal-title">
+                                    LP2026 Registration
+                                </h5>
+
+                                <button
+                                    className="btn-close"
+                                    onClick={() => setShowModal(false)}
+                                />
+
+                            </div>
+
+                            <div className="modal-body">
+
+                                <div className="alert alert-warning">
+
+                                    Applications are reviewed manually.
+
+                                    Approved applicants will receive
+                                    payment instructions via email.
+
+                                </div>
+
+                                <form onSubmit={handleSubmit}>
+
+                                    <div className="mb-3">
+
+                                        <label className="form-label">
+                                            Full Name
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            name="fullName"
+                                            className="form-control"
+                                            required
+                                            value={form.fullName}
+                                            onChange={handleChange}
+                                        />
+
+                                    </div>
+
+                                    <div className="mb-3">
+
+                                        <label className="form-label">
+                                            Company
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            name="company"
+                                            className="form-control"
+                                            value={form.company}
+                                            onChange={handleChange}
+                                        />
+
+                                    </div>
+
+                                    <div className="mb-3">
+
+                                        <label className="form-label">
+                                            Email Address
+                                        </label>
+
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            className="form-control"
+                                            required
+                                            value={form.email}
+                                            onChange={handleChange}
+                                        />
+
+                                    </div>
+
+                                    <div className="mb-3">
+
+                                        <label className="form-label">
+                                            Investment Interest Level
+                                        </label>
+
+                                        <select
+                                            className="form-select"
+                                            name="accessLevel"
+                                            required
+                                            value={form.accessLevel}
+                                            onChange={handleChange}
+                                        >
+                                            <option value="">
+                                                Select Option
+                                            </option>
+
+                                            <option value="Standard">
+                                                Standard Access
+                                            </option>
+
+                                            <option value="Executive">
+                                                Executive Access
+                                            </option>
+
+                                            <option value="Inner Circle">
+                                                Inner Circle Access
+                                            </option>
+
+                                        </select>
+
+                                    </div>
+
+                                    <div className="mb-3">
+
+                                        <label className="form-label">
+                                            Financial Capacity Range
+                                        </label>
+
+                                        <select
+                                            className="form-select"
+                                            name="financialCapacity"
+                                            required
+                                            value={form.financialCapacity}
+                                            onChange={handleChange}
+                                        >
+                                            <option value="">
+                                                Select Range
+                                            </option>
+
+                                            <option value="< $10k">
+                                                Less than $10,000
+                                            </option>
+
+                                            <option value="$10k - $50k">
+                                                $10,000 - $50,000
+                                            </option>
+
+                                            <option value="$50k+">
+                                                $50,000+
+                                            </option>
+
+                                        </select>
+
+                                    </div>
+
+                                    <div className="mb-3">
+
+                                        <label className="form-label">
+                                            Strategic Vision
+                                        </label>
+
+                                        <textarea
+                                            rows="4"
+                                            name="strategicVision"
+                                            className="form-control"
+                                            required
+                                            value={form.strategicVision}
+                                            onChange={handleChange}
+                                        />
+
+                                    </div>
+
+                                    <div className="mb-3">
+
+                                        <label className="form-label">
+                                            Preferred Engagement Timeline
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            name="engagementTimeline"
+                                            className="form-control"
+                                            required
+                                            placeholder="Immediately, 3 months, 6 months..."
+                                            value={form.engagementTimeline}
+                                            onChange={handleChange}
+                                        />
+
+                                    </div>
+
+                                    <div className="mb-4">
+
+                                        <label className="form-label">
+                                            How did you hear about us?
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            name="referralSource"
+                                            className="form-control"
+                                            value={form.referralSource}
+                                            onChange={handleChange}
+                                        />
+
+                                    </div>
+
+                                    <button
+                                        className="btn btn-warning text-dark w-100 fw-semibold"
+                                        disabled={loading}
+                                    >
+
+                                        {loading ? (
+                                            <>
+                                                <span className="spinner-border spinner-border-sm me-2"></span>
+                                                Submitting...
+                                            </>
+                                        ) : (
+                                            "Submit Application"
+                                        )}
+
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        className="modal-backdrop fade show"
+                        style={{ zIndex: -1 }}
+                        onClick={() => setShowModal(false)}
+                    />
+
+                </div>
+
+            )}
 
         </main>
     );

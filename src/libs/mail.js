@@ -9,3 +9,18 @@ export const mailer = nodemailer.createTransport({
         pass: process.env.ZOHO_SMTP_PASS,
     },
 });
+
+export async function sendMail({
+    to,
+    subject,
+    html
+}) {
+
+    return await mailer.sendMail({
+        from: `"${process.env.APP_NAME || "Support"}" <${process.env.ZOHO_SMTP_USER}>`,
+        to,
+        subject,
+        html
+    });
+
+}

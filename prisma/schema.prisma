@@ -212,3 +212,36 @@ model SFMRegistration {
   @@index([reference])
   @@index([paymentStatus])
 }
+
+
+// =========================
+// LP2026 REGISTRATION MODEL
+// =========================
+
+model LP2026Registration {
+
+  id                  String   @id @default(uuid())
+
+  applicationNumber   String   @unique
+
+  fullName            String
+  company             String?
+  email               String
+
+  accessLevel         String
+
+  financialCapacity   String
+
+  strategicVision     String   @db.Text
+
+  engagementTimeline  String
+
+  referralSource      String?
+
+  status              String   @default("PENDING")
+
+  approvedAt          DateTime?
+
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
