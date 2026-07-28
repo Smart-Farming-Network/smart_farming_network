@@ -48,6 +48,7 @@ export default function HeaderClient({ session }) {
           <li><Link href="/contact">Contact</Link></li>
           <li><Link href="/services">Services</Link></li>
           <li><Link href="/market-place">Marketplace</Link></li>
+          <li><Link href="/farmverse">Farmverse</Link></li>
           <li>
             <Link href="/checkout" className="">
               🛒 Cart
@@ -94,6 +95,7 @@ export default function HeaderClient({ session }) {
             <li><Link href="/contact" onClick={() => setOpen(false)}>Contact</Link></li>
             <li><Link href="/services" onClick={() => setOpen(false)}>Services</Link></li>
             <li><Link href="/market-place" onClick={() => setOpen(false)}>Marketplace</Link></li>
+            <li><Link href="/farmverse" onClick={() => setOpen(false)}>Farmverse</Link></li>
             <li><Link href="/checkout" onClick={() => setOpen(false)}>🛒 Checkout</Link></li>
             {session && role && dashboardUrl !== "/" && (
               <li className="button"><Link href={dashboardUrl} onClick={() => setOpen(false)}>Dashboard</Link></li>
