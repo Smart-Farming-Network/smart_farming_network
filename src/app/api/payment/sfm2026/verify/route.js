@@ -1,7 +1,7 @@
-// app/api/payment/sfm2026/verify/route.js
-
 import { NextResponse } from "next/server";
 import { prisma } from "@/libs/prisma";
+import { sendMail } from "@/libs/mail";
+import { emailLayout } from "@/libs/emailLayout";
 
 
 export async function GET(req) {
@@ -195,6 +195,59 @@ export async function GET(req) {
                     metadata: paystackData.data
                 }
             });
+
+
+        // =========================
+        // SEND EMAIL
+        // =========================
+        const email = emailLayout({
+            title: "Welcome to the Smart Farmers Movement VIP Waitlist",
+            content: `
+                <div style="font-family: Arial, sans-serif; line-height:1.7;">
+                    <h2>
+                        Welcome to the Smart Farmers Movement VIP Waitlist
+                    </h2>
+                    <p>
+                        Dear ${updatedRegistration.fullName},
+                    </p>
+                    <p>
+                        We're beyond excited to have you on this journey.
+                    </p>
+                    <p>
+                        Our team is already reviewing your vision and
+                        application, and we will reach out within the
+                        next 48 hours to align on the most suitable
+                        opportunities and next steps.
+                    </p>
+                    <p>
+                        The Investors & Partners Soirée is designed to bring together
+                        visionary founders, investors, institutions,
+                        and ecosystem leaders shaping the future of
+                        African agriculture.
+                    </p>
+                    <p>
+                        Get ready to unlock premium partnership opportunities.
+                    </p>
+                    <p>
+                        <strong>Your impact starts now.</strong>
+                    </p>
+                    <hr />
+                    <p>
+                        Application Number:
+                        <strong>${updatedRegistration.applicationNumber}</strong>
+                    </p>
+                    <p>
+                        GoodLife Smart Farming Network Ltd
+                    </p>
+                </div>
+            `
+        });
+        await sendMail({
+            to: email,
+            subject:
+                "Welcome to the Smart Farmers Movement VIP Waitlist",
+            html: email
+        });
 
         // =========================
         // SUCCESS RESPONSE
