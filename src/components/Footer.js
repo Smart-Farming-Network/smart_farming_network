@@ -68,7 +68,7 @@ export default function Footer() {
                                         </div>
                                         <div className="content">
                                             <strong>Email:</strong>
-                                            <Link href="mailto:smartfarmingnetwork@gmail.com">smartfarmingnetwork@gmail.com</Link>
+                                            <Link href="mailto:admin@smartfarmingnetwork.com">admin@smartfarmingnetwork.com</Link>
                                         </div>
                                     </li>
                                     <li>
