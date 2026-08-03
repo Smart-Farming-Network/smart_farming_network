@@ -73,7 +73,7 @@ export default function Contact() {
                                 </li>
                                 <li className="mb-3">
                                     <i className="bi bi-geo-alt-fill text-primary me-3"></i>
-                                    <strong>HeadQuarters Address:</strong> No.4 SFN SUITE @ Atom Kpera Road, Beside Monatel Hotel, Makurdi, Benue State.
+                                    <strong>HeadQuarters Address:</strong> No.4 GSFN SUITE @ Atom Kpera Road, Beside Monatel Hotel, Makurdi, Benue State.
                                 </li>
                                 <li className="mb-3">
                                     <i className="bi bi-geo-alt-fill text-primary me-3"></i>

@@ -1,4 +1,4 @@
-# Smart Farming Network (SFN)
+# Smart Farming Network (GSFN)
 
 **Empowering Farmers, Connecting Investors, Revolutionizing Agriculture**
 

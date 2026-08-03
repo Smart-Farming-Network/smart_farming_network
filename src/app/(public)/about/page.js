@@ -20,7 +20,7 @@ export default function AboutUsPage() {
             The future of farming in Africa will not be built on guesswork.
             It will be built on systems.
             <br /><br />
-            Smart Farming Network (SFN) is a technology-driven agricultural
+            Smart Farming Network (GSFN) is a technology-driven agricultural
             infrastructure platform designed to organize, optimize, and scale
             farming across Africa.
             <br /><br />
@@ -29,7 +29,7 @@ export default function AboutUsPage() {
             We are engineering predictability.
             We are transforming agriculture into a measurable asset class.
             <br /><br />
-            SFN exists to move African agriculture from fragmented effort to coordinated intelligence.
+            GSFN exists to move African agriculture from fragmented effort to coordinated intelligence.
           </p>
 
         </div>
@@ -108,7 +108,7 @@ export default function AboutUsPage() {
               <h5 className="fw-bold">2. Data & Technology Integration</h5>
               <p>
                 From soil analysis to yield forecasting and pricing intelligence,
-                SFN integrates technology across every production layer.
+                GSFN integrates technology across every production layer.
               </p>
               <p className="fw-semibold">
                 Data → Soil → Production → Aggregation → Market → Profit.
@@ -133,11 +133,11 @@ export default function AboutUsPage() {
       </section>
 
 
-      {/* ================= WHY SFN MATTERS ================= */}
+      {/* ================= WHY GSFN MATTERS ================= */}
       <section className="bg-gray py-5">
         <div className="container fs-5">
           <div className="site-heading text-center mb-4">
-            <h2 className="title">Why SFN Matters</h2>
+            <h2 className="title">Why GSFN Matters</h2>
           </div>
 
           <p className="text-center">
@@ -154,7 +154,7 @@ export default function AboutUsPage() {
           </ul>
 
           <p className="text-center">
-            SFN solves this by building one intelligent infrastructure
+            GSFN solves this by building one intelligent infrastructure
             across multiple farms and states — where thousands of farmers
             operate inside one coordinated system.
           </p>
@@ -251,7 +251,7 @@ export default function AboutUsPage() {
                 title: "AgriGo AI Assistant",
                 image: "/assets/img/smart_farm.jpg",
                 description:
-                  "A production intelligence layer providing real-time insights, decision support, alerts, and predictive guidance across the SFN farming ecosystem.",
+                  "A production intelligence layer providing real-time insights, decision support, alerts, and predictive guidance across the GSFN farming ecosystem.",
                 link: "/projects/agrigo",
               },
               {

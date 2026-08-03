@@ -174,7 +174,7 @@ export default function Home() {
                       <div className="info">
                         <h2>Elevate Your Agricultural Operations with Goodlife Smart Farming Network</h2>
                         <p>
-                          Experience unparalleled advancements in agriculture with Goodlife Smart Farming Network (SFN).
+                          Experience unparalleled advancements in agriculture with Goodlife Smart Farming Network (GSFN).
                         </p>
                         <div className="button">
                           <Link className="btn btn-theme btn-md radius animation" href="/about">Discover More</Link>
@@ -286,7 +286,7 @@ export default function Home() {
 
                 <h2 className="title">What if farming ran on real-time data & integrity rather than guesswork?</h2>
                 <p>
-                  Experience unparalleled advancements in agriculture with Goodlife Smart Farming Network (SFN). Our tailored services, from precision farming solutions to market connectivity, empower you to optimize operations and enhance productivity. Join us in pioneering the future of agriculture.
+                  Experience unparalleled advancements in agriculture with Goodlife Smart Farming Network (GSFN). Our tailored services, from precision farming solutions to market connectivity, empower you to optimize operations and enhance productivity. Join us in pioneering the future of agriculture.
                 </p>
                 <div className="fun-fact-style-flex mt-35">
                   <div className="counter">
@@ -644,7 +644,7 @@ export default function Home() {
                     <h4><Link href="#">Smart <span>Farming Solutions</span></Link></h4>
                   </div>
                   <p>
-                    Access modern farm machinery and tools through SFN to improve efficiency, reduce manual labor, and increase yields—without the heavy upfront cost.
+                    Access modern farm machinery and tools through GSFN to improve efficiency, reduce manual labor, and increase yields—without the heavy upfront cost.
                   </p>
                 </div>
                 <Link href="#" className="btn-angle"><i className="fas fa-arrow-right"></i></Link>
@@ -699,9 +699,9 @@ export default function Home() {
                 <div className="shape">
                   <Image fill src="/assets/img/illustration/8.png" alt="Image Not Found" />
                 </div>
-                <h2 className="title">Elevate Your Agricultural Operations with SFN</h2>
+                <h2 className="title">Elevate Your Agricultural Operations with GSFN</h2>
                 <p>
-                  SFN&apos;s innovative agri-tech platform transformed my farming practices with technology-driven solutions that truly made a difference.
+                  GSFN&apos;s innovative agri-tech platform transformed my farming practices with technology-driven solutions that truly made a difference.
                 </p>
                 <ul className="list-standard">
                   <li>Smart Farming Solutions</li>

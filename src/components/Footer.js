@@ -15,7 +15,7 @@ export default function Footer() {
                         <div className="col-lg-4 col-md-6 item">
                             <div className="footer-item about">
                                 {/*<Image  fill className="logo" src="/assets/img/logo-light.png" alt="Logo" /> */}
-                                <h2>Goodlife Smart Farming Network (SFN)</h2>
+                                <h2>Goodlife Smart Farming Network (GSFN)</h2>
                                 <p>
                                     Seamlessly connect with key stakeholders—buyers, suppliers, and investors—to expand your market reach and secure growth opportunities.
                                 </p>
@@ -59,7 +59,7 @@ export default function Footer() {
                                         </div>
                                         <div className="content">
                                             <strong>Address:</strong>
-                                            No.4 SFN SUITE @ Atom Kpera Road, Beside Monatel Hotel, Makurdi, Benue State.
+                                            No.4 GSFN SUITE @ Atom Kpera Road, Beside Monatel Hotel, Makurdi, Benue State.
                                         </div>
                                     </li>
                                     <li>
@@ -68,7 +68,7 @@ export default function Footer() {
                                         </div>
                                         <div className="content">
                                             <strong>Email:</strong>
-                                            <Link href="mailto:smartfarmningetwork@gmail.com">smartfarmningetwork@gmail.com</Link>
+                                            <Link href="mailto:smartfarmingnetwork@gmail.com">smartfarmingnetwork@gmail.com</Link>
                                         </div>
                                     </li>
                                     <li>
@@ -157,7 +157,7 @@ export default function Footer() {
                             </div>
                         </div>
                         <div className="col-lg-12">
-                            <p>&copy; Copyright 2023. All Rights Reserved by <Link href="#">SFN</Link></p>
+                            <p>&copy; Copyright 2023. All Rights Reserved by <Link href="#">GSFN</Link></p>
                         </div>
                     </div>
                 </div>

@@ -7,7 +7,7 @@ const IMG = '/assets/img/edna.jpg';
 
 const WELCOME_MESSAGE = {
   role: 'assistant',
-  content: "Hi! I'm Edna 👋 your Smart Farming Network assistant. I can help with farming tips, the SFN platform, market insights, and more. How can I help you today?",
+  content: "Hi! I'm Edna 👋 your Smart Farming Network assistant. I can help with farming tips, the GSFN platform, market insights, and more. How can I help you today?",
 };
 
 export default function ChatBot() {
@@ -62,8 +62,8 @@ export default function ChatBot() {
 
   /* ─────────────────────────────────────────────── */
   /*  Shared panel colors (reused in the tail)       */
-  const panelBg     = 'rgba(15, 15, 15, 0.55)';
-  const tailBg      = 'rgba(0, 0, 0, 0.45)';   // matches input footer
+  const panelBg = 'rgba(15, 15, 15, 0.55)';
+  const tailBg = 'rgba(0, 0, 0, 0.45)';   // matches input footer
   const borderColor = 'rgba(255,255,255,0.18)';
   /* ─────────────────────────────────────────────── */
 
@@ -166,7 +166,7 @@ export default function ChatBot() {
                   Edna
                 </div>
                 <div style={{ color: 'rgba(255,255,255,0.72)', fontSize: 11.5 }}>
-                  SFN AI Assistant · Online
+                  GSFN AI Assistant · Online
                 </div>
               </div>
 

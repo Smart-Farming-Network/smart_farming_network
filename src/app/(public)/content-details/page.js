@@ -60,7 +60,7 @@ export default function ContentDetailPage() {
           <li>Efficient resource allocation and cost savings</li>
         </ul>
         <p>
-          Our Smart Farming Network (SFN) platform provides innovative services tailored for every aspect of the agricultural value chain.
+          Our Smart Farming Network (GSFN) platform provides innovative services tailored for every aspect of the agricultural value chain.
         </p>
       </div>
 

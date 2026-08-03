@@ -453,7 +453,7 @@ export default function SFM2026Tickets() {
                                         <li>Entry into Smart Farming Bootcamps</li>
                                         <li>Access to Main Stage Teachings & Panels</li>
                                         <li>Official Event Souvenirs</li>
-                                        <li>SFN Dashboard Onboarding (Get introduced to the system)</li>
+                                        <li>GSFN Dashboard Onboarding (Get introduced to the system)</li>
                                         <li>Access to Post-Event Community Network</li>
                                     </ul>
                                 </div>
@@ -559,7 +559,7 @@ export default function SFM2026Tickets() {
                                         <li>Access to Closed-Door Investor Soirée</li>
                                         <li>Opportunity for Product Showcasing / Business Pitching</li>
                                         <li>VIP Executive Lounge & Priority Seating</li>
-                                        <li>Fast-track pathway into SFN Elite Circle (SmartFarm100)</li>
+                                        <li>Fast-track pathway into GSFN Elite Circle (SmartFarm100)</li>
                                     </ul>
                                 </div>
 
@@ -847,10 +847,10 @@ export default function SFM2026Tickets() {
                             <div className="border rounded-4 p-4 h-100 shadow-sm text-center">
                                 <div style={{ fontSize: "2rem" }}>📢</div>
                                 <h5 className="fw-bold mt-3">
-                                    Priority SFN Updates
+                                    Priority GSFN Updates
                                 </h5>
                                 <p className="text-muted small mb-0">
-                                    Get early notifications about SFN programs and opportunities.
+                                    Get early notifications about GSFN programs and opportunities.
                                 </p>
                             </div>
                         </div>
