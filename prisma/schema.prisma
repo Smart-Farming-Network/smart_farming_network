@@ -245,3 +245,22 @@ model LP2026Registration {
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
 }
+
+// =========================
+// FARMVERSE REGISTRATION MODEL
+// =========================
+
+model FarmverseRegistration {
+
+  id                  String   @id @default(uuid())
+
+  fullName            String
+  email               String
+
+  referralSource      String?
+
+  status              String   @default("PENDING")
+
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
