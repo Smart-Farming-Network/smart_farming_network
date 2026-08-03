@@ -1,8 +1,93 @@
 "use client";
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function FarmVersePage() {
+
+    const [showModal, setShowModal] = useState(false);
+
+    const [loading, setLoading] = useState(false);
+
+    const [form, setForm] = useState({
+        fullName: "",
+        email: "",
+        phone: ""
+    });
+
+    useEffect(() => {
+
+        document.body.style.overflow =
+            showModal ? "hidden" : "auto";
+
+    }, [showModal]);
+
+    const handleChange = (e) => {
+
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        });
+
+    };
+
+    const openRegistration = () => {
+
+        setForm((prev) => ({
+            ...prev,
+        }));
+
+        setShowModal(true);
+
+    };
+
+    const handleSubmit = async (e) => {
+
+        e.preventDefault();
+
+        try {
+
+            setLoading(true);
+
+            const res = await fetch(
+                "/api/farmverse/register",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(form)
+                }
+            );
+
+            const data = await res.json();
+
+            if (!data.success) {
+
+                alert(data.message);
+
+                return;
+            }
+
+            window.location.href =
+                "/farmverse/success";
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert(
+                "Unable to submit application. Please try again."
+            );
+
+        } finally {
+
+            setLoading(false);
+
+        }
+
+    };
+
     return (
         <main>
 
@@ -55,12 +140,12 @@ export default function FarmVersePage() {
 
                             <div className="d-flex flex-wrap gap-3">
 
-                                <Link
-                                    href="/SFN2026"
+                                <button
+                                    onClick={openRegistration}
                                     className="btn btn-success btn-lg px-5 rounded-pill"
                                 >
                                     Join Waitlist
-                                </Link>
+                                </button>
 
                                 <Link
                                     href="#about"
@@ -378,6 +463,123 @@ export default function FarmVersePage() {
                 </div>
 
             </section>
+
+            {showModal && (
+
+                <div className="modal fade show d-block">
+
+                    <div className="modal-dialog modal-lg modal-dialog-centered">
+
+                        <div className="modal-content">
+
+                            <div className="modal-header">
+
+                                <h5 className="modal-title">
+                                    Farmverse Registration
+                                </h5>
+
+                                <button
+                                    className="btn-close"
+                                    onClick={() => setShowModal(false)}
+                                />
+
+                            </div>
+
+                            <div className="modal-body">
+
+                                <div className="alert alert-warning">
+
+                                    <strong>
+                                        Please Note: You will receive a confirmation email after submitting your application. If you do not receive it, please check your spam folder or contact us for assistance.
+                                    </strong>
+
+                                </div>
+
+                                <form onSubmit={handleSubmit}>
+
+                                    <div className="mb-3">
+
+                                        <label className="form-label">
+                                            Full Name
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            name="fullName"
+                                            className="form-control"
+                                            required
+                                            value={form.fullName}
+                                            onChange={handleChange}
+                                        />
+
+                                    </div>
+
+                                    <div className="mb-3">
+
+                                        <label className="form-label">
+                                            Email Address
+                                        </label>
+
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            className="form-control"
+                                            required
+                                            value={form.email}
+                                            onChange={handleChange}
+                                        />
+
+                                    </div>
+
+                                    <div className="mb-4">
+
+                                        <label className="form-label">
+                                            How did you hear about us?
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            name="referralSource"
+                                            className="form-control"
+                                            value={form.referralSource}
+                                            onChange={handleChange}
+                                        />
+
+                                    </div>
+
+                                    <button
+                                        className="btn btn-warning text-dark w-100 fw-semibold"
+                                        disabled={loading}
+                                    >
+
+                                        {loading ? (
+                                            <>
+                                                <span className="spinner-border spinner-border-sm me-2"></span>
+                                                Submitting...
+                                            </>
+                                        ) : (
+                                            "Submit Application"
+                                        )}
+
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        className="modal-backdrop fade show"
+                        style={{ zIndex: -1 }}
+                        onClick={() => setShowModal(false)}
+                    />
+
+                </div>
+
+            )}
 
         </main>
     );
