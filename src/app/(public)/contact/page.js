@@ -73,7 +73,8 @@ export default function Contact() {
                                 </li>
                                 <li className="mb-3">
                                     <i className="bi bi-geo-alt-fill text-primary me-3"></i>
-                                    <strong>HeadQuarters Address:</strong> No.4 GSFN SUITE @ Atom Kpera Road, Beside Monatel Hotel, Makurdi, Benue State.
+                                    <strong>HeadQuarters Address:</strong>
+                                    GP 567. Atom Kpera Along Modern Market Road, Besides Monatel Hotel, Makurdi, Benue State, Nigeria.
                                 </li>
                                 <li className="mb-3">
                                     <i className="bi bi-geo-alt-fill text-primary me-3"></i>
@@ -81,7 +82,7 @@ export default function Contact() {
                                 </li>
                                 <li>
                                     <i className="bi bi-envelope-fill text-primary me-3"></i>
-                                    <strong>Email:</strong> smartfarmningetwork@gmail.com
+                                    <strong>Email:</strong> admin@smartfarmningetwork.com
                                 </li>
                             </ul>
 

@@ -956,7 +956,7 @@ export default function Home() {
                   <li>
                     <div className="info">
                       <h5 className="title">Official Email</h5>
-                      <Link href="mailto: smartfarmningetwork@gmail.com"> smartfarmningetwork@gmail.com</Link>
+                      <Link href="mailto: admin@smartfarmningetwork.com"> admin@smartfarmningetwork.com</Link>
                     </div>
                   </li>
                 </ul>

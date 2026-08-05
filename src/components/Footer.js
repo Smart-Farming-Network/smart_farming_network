@@ -59,7 +59,7 @@ export default function Footer() {
                                         </div>
                                         <div className="content">
                                             <strong>Address:</strong>
-                                            No.4 GSFN SUITE @ Atom Kpera Road, Beside Monatel Hotel, Makurdi, Benue State.
+                                            GP 567. Atom Kpera Along Modern Market Road, Besides Monatel Hotel, Makurdi, Benue State, Nigeria.
                                         </div>
                                     </li>
                                     <li>
