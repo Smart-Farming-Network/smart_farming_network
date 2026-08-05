@@ -13,6 +13,7 @@ export default async function FarmersLayout({ children }) {
     { label: 'Farms', icon: 'fa fa-leaf', href: '/admin/farms' },
     { label: 'Marketplace', icon: 'fa fa-store', href: '/admin/market-place' },
     { label: 'Projects', icon: 'fa fa-diagram-project', href: '/admin/projects' },
+    { label: 'Services', icon: 'fa fa-cogs', href: '/admin/services' },
     { label: 'Analytics', icon: 'fa fa-chart-line', href: '/admin/analytics' },
     { label: 'System Logs', icon: 'fa fa-file-lines', href: '/admin/logs' },
     { label: 'Settings', icon: 'fa fa-gear', href: '/admin/settings' },
