@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 /* MODERN CARD */
-export default function ServiceModern({ title, price, image, desc, features, button }) {
+export default function ServiceModern({ title, price, image, desc, features, button, onClick }) {
     return (
         <div className="col-md-6 col-lg-4">
             <div className="card modern-card h-100 border-0">
@@ -24,9 +24,9 @@ export default function ServiceModern({ title, price, image, desc, features, but
                         ))}
                     </ul>
 
-                    <Link href="#" className="btn btn-success w-100 mt-3">
+                    <button onClick={onClick} className="btn btn-success w-100 mt-3">
                         {button}
-                    </Link>
+                    </button>
                 </div>
 
             </div>

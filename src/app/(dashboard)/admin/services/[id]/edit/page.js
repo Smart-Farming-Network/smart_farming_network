@@ -1,31 +1,31 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ProductForm from "@/components/products/ProductForm";
+import ServiceForm from "@/components/service/ServiceForm";
 import { useParams, useRouter } from "next/navigation";
 
 export default function EditPage() {
     const { id } = useParams();
     const router = useRouter();
-    const [product, setProduct] = useState(null);
+    const [service, setService] = useState(null);
 
     useEffect(() => {
-        fetch(`/api/products/${id}`)
+        fetch(`/api/services/${id}`)
             .then(res => res.json())
-            .then(setProduct);
+            .then(setService);
     }, [id]);
 
     const submit = async (data) => {
-        await fetch(`/api/products/${id}`, {
+        await fetch(`/api/services/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
         });
 
-        router.push("/admin/market-place");
+        router.push("/admin/services");
     };
 
-    if (!product) return null;
+    if (!service) return null;
 
-    return <ProductForm initialData={product} onSubmit={submit} />;
+    return <ServiceForm initialData={service} onSubmit={submit} />;
 }

@@ -45,7 +45,6 @@ export async function PUT(req, { params }) {
         where: { id: params.id },
         data: {
             name: body.name,
-            slug: generateSlug(body.name),
             price: body.price,
             category: body.category,
             image,
