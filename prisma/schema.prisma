@@ -46,6 +46,18 @@ enum ServicePaymentStatus {
   VERIFIED
   REJECTED
   CANCELLED
+enum CommunityCategory {
+  QUESTION
+  EXPERIENCE
+  CHALLENGE
+  TIP
+  MARKET
+}
+
+enum ModerationStatus {
+  VISIBLE
+  FLAGGED
+  HIDDEN
 }
 
 // --- User model ---
@@ -64,6 +76,11 @@ model User {
   sfmRegistrations      SFMRegistration[]
   passwordResetTokens PasswordResetToken[]
   permissions           UserPermission[]
+  communityPosts        CommunityPost[]
+  communityComments     CommunityComment[]
+  communityLikes        CommunityPostLike[]
+  communitySaves        CommunityPostSave[]
+  communityReports      CommunityReport[]
   createdAt             DateTime         @default(now())
   updatedAt             DateTime         @default(now()) @updatedAt
 }
@@ -335,4 +352,110 @@ model ServicePayment {
   @@index([service])
   @@index([createdAt])
   @@map("service_payments")
+// FARMERS' COMMUNITY MODELS
+// =========================
+
+model CommunityPost {
+  id        String            @id @default(uuid())
+
+  authorId  String
+  author    User              @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  category  CommunityCategory
+  content   String            @db.Text
+  location  String
+  tags      String[]
+
+  image     String?
+  imageId   String?
+
+  // Moderation: FLAGGED stays visible pending review, HIDDEN drops out of the feed.
+  status    ModerationStatus  @default(VISIBLE)
+
+  comments  CommunityComment[]
+  likes     CommunityPostLike[]
+  saves     CommunityPostSave[]
+  reports   CommunityReport[]
+
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+
+  @@index([status, createdAt])
+  @@index([category])
+  @@index([authorId])
+}
+
+model CommunityComment {
+  id        String            @id @default(uuid())
+
+  postId    String
+  post      CommunityPost     @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  authorId  String
+  author    User              @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  content   String            @db.Text
+  status    ModerationStatus  @default(VISIBLE)
+
+  reports   CommunityReport[]
+
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+
+  @@index([postId, createdAt])
+  @@index([authorId])
+}
+
+model CommunityPostLike {
+  id        String        @id @default(uuid())
+
+  postId    String
+  post      CommunityPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  userId    String
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime      @default(now())
+
+  @@unique([postId, userId])
+  @@index([userId])
+}
+
+model CommunityPostSave {
+  id        String        @id @default(uuid())
+
+  postId    String
+  post      CommunityPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  userId    String
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime      @default(now())
+
+  @@unique([postId, userId])
+  @@index([userId])
+}
+
+model CommunityReport {
+  id         String            @id @default(uuid())
+
+  reporterId String
+  reporter   User              @relation(fields: [reporterId], references: [id], onDelete: Cascade)
+
+  postId     String?
+  post       CommunityPost?    @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  commentId  String?
+  comment    CommunityComment? @relation(fields: [commentId], references: [id], onDelete: Cascade)
+
+  reason     String
+  note       String?           @db.Text
+
+  resolvedAt DateTime?
+
+  createdAt  DateTime          @default(now())
+
+  @@index([postId])
+  @@index([commentId])
+  @@index([resolvedAt])
 }

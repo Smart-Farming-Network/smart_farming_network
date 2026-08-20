@@ -42,7 +42,7 @@ export default function Footer() {
                                         <Link href="/contact">Contact Us</Link>
                                     </li>
                                     <li>
-                                        <Link href="#">Community</Link>
+                                        <Link href="/community">Community</Link>
                                     </li>
                                 </ul>
                             </div>
