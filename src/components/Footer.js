@@ -42,7 +42,7 @@ export default function Footer() {
                                         <Link href="/contact">Contact Us</Link>
                                     </li>
                                     <li>
-                                        <Link href="#">Community</Link>
+                                        <Link href="/community">Community</Link>
                                     </li>
                                 </ul>
                             </div>
@@ -68,7 +68,7 @@ export default function Footer() {
                                         </div>
                                         <div className="content">
                                             <strong>Email:</strong>
-                                            <Link href="mailto:smartfarmningetwork@gmail.com">smartfarmningetwork@gmail.com</Link>
+                                            <Link href="mailto:smartfarmningetwork@gmail.com">admin@smartfarmingnetwork.com</Link>
                                         </div>
                                     </li>
                                     <li>
