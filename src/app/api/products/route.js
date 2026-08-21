@@ -11,7 +11,10 @@ export async function GET(req) {
 
     const [products, total] = await Promise.all([
         prisma.product.findMany({
-            orderBy: { createdAt: "desc" },
+            orderBy: [
+                { updatedAt: "desc" },
+                { createdAt: "desc" },
+            ],
             skip,
             take: limit,
         }),
@@ -36,20 +39,37 @@ export async function POST(req) {
 
     if (body.image) {
         const uploaded = await uploadImage(body.image);
+
         image = uploaded.url;
         imageId = uploaded.publicId;
     }
 
-    const product = await prisma.product.create({
-        data: {
-            name: body.name,
-            slug: generateSlug(body.name),
-            price: body.price,
-            category: body.category,
-            image,
-            imageId,
-        },
+    const product = await prisma.$transaction(async (tx) => {
+
+        const product = await tx.product.create({
+            data: {
+                name: body.name,
+                slug: generateSlug(body.name),
+                price: Number(body.price),
+                category: body.category,
+                image,
+                imageId,
+            },
+        });
+
+        // Record the initial product price
+        await tx.productPriceHistory.create({
+            data: {
+                productId: product.id,
+                price: Number(product.price),
+                previousPrice: null,
+            },
+        });
+
+        return product;
     });
 
-    return Response.json(product, { status: 201 });
+    return Response.json(product, {
+        status: 201,
+    });
 }

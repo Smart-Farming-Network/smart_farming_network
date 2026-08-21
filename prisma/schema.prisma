@@ -128,8 +128,22 @@ model Product {
   category  String
   cartItems CartItem[] 
   orderItems OrderItem[]
+  priceHistory ProductPriceHistory[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+// --- Product Price History ---
+model ProductPriceHistory {
+  id            String   @id @default(uuid())
+  productId     String
+  price         Float
+  previousPrice Float?
+  recordedAt    DateTime @default(now())
+
+  product  Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId, recordedAt])
 }
 
 // --- Cart model ---
