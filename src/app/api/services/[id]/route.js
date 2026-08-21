@@ -21,38 +21,80 @@ export async function GET(req, { params }) {
  * UPDATE service
  */
 export async function PUT(req, { params }) {
-    const body = await req.json();
+    try {
+        const body = await req.json();
 
-    const existingservice = await prisma.service.findUnique({
-        where: { id: params.id },
-    });
+        const existingService = await prisma.service.findUnique({
+            where: {
+                id: params.id,
+            },
+        });
 
-    if (!existingservice) {
-        return new Response(JSON.stringify({ error: "service not found" }), { status: 404 });
+        if (!existingService) {
+            return Response.json(
+                {
+                    success: false,
+                    error: "Service not found",
+                },
+                { status: 404 }
+            );
+        }
+
+        let image = existingService.image;
+        let imageId = existingService.imageId;
+
+        /**
+         * Only upload a new image when
+         * a new base64 image was submitted.
+         */
+        if (
+            body.image &&
+            typeof body.image === "string" &&
+            body.image.startsWith("data:image")
+        ) {
+            // Delete old image
+            if (imageId) {
+                await deleteImage(imageId);
+            }
+
+            // Upload new image
+            const uploaded = await uploadImage(body.image);
+
+            image = uploaded.url;
+            imageId = uploaded.publicId;
+        }
+
+        const service = await prisma.service.update({
+            where: {
+                id: params.id,
+            },
+            data: {
+                title: body.title,
+                price: Number(body.price),
+                categories: body.categories || [],
+                image,
+                imageId,
+            },
+        });
+
+        return Response.json(
+            {
+                success: true,
+                data: service,
+            },
+            { status: 200 }
+        );
+    } catch (error) {
+        console.error("UPDATE SERVICE ERROR:", error);
+
+        return Response.json(
+            {
+                success: false,
+                error: "Failed to update service",
+            },
+            { status: 500 }
+        );
     }
-
-    let image = existingservice.image;
-    let imageId = existingservice.imageId;
-
-    if (body.image && body.image.startsWith("data:image")) {
-        if (imageId) await deleteImage(imageId);
-        const uploaded = await uploadImage(body.image);
-        image = uploaded.url;
-        imageId = uploaded.publicId;
-    }
-
-    const service = await prisma.service.update({
-        where: { id: params.id },
-        data: {
-            name: body.name,
-            price: body.price,
-            category: body.category,
-            image,
-            imageId,
-        },
-    });
-
-    return new Response(JSON.stringify(service), { status: 200 });
 }
 
 /**

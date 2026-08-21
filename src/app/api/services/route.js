@@ -29,27 +29,46 @@ export async function GET(req) {
 }
 
 export async function POST(req) {
-    const body = await req.json();
+    try {
+        const body = await req.json();
 
-    let image = null;
-    let imageId = null;
+        let image = null;
+        let imageId = null;
 
-    if (body.image) {
-        const uploaded = await uploadImage(body.image);
-        image = uploaded.url;
-        imageId = uploaded.publicId;
+        if (body.image) {
+            const uploaded = await uploadImage(body.image);
+
+            image = uploaded.url;
+            imageId = uploaded.publicId;
+        }
+
+        const service = await prisma.service.create({
+            data: {
+                title: body.title,
+                slug: generateSlug(body.title),
+                price: Number(body.price),
+                categories: body.categories || [],
+                image,
+                imageId,
+            },
+        });
+
+        return Response.json(
+            {
+                success: true,
+                data: service,
+            },
+            { status: 201 }
+        );
+    } catch (error) {
+        console.error("CREATE SERVICE ERROR:", error);
+
+        return Response.json(
+            {
+                success: false,
+                error: "Failed to create service",
+            },
+            { status: 500 }
+        );
     }
-
-    const service = await prisma.service.create({
-        data: {
-            title: body.title,
-            slug: generateSlug(body.title),
-            price: body.price,
-            category: body.category,
-            image,
-            imageId,
-        },
-    });
-
-    return Response.json(service, { status: 201 });
 }
