@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import Input from "../ui/Input";
 import Button from "../ui/Button";
 import PageHeader from "../ui/AdminPageHeader";
@@ -65,6 +66,7 @@ export default function ServiceForm({ initialData, onSubmit }) {
         e.preventDefault();
 
         let image = form.image;
+
         if (form.image instanceof File) {
             image = await toBase64(form.image);
         }

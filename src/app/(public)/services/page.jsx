@@ -152,7 +152,6 @@ export default function ServicesPage() {
 
                     </div>
 
-
                     <div className="row g-4 mt-3">
 
 
@@ -193,7 +192,6 @@ export default function ServicesPage() {
                                 ))}
                             </div>
                         )}
-
 
                     </div>
 
