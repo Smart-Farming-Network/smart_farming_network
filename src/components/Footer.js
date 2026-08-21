@@ -157,7 +157,8 @@ export default function Footer() {
                             </div>
                         </div>
                         <div className="col-lg-12">
-                            <p>&copy; Copyright 2023. All Rights Reserved by <Link href="#">GSFN</Link></p>
+                            <p>&copy; Copyright <Link href="#">GSFN</Link> 2026. All right reserved.</p>
+                            <p className="text-muted fs-6 fw-light">Developed By the <Link href="#">GSFN</Link> - Tech Department</p>
                         </div>
                     </div>
                 </div>
