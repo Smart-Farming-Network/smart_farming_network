@@ -1,8 +1,8 @@
 # Smart Farming Network (GSFN)
 
-**Empowering Farmers, Connecting Investors, Revolutionizing Agriculture**
+**Empowering Farmers, Connecting Investors, and Revolutionizing Agriculture**
 
-Goodlife Smart Farming Network Ltd (GSFN) is a platform that connects farmers and investors globally. It uses IoT, AI, and blockchain to optimize farming, improve transparency, and create profitable agricultural opportunities.
+Goodlife Smart Farming Network Ltd (GSFN) is a platform that connects farmers and investors globally. It uses IoT, AI and a blockchain wallet infrastructure to optimize farming, improve transparency, and create profitable agricultural opportunities.
 
 ---
 
@@ -37,7 +37,7 @@ Goodlife Smart Farming Network Ltd (GSFN) is a platform that connects farmers an
 
 ### Marketplace
 - Buy/sell tools, seeds, produce
-- Blockchain-backed secure transactions
+- A secured wallet transactions channel
 
 ### Market Insights
 - Live crop prices and demand trends
