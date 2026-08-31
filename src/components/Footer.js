@@ -120,6 +120,25 @@ export default function Footer() {
                                             />
                                         </Link>
                                     </li>
+
+                                    <li className="container p-4 px-2">
+                                        <Link
+                                            href="https://drive.google.com/file/d/1h6ALXzfmM5lOWjaIEyR4FWKQxB57BQ7Q/view?usp=sharing"
+                                            download
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="d-flex justify-content-center align-items-center btn-dark border rounded p-2"
+                                        >
+                                            <Image
+                                                src="/assets/img/andriod-icon.png"
+                                                alt="Download APK"
+                                                width={80}
+                                                height={80}
+                                                className=""
+                                            />
+                                            <h4 className="text-wrap text-center">Download App</h4>
+                                        </Link>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
