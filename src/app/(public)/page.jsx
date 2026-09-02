@@ -29,24 +29,19 @@ export default function Home() {
 
       new window.Swiper(".event-carousel", {
         loop: true,
-
         autoplay: {
-          delay: 20000, // 10 seconds
+          delay: 20000,
           disableOnInteraction: false,
         },
-
         speed: 900,
-
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
         },
-
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         },
-
       });
 
       galleryEvents.forEach((event) => {
@@ -128,7 +123,7 @@ export default function Home() {
     {
       id: 1,
       title: "Training Women in Tech & Business",
-      description: "In partnership with Yonash Skill Empowerment Services, we conducted a capacity-building session focused on empowering women with practical knowledge in technology and business development. During the program, over 50 widows were trained on foundational digital skills and entrepreneurial thinking to help them create sustainable income opportunities and participate confidently in today’s digital economy.",
+      description: "In partnership with Yonash Skill Empowerment Services, we conducted a capacity-building session focused on empowering women with practical knowledge in technology and business.",
       cover: "/assets/img/gallery/1.jpeg",
       images: [
         "/assets/img/gallery/1.jpeg",
@@ -139,7 +134,7 @@ export default function Home() {
     {
       id: 2,
       title: "Own or Co-Own a Smart Farm",
-      description: "Through Goodlife Smart Farming Network, individuals and investors can now own or co-own a structured smart farm unit designed for modern, technology-driven agriculture. Each farm unit is part of a connected ecosystem where data, infrastructure, and market access work together to help farmers and investors produce more efficiently and profitably. Explore our Smart Farm Services to see how our digital platform, infrastructure, and farmer support systems work together to power this ecosystem.",
+      description: "Through Goodlife Smart Farming Network, individuals and investors can now own or co-own a structured smart farm unit designed for modern, technology-driven agriculture.",
       cover: "/assets/img/gallery/g1.jpeg",
       images: [
         "/assets/img/gallery/g3.jpeg",
@@ -174,10 +169,10 @@ export default function Home() {
                       <div className="info">
                         <h2>Elevate Your Agricultural Operations with Goodlife Smart Farming Network</h2>
                         <p>
-                          Experience unparalleled advancements in agriculture with Goodlife Smart Farming Network (GSFN).
+                          Real-time data. Verified farmers. Trusted markets. GSFN is building the infrastructure behind African agriculture — one coordinated system at a time.
                         </p>
                         <div className="button">
-                          <Link className="btn btn-theme btn-md radius animation" href="/about">Discover More</Link>
+                          <Link className="btn btn-theme btn-md radius animation" href="/about">Discover More →</Link>
                         </div>
                       </div>
 
@@ -185,7 +180,7 @@ export default function Home() {
                         <div className="curve-text">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150" version="1.1">
                             <path id="textPath" d="M 0,75 a 75,75 0 1,1 0,1 z"></path>
-                            <text><textPath href="#textPath">100% Smart Solutions</textPath></text>
+                            <text><textPath href="#textPath">Digital Agriculture</textPath></text>
                           </svg>
                           <Link href="https://youtube.com/@goodlifesmartfarmer?" className="popup-youtube"><i className="fas fa-arrow-right"></i></Link>
                         </div>
@@ -209,18 +204,18 @@ export default function Home() {
                         <div className="curve-text">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150" version="1.1">
                             <path id="textPath2" d="M 0,75 a 75,75 0 1,1 0,1 z"></path>
-                            <text><textPath href="#textPath">100% Agricultural & Tech</textPath></text>
+                            <text><textPath href="#textPath">Smart Solutions</textPath></text>
                           </svg>
                           <Link href="https://youtube.com/@goodlifesmartfarmer?" className="popup-youtube"><i className="fas fa-arrow-right"></i></Link>
                         </div>
                       </div>
                       <div className="info">
-                        <h2>Transform Your Agricultural Experience with Smart Solutions</h2>
+                        <h2>Transform Your Agricultural Experience with Data-Driven Solutions</h2>
                         <p>
-                          Implement our cutting-edge techniques to enhance crop yields and streamline farm management with real-time data insights.
+                          GSFN gives farmers, investors, and buyers one shared source of truth. From precision farming tools to verified market connections, we help you plan with confidence instead of chance.
                         </p>
                         <div className="button">
-                          <Link className="btn btn-theme btn-md radius animation" href="/about">Discover More</Link>
+                          <Link className="btn btn-theme btn-md radius animation" href="/about">Discover More →</Link>
                         </div>
                       </div>
                     </div>
@@ -242,7 +237,7 @@ export default function Home() {
                         <div className="curve-text">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150" version="1.1">
                             <path id="textPath2" d="M 0,75 a 75,75 0 1,1 0,1 z"></path>
-                            <text><textPath href="#textPath">100 Project Farm</textPath></text>
+                            <text><textPath href="#textPath">Project Farm 100</textPath></text>
                           </svg>
                           <Link href="https://youtube.com/@goodlifesmartfarmer?" className="popup-youtube"><i className="fas fa-arrow-right"></i></Link>
                         </div>
@@ -250,10 +245,10 @@ export default function Home() {
                       <div className="info">
                         <h2>Project Farm 100</h2>
                         <p>
-                          Building Africa’s Smart Agricultural Infrastructure.
+                          Building Africa's Smart Agricultural Infrastructure.
                         </p>
                         <div className="button">
-                          <Link className="btn btn-theme btn-md radius animation" href="/project-farm-100">About the Project</Link>
+                          <Link className="btn btn-theme btn-md radius animation" href="/project-farm-100">About the Project →</Link>
                         </div>
                       </div>
                     </div>
@@ -269,15 +264,16 @@ export default function Home() {
 
         </div>
       </div>
+
       {/* ABOUT SECTION */}
       <div className="about-style-one-area default-padding overflow-hidden">
         <div className="container">
           <div className="row align-start">
             <div className="col-xl-6 col-lg-5">
               <div className="about-style-one-thumb d-none d-md-block">
-                <Image width={750} height={800} className="transform-el transform-y-up delay-2" src="/assets/img/smart_farm_portrait.jpg" alt="Image Not Found" />
+                <Image width={750} height={800} className="transform-el transform-y-up delay-2" src="/assets/img/smart_farm_portrait.jpg" alt="Smart Farm" />
                 <div className="animation-shape">
-                  <Image fill src="/assets/img/illustration/1.png" alt="Image Not Found" />
+                  <Image fill src="/assets/img/illustration/1.png" alt="Shape" />
                 </div>
               </div>
             </div>
@@ -286,35 +282,28 @@ export default function Home() {
 
                 <h2 className="title">What if farming ran on real-time data & integrity rather than guesswork?</h2>
                 <p>
-                  Experience unparalleled advancements in agriculture with Goodlife Smart Farming Network (GSFN). Our tailored services, from precision farming solutions to market connectivity, empower you to optimize operations and enhance productivity. Join us in pioneering the future of agriculture.
+                  GSFN gives farmers, investors, and buyers one shared source of truth. From precision farming tools to verified market connections, we help you plan with confidence instead of chance. This is agriculture, coordinated.
                 </p>
-                <div className="fun-fact-style-flex mt-35">
-                  <div className="counter">
-                    <div className="timer" data-to="25" data-speed="2000">25</div>
-                    <div className="operator">M</div>
-                  </div>
-                  <span className="medium">Growth Tonns <br /> of Harvest</span>
-                </div>
                 <ul className="top-feature">
                   <li className="transform-el transform-x-left delay-2">
                     <div className="icon">
-                      <Image width={80} height={80} src="/assets/img/icon/3.png" alt="Image Not Found" />
+                      <Image width={80} height={80} src="/assets/img/icon/3.png" alt="Data Icon" />
                     </div>
                     <div className="info">
-                      <h4>100% Guaranteed Organic Product</h4>
+                      <h4>Real Data. Real Farmers. Real Markets.</h4>
                       <p>
-                        Naturally grown, chemical-free, and fully traceable - from farm to table.
+                        Verified farmer networks connected to trusted buyers with transparent pricing.
                       </p>
                     </div>
                   </li>
                   <li className="transform-el transform-x-right delay-2">
                     <div className="icon">
-                      <Image width={80} height={80} src="/assets/img/icon/2.png" alt="Image Not Found" />
+                      <Image width={80} height={80} src="/assets/img/icon/2.png" alt="Integrity Icon" />
                     </div>
                     <div className="info">
-                      <h4>Real Food. Real Farms. Real Proof.</h4>
+                      <h4>Verified Integrity. Traceable Output.</h4>
                       <p>
-                        Organically grown, data-backed, and honestly delivered. No chemicals. No compromises. Just clean & traceable food.
+                        From farm to buyer — every step is tracked, verified, and transparent. No middlemen extracting excessive margins.
                       </p>
                     </div>
                   </li>
@@ -385,7 +374,7 @@ export default function Home() {
                     width={1200}
                     height={800}
                     className="img-fluid rounded shadow"
-                    alt="Investors & Partners Soiree"
+                    alt="Event"
                   />
                 </div>
               </div>
@@ -398,7 +387,7 @@ export default function Home() {
                     width={1200}
                     height={800}
                     className="img-fluid rounded shadow"
-                    alt="Investors & Partners Soiree"
+                    alt="Event"
                   />
                 </div>
               </div>
@@ -411,7 +400,7 @@ export default function Home() {
                     width={1200}
                     height={800}
                     className="img-fluid rounded shadow"
-                    alt="Investors & Partners Soiree"
+                    alt="Event"
                   />
                 </div>
               </div>
@@ -427,7 +416,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* IMPACT STATISTICS */}
+      {/* IMPACT STATISTICS - OPTION B (HONEST FRAMING) */}
       <div className="impact-stats-area default-padding bg-light">
         <div className="container">
 
@@ -435,62 +424,33 @@ export default function Home() {
           <div className="row mb-5">
             <div className="col-lg-6 offset-lg-3 text-center">
               <h5 className="sub-title">Our Impact</h5>
-              <h2 className="title">Transforming Agriculture Through Data</h2>
+              <h2 className="title">Building Our Impact, Together</h2>
             </div>
           </div>
 
-          <div className="row g-4">
-
-            <div className="col-xl col-md-6 col-12">
-              <div className="impact-card text-center p-4">
-                <h2 className="stat-number" data-count="20">0</h2>
-                <p>Farmers Digitized</p>
-              </div>
+          <div className="row justify-content-center">
+            <div className="col-lg-8 text-center">
+              <p className="fs-5 mb-4">
+                We're just getting started. Every farmer who joins FarmVerse adds to a growing, verified network across Nigeria — and we'll be tracking and sharing our impact publicly as we scale.
+              </p>
+              
+              <Link href="/farmverse" className="btn btn-theme btn-lg">
+                Join the Movement →
+              </Link>
             </div>
-
-            <div className="col-xl col-md-6 col-12">
-              <div className="impact-card text-center p-4">
-                <h2 className="stat-number" data-count="30" data-suffix="%">0</h2>
-                <p>Yield Increase</p>
-              </div>
-            </div>
-
-            <div className="col-xl col-md-6 col-12">
-              <div className="impact-card text-center p-4">
-                <h2 className="stat-number" data-count="30">0</h2>
-                <p>Youth-Led Agri Businesses</p>
-              </div>
-            </div>
-
-            <div className="col-xl col-md-6 col-12">
-              <div className="impact-card text-center p-4">
-                <h2 className="stat-number" data-count="25" data-suffix="%">0</h2>
-                <p>Post-Harvest Loss Reduction</p>
-              </div>
-            </div>
-
-            <div className="col-xl col-md-6 col-12">
-              <div className="impact-card text-center p-4">
-                <h2 className="stat-number" data-count="10">0</h2>
-                <p>Hectares Digitally Mapped</p>
-              </div>
-            </div>
-
           </div>
 
         </div>
       </div>
 
       {/* SERVICE SECTION */}
-
-      {/* /assets/img//green-house.jpeg add this image later */}
       <div className="services-style-one-area bg-gray default-padding bottom-less">
         <div className="container">
           <div className="row">
             <div className="col-lg-6 offset-lg-3">
               <div className="site-heading text-center">
                 <h5 className="sub-title">Platform Features</h5>
-                <h2 className="title">Everything you need for a Smarter farming</h2>
+                <h2 className="title">Everything You Need for Smarter Farming</h2>
                 <span>Comprehensive tools and insights designed to transform your agricultural operations into a smart digital ecosystem.</span>
               </div>
             </div>
@@ -510,10 +470,9 @@ export default function Home() {
                     <h4><Link className="text-white" href="#">Smart Dashboard</Link></h4>
                   </div>
                   <p className="mb-3 text-white">
-                    Real-time overview of all you farming operations, from crop health to weather conditions in one centralized dashboard.
+                    Real-time overview of all your farming operations, from crop health to weather conditions in one centralized dashboard.
                   </p>
                 </div>
-                <Link href="#" className="text-warning">Explore Dashboard <i className="fas fa-arrow-right"></i></Link>
               </div>
             </div>
 
@@ -532,7 +491,6 @@ export default function Home() {
                   <p className="mb-3 text-white">
                     Advanced weather forecasting with agricultural insights, helping you make informed decisions about planting, harvesting and protection.
                   </p>
-                  <Link href="#" className="text-warning">View Weather Tool <i className="fas fa-arrow-right"></i></Link>
                 </div>
               </div>
             </div>
@@ -552,7 +510,6 @@ export default function Home() {
                   <p className="mb-3 text-white">
                     Log and monitor all farming activities, including planting, fertilization, pest control, and harvesting with detailed analytics.
                   </p>
-                  <Link href="#" className="text-warning">Start Logging <i className="fas fa-arrow-right"></i></Link>
                 </div>
               </div>
             </div>
@@ -587,7 +544,7 @@ export default function Home() {
                 <div className="text-center">
                   <h4><Link className="text-white" href="#">Community Forum</Link></h4>
                   <p className="mb-3 text-white">
-                    Connect with fellow farmers worlwide.
+                    Connect with fellow farmers worldwide.
                   </p>
                 </div>
               </div>
@@ -604,7 +561,7 @@ export default function Home() {
                 <div className="text-center">
                   <h4><Link className="text-white" href="#">Profile & Achievement</Link></h4>
                   <p className="mb-3 text-white">
-                    Track progress and earn regocnition.
+                    Track progress and earn recognition.
                   </p>
                 </div>
               </div>
@@ -615,7 +572,7 @@ export default function Home() {
                 <div className="thumb justify-content-center d-flex">
                   <div className="bg-warning text-white rounded d-flex align-items-center justify-content-center me-3 mb-2"
                     style={{ width: 45, height: 45 }}>
-                    <i className="fas fa-clipboard fs-3"></i>
+                    <i className="fas fa-headset fs-3"></i>
                   </div>
                 </div>
                 <div className="text-center">
@@ -637,7 +594,7 @@ export default function Home() {
             <div className="col-lg-4 col-md-6 service-one-single transform-el transform-y-down delay-3">
               <div className="service-style-one-item">
                 <div className="thumb">
-                  <Image width={100} height={80} src="/assets/img/illustration/2.png" alt="Image Not Found" />
+                  <Image width={100} height={80} src="/assets/img/illustration/2.png" alt="Smart Farming" />
                 </div>
                 <div className="info">
                   <div className="top">
@@ -654,14 +611,14 @@ export default function Home() {
             <div className="col-lg-4 col-md-6 service-one-single transform-el transform-y-down delay-3">
               <div className="service-style-one-item">
                 <div className="thumb">
-                  <Image width={100} height={80} src="/assets/img/illustration/3.png" alt="Image Not Found" />
+                  <Image width={100} height={80} src="/assets/img/illustration/3.png" alt="Marketplace" />
                 </div>
                 <div className="info">
                   <div className="top">
-                    <h4><Link href="/market-place">Marketplace  <span>Produce Hub</span></Link></h4>
+                    <h4><Link href="/market-place">Marketplace <span>Produce Hub</span></Link></h4>
                   </div>
                   <p>
-                    A trusted digital market where verified farmers trade quality inputs and fresh produce - to expand your martket reach and secure more opportunities.
+                    A trusted digital market where verified farmers trade quality inputs and fresh produce - to expand your market reach and secure more opportunities.
                   </p>
                   <Link href="/market-place" className="btn-angle"><i className="fas fa-arrow-right"></i></Link>
                 </div>
@@ -671,14 +628,14 @@ export default function Home() {
             <div className="col-lg-4 col-md-6 service-one-single transform-el transform-y-down delay-3">
               <div className="service-style-one-item">
                 <div className="thumb">
-                  <Image width={100} height={80} src="/assets/img/illustration/4.png" alt="Image Not Found" />
+                  <Image width={100} height={80} src="/assets/img/illustration/4.png" alt="Livestock" />
                 </div>
                 <div className="info">
                   <div className="top">
-                    <h4><Link href="#">Livestock  <span>Farm Services</span></Link></h4>
+                    <h4><Link href="#">Livestock <span>Farm Services</span></Link></h4>
                   </div>
                   <p>
-                    Data-guided livestock services covering feeding, health, and farm management—powered by verified partners
+                    Data-guided livestock services covering feeding, health, and farm management—powered by verified partners.
                   </p>
                   <Link href="#" className="btn-angle"><i className="fas fa-arrow-right"></i></Link>
                 </div>
@@ -689,19 +646,18 @@ export default function Home() {
       </div>
 
       {/* BENEFIT SECTION */}
-      <div className="benifits-area  video-bg-live bg-cover mt-md-0 mt-xs-0" style={{ backgroundImage: 'url(/assets/img/6.jpeg)' }}>
-        <div className="player" data-property="{videoURL:'w9eRIGTHKJM',containment:'.video-bg-live', showControls:false, autoPlay:true, zoom:0, loop:true, mute:true, startAt:13, opacity:1, quality:'default'}"></div>
+      <div className="benifits-area video-bg-live bg-cover mt-md-0 mt-xs-0" style={{ backgroundImage: 'url(/assets/img/6.jpeg)' }}>
         <div className="shape-top-center" style={{ backgroundImage: 'url(/assets/img/shape/10.png)' }}></div>
         <div className="container">
           <div className="row">
             <div className="col-xl-6 col-lg-7">
               <div className="benifit-items text-light">
                 <div className="shape">
-                  <Image fill src="/assets/img/illustration/8.png" alt="Image Not Found" />
+                  <Image fill src="/assets/img/illustration/8.png" alt="Shape" />
                 </div>
                 <h2 className="title">Elevate Your Agricultural Operations with GSFN</h2>
                 <p>
-                  GSFN&apos;s innovative agri-tech platform transformed my farming practices with technology-driven solutions that truly made a difference.
+                  GSFN's innovative agri-tech platform transforms farming practices with technology-driven solutions that make a real difference.
                 </p>
                 <ul className="list-standard">
                   <li>Smart Farming Solutions</li>
@@ -717,42 +673,42 @@ export default function Home() {
       {/* PRODUCT SECTION */}
       <div className="product-cat-area default-padding">
         <div className="shape-right-bottom-mini">
-          <Image fill src="/assets/img/shape/11.png" alt="Image Not Found" />
+          <Image fill src="/assets/img/shape/11.png" alt="Shape" />
         </div>
         <div className="container">
           <div className="product-cat-items">
             <div className="row align-center">
               <div className="col-lg-5 product-cat-info">
-                <h2 className="mask-text" style={{ backgroundImage: 'url(/assets/img/shape/28.jpg)' }}>Healthy Life With Fresh Products</h2>
+                <h2 className="mask-text" style={{ backgroundImage: 'url(/assets/img/shape/28.jpg)' }}>Fresh Products from Verified Farms</h2>
               </div>
               <div className="col-lg-6 offset-lg-1 row align-item-center justify-content-center">
                 <div className="product-cat-lists text-light col-12 col-md-10">
                   <div className="product-list-box">
                     <div className="product-list-item">
-                      <Link href="services-details.html">
-                        <Image width={50} height={50} src="/assets/img/icon/9.png" alt="Icon" />
-                        <h5>Blueberry</h5>
+                      <Link href="/market-place">
+                        <Image width={50} height={50} src="/assets/img/icon/9.png" alt="Produce" />
+                        <h5>Produce</h5>
                       </Link>
                     </div>
 
                     <div className="product-list-item">
-                      <Link href="services-details.html">
-                        <Image width={50} height={50} src="/assets/img/icon/10.png" alt="Icon" />
-                        <h5>Strawberry</h5>
+                      <Link href="/market-place">
+                        <Image width={50} height={50} src="/assets/img/icon/10.png" alt="Grains" />
+                        <h5>Grains</h5>
                       </Link>
                     </div>
 
                     <div className="product-list-item">
-                      <Link href="services-details.html">
-                        <Image width={50} height={50} src="/assets/img/icon/11.png" alt="Icon" />
-                        <h5>Cabbage</h5>
+                      <Link href="/market-place">
+                        <Image width={50} height={50} src="/assets/img/icon/11.png" alt="Vegetables" />
+                        <h5>Vegetables</h5>
                       </Link>
                     </div>
 
                     <div className="product-list-item">
-                      <Link href="services-details.html">
-                        <Image width={50} height={50} src="/assets/img/icon/12.png" alt="Icon" />
-                        <h5>Maize</h5>
+                      <Link href="/market-place">
+                        <Image width={50} height={50} src="/assets/img/icon/12.png" alt="Crops" />
+                        <h5>Crops</h5>
                       </Link>
                     </div>
 
@@ -869,103 +825,6 @@ export default function Home() {
 
       ))}
 
-      {/* CONTACT SECTION */}
-      {/* <div className="contact-area overflow-hidden bg-gray default-padding">
-        <div className="sahpe-right-bottom">
-          <Image fill src="/assets/img/shape/16.png" alt="Image Not Found" />
-        </div>
-        <div className="container">
-          <div className="row align-center">
-
-            <div className="col-tact-stye-one col-xl-6 col-lg-7">
-              <div className="contact-form-style-one mb-md-50">
-                <Image width={300} height={300} src="/assets/img/illustration/10.png" alt="Image Not Found" />
-                <h5 className="sub-title">Have Questions?</h5>
-                <h2 className="heading">Send us a massage</h2>
-                <form action="/assets/mail/contact.php" method="POST" className="contact-form contact-form">
-                  <div className="row">
-                    <div className="col-lg-12">
-                      <div className="form-group">
-                        <input className="form-control" id="name" name="name" placeholder="Name" type="text" />
-                        <span className="alert-error"></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-lg-6">
-                      <div className="form-group">
-                        <input className="form-control" id="email" name="email" placeholder="Email*" type="email" />
-                        <span className="alert-error"></span>
-                      </div>
-                    </div>
-                    <div className="col-lg-6">
-                      <div className="form-group">
-                        <input className="form-control" id="phone" name="phone" placeholder="Phone" type="text" />
-                        <span className="alert-error"></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-lg-12">
-                      <div className="form-group comments">
-                        <textarea className="form-control" id="comments" name="comments" placeholder="Tell Us About Project *"></textarea>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-lg-12">
-                      <button type="submit" name="submit" id="submit">
-                        <i className="fa fa-paper-plane"></i> Get in Touch
-                      </button>
-                    </div>
-                  </div>
-                  <div className="col-lg-12 alert-notification">
-                    <div id="message" className="alert-msg"></div>
-                  </div>
-                </form>
-              </div>
-            </div>
-
-            <div className="col-tact-stye-one col-xl-5 offset-xl-1 col-lg-5">
-              <div className="contact-style-one-info text-light">
-                <h2>
-                  Contact
-                  <span>
-                    Information
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" preserveAspectRatio="none"><path d="M14.4,111.6c0,0,202.9-33.7,471.2,0c0,0-194-8.9-397.3,24.7c0,0,141.9-5.9,309.2,0" style={{ animationPlayState: 'running' }}></path></svg>
-                  </span>
-                </h2>
-                <p>
-                  Plan upon yet way get cold spot its week. Almost do am or limits hearts. Resolve parties but why she shewing.
-                </p>
-                <ul>
-                  <li>
-                    <div className="content">
-                      <h5 className="title">Hotline</h5>
-                      <Link href="">+234(0) 912 188 1781</Link>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="info">
-                      <h5 className="title">Our Location</h5>
-                      <p>
-                        HeadQuarters Address: 82A Js Tarkaa Railway Bye Pass, Makurdi, <br /> Benue State.
-                      </p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="info">
-                      <h5 className="title">Official Email</h5>
-                      <Link href="mailto: admin@smartfarmningetwork.com"> admin@smartfarmningetwork.com</Link>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 }
