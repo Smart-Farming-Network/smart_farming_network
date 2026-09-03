@@ -88,7 +88,7 @@ export default function Footer() {
                             <div className="footer-item apps">
                                 <h4 className="widget-title">Download Apps</h4>
                                 <ul className="d-flex flex-column gap-2">
-                                    <li>
+                                    {/* <li>
                                         <Link
                                             href="#"
                                             target="_blank"
@@ -119,7 +119,7 @@ export default function Footer() {
                                                 className="h-100 w-100 container"
                                             />
                                         </Link>
-                                    </li>
+                                    </li> */}
 
                                     <li className="container p-4 px-2">
                                         <Link
