@@ -144,23 +144,14 @@ export default function FarmVersePage() {
 
                             <div className="d-flex flex-wrap gap-3">
 
-                                <a
-                                    href="https://apps.apple.com/app/farmverse"
+                                <Link
+                                    href="https://drive.google.com/file/d/1h6ALXzfmM5lOWjaIEyR4FWKQxB57BQ7Q/view?usp=sharing"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="btn btn-light btn-lg px-5 rounded-pill"
                                 >
-                                    📱 App Store
-                                </a>
-
-                                <a
-                                    href="https://play.google.com/store/apps/details?id=com.gsfn.farmverse"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="btn btn-success btn-lg px-5 rounded-pill"
-                                >
-                                    📱 Google Play
-                                </a>
+                                    📱 Download App
+                                </Link>
 
                                 <Link
                                     href="#about"
@@ -515,23 +506,14 @@ export default function FarmVersePage() {
 
                                 <div className="d-flex gap-3 flex-wrap mb-4">
 
-                                    <a
-                                        href="https://apps.apple.com/app/farmverse"
+                                    <Link
+                                        href="https://drive.google.com/file/d/1h6ALXzfmM5lOWjaIEyR4FWKQxB57BQ7Q/view?usp=sharing"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="btn btn-outline-dark btn-lg"
                                     >
-                                        <i className="fab fa-apple me-2"></i> App Store
-                                    </a>
-
-                                    <a
-                                        href="https://play.google.com/store/apps/details?id=com.gsfn.farmverse"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="btn btn-outline-success btn-lg"
-                                    >
-                                        <i className="fab fa-google-play me-2"></i> Google Play
-                                    </a>
+                                        <i className="fab fa-apple me-2"></i> Download App
+                                    </Link>
 
                                 </div>
 
@@ -542,28 +524,19 @@ export default function FarmVersePage() {
                                 <h5 className="fw-bold mb-3">⭐ Love FarmVerse? Share Your Review!</h5>
 
                                 <p className="mb-3">
-                                    Your feedback helps us improve and reach more farmers. After downloading, please leave a 5-star review on your app store.
+                                    Your feedback helps us improve and reach more farmers. After downloading, please leave a 5-star review on your Download App.
                                 </p>
 
                                 <div className="d-flex gap-2 flex-wrap">
 
-                                    <a
-                                        href="https://apps.apple.com/app/farmverse/reviews"
+                                    <Link
+                                        href="https://drive.google.com/file/d/1h6ALXzfmM5lOWjaIEyR4FWKQxB57BQ7Q/view?usp=sharing/reviews"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="btn btn-sm btn-success text-white"
                                     >
-                                        📝 Review on App Store
-                                    </a>
-
-                                    <a
-                                        href="https://play.google.com/store/apps/details?id=com.gsfn.farmverse&reviewId=0"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="btn btn-sm btn-success text-white"
-                                    >
-                                        📝 Review on Google Play
-                                    </a>
+                                        📝 Review on Download App
+                                    </Link>
 
                                 </div>
 
@@ -644,7 +617,7 @@ export default function FarmVersePage() {
                 TESTIMONIALS
             =========================================== */}
 
-            <section className="py-5 bg-light">
+            {/* <section className="py-5 bg-light">
 
                 <div className="container">
 
@@ -697,7 +670,7 @@ export default function FarmVersePage() {
 
                 </div>
 
-            </section>
+            </section> */}
 
             {/* ===========================================
                 CTA
@@ -715,23 +688,23 @@ export default function FarmVersePage() {
 
                     <div className="d-flex gap-3 justify-content-center flex-wrap mb-4">
 
-                        <a
-                            href="https://apps.apple.com/app/farmverse"
+                        <Link
+                            href="https://drive.google.com/file/d/1h6ALXzfmM5lOWjaIEyR4FWKQxB57BQ7Q/view?usp=sharing"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="btn btn-light btn-lg"
                         >
-                            📱 App Store
-                        </a>
+                            📱 Download App
+                        </Link>
 
-                        <a
+                        <Link
                             href="https://play.google.com/store/apps/details?id=com.gsfn.farmverse"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="btn btn-light btn-lg"
                         >
                             📱 Google Play
-                        </a>
+                        </Link>
 
                     </div>
 
