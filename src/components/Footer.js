@@ -36,13 +36,13 @@ export default function Footer() {
                                     </li>
 
                                     <li>
-                                        <Link href="#">Services</Link>
+                                        <Link href="/services">Services</Link>
                                     </li>
                                     <li>
                                         <Link href="/contact">Contact Us</Link>
                                     </li>
                                     <li>
-                                        <Link href="#">Community</Link>
+                                        <Link href="/community">Community</Link>
                                     </li>
                                 </ul>
                             </div>
