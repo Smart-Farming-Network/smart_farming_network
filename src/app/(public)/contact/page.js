@@ -82,7 +82,7 @@ export default function Contact() {
                                 </li>
                                 <li>
                                     <i className="bi bi-envelope-fill text-primary me-3"></i>
-                                    <strong>Email:</strong> admin@smartfarmningetwork.com
+                                    <strong>Email:</strong> admin@smartfarmingnetwork.com
                                 </li>
                             </ul>
 
