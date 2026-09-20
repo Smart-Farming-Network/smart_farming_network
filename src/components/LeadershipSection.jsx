@@ -193,7 +193,7 @@ export default function LeadershipSection({ members = [] }) {
 
               <div className="modal-footer">
                 {selectedMember.linkedin && (
-                  <a
+                  <Link
                     href={selectedMember.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -201,7 +201,7 @@ export default function LeadershipSection({ members = [] }) {
                   >
                     <i className="fab fa-linkedin-in me-2"></i>
                     View LinkedIn Profile
-                  </a>
+                  </Link>
                 )}
 
                 <button

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Script from "next/script";
+import Link from "next/link";
 
 export default function SFM2026Tickets() {
 
@@ -218,9 +219,9 @@ export default function SFM2026Tickets() {
                         Your exposure determines your outcomes.
                     </p>
 
-                    <a href="#tickets" className="btn btn-success btn-lg mt-4 px-5">
+                    <Link href="#tickets" className="btn btn-success btn-lg mt-4 px-5">
                         Secure Your Seat Now
-                    </a>
+                    </Link>
                 </div>
             </section>
 

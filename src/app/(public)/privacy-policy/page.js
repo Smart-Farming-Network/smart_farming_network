@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 export default function PrivacyPolicy() {
     return (
@@ -62,7 +63,7 @@ export default function PrivacyPolicy() {
                         <li>Request deletion of your profile</li>
                     </ul>
                     <p className="text-gray-700">
-                        To do so, contact us at: <a href="mailto:support@smartfarmingnetwork.com" className="text-green-600 hover:underline">support@smartfarmingnetwork.com</a> or call <a href="tel:+2349121881781" className="text-green-600 hover:underline">+234 912 1881 781</a>
+                        To do so, contact us at: <Link href="mailto:support@smartfarmingnetwork.com" className="text-green-600 hover:underline">support@smartfarmingnetwork.com</Link> or call <Link href="tel:+2349121881781" className="text-green-600 hover:underline">+234 912 1881 781</Link>
                     </p>
                 </section>
 
@@ -85,8 +86,8 @@ export default function PrivacyPolicy() {
                 <address className="not-italic text-gray-700">
                     <p className="font-medium">Goodlife Smart Farming Network (GSFN)</p>
                     <p>📍 No. 17 Ahembaga Orsulega Street, Ankpa Quarters, Modern Market Rd, Makurdi, Nigeria</p>
-                    <p>Phone: <a href="tel:+2349121881781" className="text-green-600 hover:underline">+234 912 1881 781</a></p>
-                    <p>Mail: <a href="mailto:smartfarmingnetwork@gmail.com" className="text-green-600 hover:underline">smartfarmingnetwork@gmail.com</a></p>
+                    <p>Phone: <Link href="tel:+2349121881781" className="text-green-600 hover:underline">+234 912 1881 781</Link></p>
+                    <p>Mail: <Link href="mailto:smartfarmingnetwork@gmail.com" className="text-green-600 hover:underline">smartfarmingnetwork@gmail.com</Link></p>
                 </address>
             </div>
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function ServicePaymentModal({
     show,
@@ -800,14 +801,14 @@ export default function ServicePaymentModal({
                                             </p>
 
 
-                                            <a
+                                            <Link
                                                 href={payment.whatsappUrl}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="btn btn-success btn-sm rounded-pill px-4"
                                             >
                                                 Send Receipt on WhatsApp
-                                            </a>
+                                            </Link>
 
                                         </div>
 
@@ -920,14 +921,14 @@ export default function ServicePaymentModal({
 
                                 {/* OPEN WHATSAPP AGAIN */}
 
-                                <a
+                                <Link
                                     href={payment.whatsappUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="btn btn-success rounded-pill px-4 me-2"
                                 >
                                     Open WhatsApp
-                                </a>
+                                </Link>
 
 
                                 <button

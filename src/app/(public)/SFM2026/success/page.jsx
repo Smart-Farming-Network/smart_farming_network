@@ -116,12 +116,12 @@ export default function CheckoutSuccessPage() {
                             {message}
                         </p>
 
-                        <a
+                        <Link
                             href="/"
                             className="btn btn-success mt-4 px-4"
                         >
                             Continue
-                        </a>
+                        </Link>
                     </>
                 ) : (
                     <>
@@ -140,12 +140,12 @@ export default function CheckoutSuccessPage() {
                             {message}
                         </p>
 
-                        <a
+                        <Link
                             href="/sfm2026"
                             className="btn btn-dark mt-4 px-4"
                         >
                             Try Again
-                        </a>
+                        </Link>
                     </>
                 )}
 

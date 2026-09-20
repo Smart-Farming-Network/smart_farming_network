@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function ContentDetailPage() {
   const [bookmarked, setBookmarked] = useState(false);
@@ -69,7 +70,7 @@ export default function ContentDetailPage() {
         <h3 className="text-2xl font-semibold mb-4">Related Content</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {relatedItems.map((item, index) => (
-            <a
+            <Link
               href={item.link}
               key={index}
               className="border rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all"
@@ -80,7 +81,7 @@ export default function ContentDetailPage() {
               <div className="p-4">
                 <h4 className="font-medium text-lg">{item.title}</h4>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
