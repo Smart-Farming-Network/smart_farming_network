@@ -463,3 +463,48 @@ model CommunityReport {
   @@index([commentId])
   @@index([resolvedAt])
 }
+
+model TrainingRegistration {
+  id                    String   @id @default(cuid())
+
+  // Personal Information
+  fullName              String
+  phone                 String
+  email                 String
+  gender                String
+  ageBracket            String
+
+  // Location
+  lga                   String
+  community             String
+
+  // Professional & Agricultural Experience
+  position              String
+  organization          String?
+  experience            String
+  agriculturalArea      String
+  farmersReached        Int?
+  challenges            String?
+
+  // Technology Experience
+  agriTechnology        String
+  smartphoneType        String
+
+  // Areas of Interest
+  interestAreas         String[]
+
+  // Training Expectations
+  expectations          String
+
+  // Consent
+  consent               Boolean
+
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  @@index([email])
+  @@index([lga])
+  @@index([gender])
+  @@index([smartphoneType])
+  @@index([createdAt])
+}

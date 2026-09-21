@@ -152,7 +152,7 @@ export default function KnowledgeBasePage() {
                 </p>
 
                 <Link
-                  href={`/knowledge-base/${featuredArticle.slug}`}
+                  href={`/knowledge-hub/${featuredArticle.slug}`}
                   className="btn btn-warning rounded-pill px-4"
                 >
                   Read Guide

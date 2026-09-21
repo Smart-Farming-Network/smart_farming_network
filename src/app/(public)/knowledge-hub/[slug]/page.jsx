@@ -24,7 +24,7 @@ export default async function KnowledgeArticlePage({ params }) {
           <div className="row justify-content-center">
             <div className="col-lg-9">
               <Link
-                href="/knowledge-base"
+                href="/knowledge-hub"
                 className="text-warning text-decoration-none"
               >
                 <i className="fas fa-arrow-left me-2"></i>
@@ -140,7 +140,7 @@ export default async function KnowledgeArticlePage({ params }) {
 
               <div className="border-top mt-5 pt-4">
                 <Link
-                  href="/knowledge-base"
+                  href="/knowledge-hub"
                   className="btn btn-dark rounded-pill px-4"
                 >
                   <i className="fas fa-arrow-left me-2"></i>

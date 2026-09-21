@@ -32,7 +32,7 @@ export default function KnowledgeCard({ article }) {
             </small>
 
             <Link
-              href={`/knowledge-base/${article.slug}`}
+              href={`/knowledge-hub/${article.slug}`}
               className="btn btn-dark rounded-pill px-4"
             >
               Read Guide

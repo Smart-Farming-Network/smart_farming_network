@@ -9493,3 +9493,470 @@ footer {
 .ticket ul li {
   list-style-type: circle !important;
 }
+
+.training-page {
+    background: #f5f7f4;
+    color: #172217;
+}
+
+/* HERO */
+
+.training-hero {
+    padding: 90px 0;
+    background:
+        linear-gradient(135deg, rgba(0, 92, 18, 0.97), rgba(0, 123, 25, 0.91)),
+        url("/assets/images/smart-farming-bg.jpg") center/cover;
+    color: #fff;
+}
+
+.training-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.training-hero h1 {
+    max-width: 750px;
+    line-height: 1.08;
+}
+
+.training-hero .lead {
+    max-width: 700px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.training-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.training-meta > div {
+    min-width: 210px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.training-meta small {
+    display: block;
+    margin-bottom: 4px;
+    opacity: 0.75;
+}
+
+.training-meta strong {
+    display: block;
+}
+
+
+/* REGISTRATION CARD */
+
+.registration-card {
+    padding: 35px;
+    border-radius: 22px;
+    background: #fff;
+    color: #172217;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.registration-icon {
+    width: 65px;
+    height: 65px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e9f6e9;
+    color: #087c18;
+    font-size: 27px;
+}
+
+.deadline-box {
+    padding: 18px;
+    border-radius: 12px;
+    text-align: center;
+    background: #f2f8f1;
+}
+
+.deadline-box small {
+    display: block;
+    color: #6c756b;
+}
+
+.deadline-box strong {
+    display: block;
+    margin-top: 5px;
+    color: #087c18;
+    font-size: 21px;
+}
+
+
+/* LEARNING */
+
+.learning-section {
+    padding: 85px 0;
+    background: #fff;
+}
+
+.section-heading {
+    max-width: 700px;
+    margin: auto;
+}
+
+.section-heading > span {
+    color: #078319;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.section-heading h2 {
+    margin-top: 10px;
+    font-weight: 800;
+}
+
+.section-heading p {
+    color: #6c756b;
+    line-height: 1.7;
+}
+
+.learning-card {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 22px;
+    border: 1px solid #e5ebe3;
+    border-radius: 14px;
+    background: #fff;
+}
+
+.learning-card > span {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e8f7e9;
+    color: #078319;
+}
+
+.learning-card p {
+    margin: 0;
+    font-weight: 600;
+}
+
+
+/* FORM */
+
+.registration-section {
+    padding: 90px 0;
+}
+
+.form-wrapper {
+    max-width: 1000px;
+    margin: auto;
+    padding: 45px;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+}
+
+.form-heading {
+    margin-bottom: 45px;
+}
+
+.form-heading > span {
+    color: #078319;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.form-heading h2 {
+    margin: 7px 0;
+    font-weight: 800;
+}
+
+.form-heading p {
+    color: #6c756b;
+    margin-bottom: 0;
+}
+
+.form-section {
+    padding: 35px 0;
+    border-top: 1px solid #edf0ec;
+}
+
+.form-section-title {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 28px;
+}
+
+.form-section-title > span {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #087c18;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.form-section-title h5 {
+    margin: 0;
+    font-weight: 750;
+}
+
+.form-section-title p {
+    margin: 3px 0 0;
+    color: #899087;
+    font-size: 14px;
+}
+
+.form-label {
+    margin-bottom: 8px;
+    font-weight: 650;
+}
+
+.form-label span {
+    color: #e52c2c;
+}
+
+.form-control,
+.form-select {
+    min-height: 50px;
+    padding: 12px 15px;
+    border-color: #dfe5dd;
+    border-radius: 9px;
+}
+
+textarea.form-control {
+    min-height: auto;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #087c18;
+    box-shadow: 0 0 0 3px rgba(8, 124, 24, 0.1);
+}
+
+
+/* RADIO */
+
+.radio-group {
+    display: flex;
+    gap: 12px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 18px;
+    border: 1px solid #dfe5dd;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+.radio-group input {
+    accent-color: #087c18;
+}
+
+
+/* INTERESTS */
+
+.interest-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.interest-option {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 15px;
+    border: 1px solid #dfe5dd;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.interest-option:hover {
+    border-color: #087c18;
+    background: #f7fbf6;
+}
+
+.interest-option input {
+    display: none;
+}
+
+.interest-option > span {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #cbd3c8;
+    border-radius: 5px;
+    color: transparent;
+}
+
+.interest-option input:checked + span {
+    background: #087c18;
+    border-color: #087c18;
+    color: #fff;
+}
+
+
+/* CONSENT */
+
+.consent-box {
+    padding: 20px;
+    border-radius: 12px;
+    background: #f5f9f4;
+    border: 1px solid #e0eadd;
+}
+
+.consent-box label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    color: #596158;
+    line-height: 1.6;
+}
+
+.consent-box input {
+    margin-top: 5px;
+    accent-color: #087c18;
+}
+
+
+/* SUBMIT */
+
+.submit-area {
+    padding-top: 35px;
+    text-align: center;
+}
+
+.btn-register {
+    padding: 15px 32px;
+    border: 0;
+    border-radius: 9px;
+    background: #087c18;
+    color: #fff;
+    font-weight: 700;
+    transition: 0.2s ease;
+}
+
+.btn-register:hover {
+    background: #056512;
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.submit-area p {
+    margin-top: 13px;
+    margin-bottom: 0;
+    color: #8a9188;
+    font-size: 13px;
+}
+
+
+/* FOOTER */
+
+.training-footer {
+    padding: 70px 0;
+    background: #045d12;
+    color: #fff;
+}
+
+.training-footer h3 {
+    max-width: 700px;
+    margin: auto;
+    font-weight: 750;
+}
+
+.training-footer p {
+    margin-top: 12px;
+    opacity: 0.8;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.contact-info a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.contact-info i {
+    margin-right: 8px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+
+    .training-hero {
+        padding: 60px 0;
+    }
+
+    .training-hero h1 {
+        font-size: 2.3rem;
+    }
+
+    .registration-card {
+        padding: 25px;
+    }
+
+    .learning-section,
+    .registration-section {
+        padding: 60px 0;
+    }
+
+    .form-wrapper {
+        padding: 25px 18px;
+        border-radius: 14px;
+    }
+
+    .interest-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .training-meta {
+        flex-direction: column;
+    }
+
+    .training-meta > div {
+        width: 100%;
+    }
+
+    .radio-group {
+        flex-direction: column;
+    }
+
+}

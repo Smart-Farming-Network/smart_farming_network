@@ -599,7 +599,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="text-center">
-                  <h4><Link className="text-white" href="/knowledge-base">Knowledge Base</Link></h4>
+                  <h4><Link className="text-white" href="/knowledge-hub">Knowledge Base</Link></h4>
                   <p className="mb-3 text-white">
                     Access farming guides and best practices.
                   </p>
