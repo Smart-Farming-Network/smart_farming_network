@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/libs/prisma";
+import { mailer } from "@/libs/mail";
+import { emailLayout } from "@/libs/emailLayout";
 
 
 const ALLOWED_GENDERS = [
@@ -308,6 +310,13 @@ export async function POST(request) {
 
                 consent,
             },
+        });
+
+        await mailer.sendMail({
+            from: `"${process.env.APP_NAME || "Support"}" <${process.env.ZOHO_SMTP_USER}>`,
+            to: normalizedEmail,
+            subject: "Training Registration Confirmation",
+            html: emailLayout({ title: "Training Registration Confirmation", content: `<p>Dear ${fullName},</p><p>Thank you for registering for the training. We have received your registration and will be in touch with further details.</p><p>Best regards,<br/>The ${process.env.APP_NAME || "Support"} Team</p>` }),
         });
 
         return NextResponse.json(
