@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function SmartAgricultureTrainingPage() {
-    const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
+    const router = useRouter();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -55,8 +56,9 @@ export default function SmartAgricultureTrainingPage() {
                 );
             }
 
-            setSubmitted(true);
-            form.reset();
+            router.push(
+                "/knowledge-hub/traning/smart-agriculture/success"
+            );
 
         } catch (error) {
             console.error(error);
@@ -108,10 +110,8 @@ export default function SmartAgricultureTrainingPage() {
                                     <strong>Smart &amp; Digital Agriculture</strong>
                                 </div>
                             </div>
-                        </div>
 
-                        <div className="col-lg-5">
-                            <div className="registration-card">
+                            {/* <div className="registration-card">
                                 <div className="text-center mb-4">
                                     <div className="registration-icon">
                                         <i className="bi bi-person-plus-fill"></i>
@@ -131,13 +131,24 @@ export default function SmartAgricultureTrainingPage() {
                                     <small>Registration closes</small>
                                     <strong>1st October, 2026</strong>
                                 </div>
+                            </div> */}
+                        </div>
+
+                        <div className="col-lg-5">
+
+                            <div className="training-flyer-wrapper">
+                                <img
+                                    src="/assets/img/smart-agriculture-training.png"
+                                    alt="Smart Agriculture and Digital Extension Training"
+                                    className="training-flyer"
+                                />
                             </div>
+
                         </div>
 
                     </div>
                 </div>
             </section>
-
 
             {/* WHAT YOU'LL LEARN */}
             <section className="learning-section">
@@ -193,15 +204,7 @@ export default function SmartAgricultureTrainingPage() {
                             </p>
                         </div>
 
-                        {submitted && (
-                            <div className="alert alert-success">
-                                <strong>Registration submitted successfully.</strong>
-                                <br />
-                                Thank you for registering for the Smart Agriculture
-                                &amp; Digital Extension Training.
-                            </div>
-                        )}
-
+                        
                         <form onSubmit={handleSubmit}>
 
                             {/* PERSONAL INFORMATION */}

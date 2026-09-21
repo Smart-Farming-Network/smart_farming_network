@@ -565,7 +565,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="text-center">
-                  <h4><Link className="text-white" href="http://wa.me//2349121881781">24/7 Support</Link></h4>
+                  <h4><Link className="text-white" href="http://wa.me//+2349121881781">24/7 Support</Link></h4>
                   <p className="mb-3 text-white">
                     Get help when you need it the most.
                   </p>
