@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function SmartAgricultureTrainingPage() {
+    const router = useRouter();
     const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {
@@ -39,7 +40,6 @@ export default function SmartAgricultureTrainingPage() {
         };
 
         try {
-            const router = useRouter();
             const response = await fetch("/api/knowledge-hub/training-registration", {
                 method: "POST",
                 headers: {
