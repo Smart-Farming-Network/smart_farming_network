@@ -1,4 +1,4 @@
-import { emailBrand } from "./emailBrand";
+import { emailBrand } from "./emailBrand.js";
 
 export function emailLayout({ title, content }) {
     return `
