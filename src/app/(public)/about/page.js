@@ -403,7 +403,7 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* ================= WHY WE EXIST SECTION ================= */}
+      {/* ================= WHY WE EXIST SECTION
       <section className="bg-light py-5">
         <div className="container">
           <div className="site-heading text-center mb-5">
@@ -448,7 +448,7 @@ export default function AboutUsPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> ================= */}
 
       {/* ================= OUR APPROACH TO TECHNOLOGY ================= */}
       <section className="bg-white py-5">
@@ -528,7 +528,7 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* ================= OUR ECOSYSTEM ================= */}
+      {/* ================= OUR ECOSYSTEM 
       <section className="bg-white py-5">
         <div className="container">
           <div className="site-heading text-center mb-5">
@@ -570,7 +570,7 @@ export default function AboutUsPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section>================= */}
 
       {/* ================= OUR VALUES ================= */}
       <section className="bg-light py-5">
