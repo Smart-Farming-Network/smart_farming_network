@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import LeadershipSection from "@/components/LeadershipSection";
 
@@ -192,6 +195,47 @@ const leadershipMembers = [
 ];
 
 export default function AboutUsPage() {
+  //fetch projects from api and display them in a grid
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    async function fetchProjects() {
+      try {
+        setLoading(true);
+        setError("");
+
+        const res = await fetch("/api/projects");
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch projects.");
+        }
+
+        const data = await res.json();
+
+        // Supports either an array or { projects: [...] }
+        const fetchedProjects = Array.isArray(data)
+          ? data
+          : data.data;
+
+
+        if (!Array.isArray(fetchedProjects)) {
+          throw new Error("Invalid projects response.");
+        }
+
+        setProjects(fetchedProjects);
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+        setError("Unable to load projects. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchProjects();
+  }, []);
+
   return (
     <div>
       {/* ================= PAGE METADATA ================= */}
@@ -760,57 +804,68 @@ export default function AboutUsPage() {
           <div className="site-heading text-center mb-5">
             <h2 className="title">Our Projects</h2>
           </div>
+                
+          {loading ? (
+            <div className="text-center py-5">
+              <div className="spinner-border text-success" role="status">
+                <span className="visually-hidden">Loading projects...</span>
+              </div>
+              <p className="text-muted mt-3">Loading projects...</p>
+            </div>
+          ) : error ? (
+            <div className="alert alert-warning text-center" role="alert">
+              {error}
+            </div>
+          ) : projects.length === 0 ? (
+            <div className="text-center py-5">
+              <h5>No projects available yet.</h5>
+              <p className="text-muted">
+                Our projects will be displayed here soon.
+              </p>
+            </div>
+          ) : (
+            <div className="row">
+              {projects.map((project) => (
+                <div className="col-md-4 mb-4" key={project.id}>
+                  <div className="card h-100 shadow-sm border-0">
+                    <Image
+                      src={project.image}
+                      alt={project.title || "Project image"}
+                      width={600}
+                      height={400}
+                      className="card-img-top"
+                      style={{
+                        objectFit: "cover",
+                        objectPosition: "top",
+                        height: "280px",
+                      }}
+                    />
 
-          <div className="row">
-            {[
-              {
-                title: "Project Edna",
-                image: "/assets/img/edna.jpg",
-                description:
-                  "A production intelligence layer providing real-time insights, decision support, alerts, and predictive guidance across the GSFN farming ecosystem.",
-                link: "/projects/agrigo",
-              },
-              {
-                title: "IoT Smart Farming Infrastructure",
-                image: "/assets/img/farm-project.jpeg",
-                description:
-                  "Sensor-driven soil, climate, and crop monitoring integrated into a unified control system for precision farming and yield optimization at scale.",
-                link: "/project-farm-100",
-              },
-              {
-                title: "Digital Market & Trade Network",
-                image: "/assets/img/smart_farm.jpg",
-                description:
-                  "A structured commerce engine connecting verified production clusters to investors and off-takers with transparency, traceability, and measurable output.",
-                link: "/projects/marketplace",
-              },
-            ].map((project, index) => (
-              <div className="col-md-4 mb-4" key={index}>
-                <div className="card h-100 shadow-sm border-0">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={600}
-                    height={800}
-                    style={{objectPosition:"top", objectFit:"fit", height:"350px"}}
-                    className="card-img-top"
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">{project.title}</h5>
-                    <p className="card-text fs-6">{project.description}</p>
+                    <div className="card-body d-flex flex-column">
+                      <h5 className="card-title">
+                        {project.title}
+                      </h5>
 
-                    <Link
-                      href={project.link}
-                      className="btn btn-success btn-sm"
-                    >
-                      View Project →
-                    </Link>
+                      <p className="card-text fs-6">
+                        {project.content}
+                      </p>
+
+                      {project.link && (
+                        <Link
+                          href={project.link}
+                          className="btn btn-success btn-sm mt-auto align-self-start"
+                        >
+                          View Project →
+                        </Link>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
+              ))}
+            </div>
+          )}
+
+        </div>          
       </section>
 
       {/* ================= CTA SECTION ================= */}

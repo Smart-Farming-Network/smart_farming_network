@@ -508,3 +508,16 @@ model TrainingRegistration {
   @@index([smartphoneType])
   @@index([createdAt])
 }
+
+// --- project model ---
+model project {
+  id        String   @id @default(uuid())
+  title      String
+  slug      String   @unique
+  image     String?
+  imageId   String?
+  category  String
+  content   String            @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
