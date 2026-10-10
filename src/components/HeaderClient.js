@@ -38,6 +38,10 @@ export default function HeaderClient({ session }) {
                 alt="Logo"
               />
             </Link>
+
+            <Link className="fw-bold fs-2 mx-3 d-md-none" href="/checkout" onClick={() => setOpen(false)}>
+              🛒
+            </Link>
           </div>
         </div>
 
