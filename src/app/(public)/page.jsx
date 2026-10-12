@@ -669,31 +669,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* BENEFIT SECTION */}
-      <div className="benifits-area video-bg-live bg-cover mt-md-0 mt-xs-0" style={{ backgroundImage: 'url(/assets/img/6.jpeg)' }}>
-        <div className="shape-top-center" style={{ backgroundImage: 'url(/assets/img/shape/10.png)' }}></div>
-        <div className="container">
-          <div className="row">
-            <div className="col-xl-6 col-lg-7">
-              <div className="benifit-items text-light">
-                <div className="shape">
-                  <Image fill src="/assets/img/illustration/8.png" alt="Shape" />
-                </div>
-                <h2 className="title">Elevate Your Agricultural Operations with GSFN</h2>
-                <p>
-                  GSFN's innovative agri-tech platform transforms farming practices with technology-driven solutions that make a real difference.
-                </p>
-                <ul className="list-standard">
-                  <li>Smart Farming Solutions</li>
-                  <li>Marketplace Produce Hub</li>
-                  <li>Livestock Farm Services</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* PRODUCT SECTION */}
       <div className="product-cat-area default-padding">
         <div className="shape-right-bottom-mini">

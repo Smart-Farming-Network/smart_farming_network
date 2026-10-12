@@ -306,48 +306,6 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* ================= CORE PILLARS SECTION ================= */}
-      <section className="bg-light py-5">
-        <div className="container">
-          <div className="site-heading text-center mb-5">
-            <h2 className="title">Our Core Framework: DESIGN → ORGANIZE → OPTIMIZE → SCALE</h2>
-          </div>
-
-          <div className="row">
-            {[
-              {
-                icon: "🎨",
-                title: "DESIGN",
-                description: "We design practical systems, tools and experiences around the realities of African agriculture.",
-              },
-              {
-                icon: "📊",
-                title: "ORGANIZE",
-                description: "We organize fragmented agricultural information, farmers, resources and opportunities into connected systems.",
-              },
-              {
-                icon: "⚡",
-                title: "OPTIMIZE",
-                description: "We use technology, data and intelligence to help farmers make better decisions and use resources more efficiently.",
-              },
-              {
-                icon: "📈",
-                title: "SCALE",
-                description: "We create infrastructure that allows successful farming models, businesses and opportunities to grow across communities and markets.",
-              },
-            ].map((pillar, index) => (
-              <div className="col-md-6 col-lg-3 mb-4" key={index}>
-                <div className="card h-100 border-0 shadow-sm text-center py-4">
-                  <div className="fs-1 mb-3">{pillar.icon}</div>
-                  <h5 className="card-title fw-bold">{pillar.title}</h5>
-                  <p className="card-text fs-6">{pillar.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ================= OUR VISION ================= */}
       <section className="bg-white py-5">
         <div className="container">
@@ -508,16 +466,6 @@ export default function AboutUsPage() {
                   "Technology should not take the farmer out of farming. <br /> It should make the farmer better at farming."
                 </p>
               </div>
-
-              <p className="fs-5 mt-4">
-                We position farmers as the central actors in our ecosystem. Technology provides:
-              </p>
-              <ul className="fs-5">
-                <li className="mb-2"><strong>Intelligence</strong> — Data-driven insights</li>
-                <li className="mb-2"><strong>Connectivity</strong> — Access to markets and networks</li>
-                <li className="mb-2"><strong>Organization</strong> — Structured processes and systems</li>
-                <li className="mb-2"><strong>Efficiency</strong> — Better resource utilization</li>
-              </ul>
             </div>
 
             <div className="col-lg-6 text-center">
