@@ -1,56 +1,163 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 
 const IMG = '/assets/img/edna.jpg';
+const MAX_CHARS = 1000; // keep in sync with EDNA_MAX_INPUT_CHARS
+const STORAGE_KEY = 'edna-chat-v1';
 
 const WELCOME_MESSAGE = {
   role: 'assistant',
   content: "Hi! I'm Edna 👋 your Smart Farming Network assistant. I can help with farming tips, the GSFN platform, market insights, and more. How can I help you today?",
 };
 
+const SUGGESTIONS = [
+  'How do I get started on GSFN?',
+  'Tips for watering crops in dry weather',
+  'How can investors back a farm project?',
+];
+
+// Tiny, safe markdown: **bold** and "- " bullets. Rendered as React nodes (no HTML injection).
+function renderInline(text, keyBase) {
+  return text.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
+    part.startsWith('**') && part.endsWith('**') && part.length > 4
+      ? <strong key={`${keyBase}-${i}`}>{part.slice(2, -2)}</strong>
+      : part
+  );
+}
+
+function FormattedText({ text }) {
+  const blocks = [];
+  let list = [];
+  const flush = () => {
+    if (list.length) {
+      blocks.push(
+        <ul key={`ul-${blocks.length}`} style={{ margin: '4px 0', paddingLeft: 18 }}>
+          {list.map((li, i) => <li key={i} style={{ marginBottom: 2 }}>{renderInline(li, `li${i}`)}</li>)}
+        </ul>
+      );
+      list = [];
+    }
+  };
+  text.split('\n').forEach((line, i) => {
+    const m = line.match(/^\s*[-*•]\s+(.*)$/);
+    if (m) list.push(m[1]);
+    else {
+      flush();
+      if (line.trim()) blocks.push(<p key={`p-${i}`} style={{ margin: '0 0 6px' }}>{renderInline(line, `p${i}`)}</p>);
+    }
+  });
+  flush();
+  return <>{blocks}</>;
+}
+
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([WELCOME_MESSAGE]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [notice, setNotice] = useState('');
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+  const abortRef = useRef(null);
+  const toggleRef = useRef(null);
+
+  // Restore the conversation for this browser tab.
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || 'null');
+      if (Array.isArray(saved) && saved.length) setMessages(saved);
+    } catch {}
+  }, []);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages]);
+    if (loading) return;
+    try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(messages.slice(-30))); } catch {}
+  }, [messages, loading]);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+    });
+  }, [messages, loading]);
 
   useEffect(() => {
     if (isOpen) setTimeout(() => inputRef.current?.focus(), 100);
   }, [isOpen]);
 
-  const sendMessage = async () => {
-    if (!input.trim() || loading) return;
+  useEffect(() => () => abortRef.current?.abort(), []);
 
-    const userMessage = { role: 'user', content: input.trim() };
-    const updatedMessages = [...messages, userMessage];
-    setMessages(updatedMessages);
+  const close = useCallback(() => {
+    setIsOpen(false);
+    toggleRef.current?.focus();
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e) => e.key === 'Escape' && close();
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [isOpen, close]);
+
+  const sendMessage = async (override) => {
+    const text = (typeof override === 'string' ? override : input).trim();
+    if (!text || loading) return;
+
+    const history = [...messages, { role: 'user', content: text }];
+    setMessages([...history, { role: 'assistant', content: '' }]);
     setInput('');
+    setNotice('');
     setLoading(true);
+
+    const controller = new AbortController();
+    abortRef.current = controller;
+    const setReply = (content) =>
+      setMessages((prev) => [...prev.slice(0, -1), { role: 'assistant', content }]);
 
     try {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: updatedMessages }),
+        body: JSON.stringify({ messages: history }),
+        signal: controller.signal,
       });
-      const data = await res.json();
-      setMessages((prev) => [...prev, { role: 'assistant', content: data.message }]);
-    } catch {
-      setMessages((prev) => [
-        ...prev,
-        { role: 'assistant', content: 'Sorry, something went wrong. Please try again.' },
-      ]);
+
+      if (!res.ok || !res.body) {
+        const data = await res.json().catch(() => ({}));
+        setReply(data.message || 'Sorry, something went wrong. Please try again.');
+        return;
+      }
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let acc = '';
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        acc += decoder.decode(value, { stream: true });
+        setReply(acc);
+      }
+      const remaining = Number(res.headers.get('X-Edna-Remaining'));
+      if (Number.isFinite(remaining) && remaining <= 5) {
+        setNotice(`${remaining} message${remaining === 1 ? '' : 's'} left today`);
+      }
+    } catch (err) {
+      if (err.name !== 'AbortError') {
+        setReply('Sorry, something went wrong. Check your connection and try again.');
+      }
     } finally {
       setLoading(false);
     }
+  };
+
+  const resetChat = () => {
+    abortRef.current?.abort();
+    setMessages([WELCOME_MESSAGE]);
+    setNotice('');
+    setLoading(false);
+    try { sessionStorage.removeItem(STORAGE_KEY); } catch {}
+    inputRef.current?.focus();
   };
 
   const handleKeyDown = (e) => {
@@ -80,7 +187,10 @@ export default function ChatBot() {
             right: '20px',
             width: '360px',
             zIndex: 999999,
+            maxWidth: 'calc(100vw - 32px)',
           }}
+          role="dialog"
+          aria-label="Chat with Edna"
         >
           {/* ── Speech-bubble tail (arrow pointing down-right toward button) ── */}
           <div
@@ -170,9 +280,19 @@ export default function ChatBot() {
                 </div>
               </div>
 
+              {/* ── New chat button ── */}
+              <button
+                onClick={resetChat}
+                aria-label="Start a new conversation"
+                title="New conversation"
+                className="edna-icon-btn"
+              >
+                ↺
+              </button>
+
               {/* ── Close button ── */}
               <button
-                onClick={() => setIsOpen(false)}
+                onClick={close}
                 aria-label="Close chat"
                 style={{
                   /* Reset any inherited Bootstrap styles */
@@ -214,8 +334,11 @@ export default function ChatBot() {
                 scrollbarWidth: 'thin',
                 scrollbarColor: 'rgba(255,255,255,0.15) transparent',
               }}
+              role="log"
+              aria-live="polite"
+              aria-busy={loading}
             >
-              {messages.map((msg, i) => (
+              {messages.map((msg, i) => (msg.role === 'assistant' && !msg.content) ? null : (
                 <div
                   key={i}
                   style={{
@@ -258,13 +381,13 @@ export default function ChatBot() {
                       wordBreak: 'break-word',
                     }}
                   >
-                    {msg.content}
+                    {msg.role === 'assistant' ? <FormattedText text={msg.content} /> : msg.content}
                   </div>
                 </div>
               ))}
 
               {/* Typing indicator */}
-              {loading && (
+              {loading && !messages[messages.length - 1]?.content && (
                 <div style={{ display: 'flex', alignItems: 'flex-end', gap: 8 }}>
                   <div style={{ position: 'relative', width: 26, height: 26, flexShrink: 0 }}>
                     <Image src={IMG} alt="Edna" fill style={{ borderRadius: '50%', objectFit: 'cover' }} />
@@ -300,8 +423,23 @@ export default function ChatBot() {
                 </div>
               )}
 
+              {messages.length === 1 && !loading && (
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, paddingLeft: 34 }}>
+                  {SUGGESTIONS.map((q) => (
+                    <button key={q} onClick={() => sendMessage(q)} className="edna-chip">{q}</button>
+                  ))}
+                </div>
+              )}
+
               <div ref={messagesEndRef} />
             </div>
+
+            {(notice || input.length > MAX_CHARS * 0.8) && (
+              <div style={{ padding: '4px 14px', fontSize: 11, color: 'rgba(255,255,255,0.75)', background: 'rgba(0,0,0,0.45)', display: 'flex', justifyContent: 'space-between' }}>
+                <span>{notice}</span>
+                {input.length > MAX_CHARS * 0.8 && <span>{input.length}/{MAX_CHARS}</span>}
+              </div>
+            )}
 
             {/* ── Input bar ── */}
             <div
@@ -322,6 +460,8 @@ export default function ChatBot() {
                 onKeyDown={handleKeyDown}
                 placeholder="Ask Edna anything about farming..."
                 rows={1}
+                maxLength={MAX_CHARS}
+                aria-label="Message Edna"
                 style={{
                   flex: 1,
                   background: 'rgba(255,255,255,0.10)',
@@ -339,7 +479,7 @@ export default function ChatBot() {
                 }}
               />
               <button
-                onClick={sendMessage}
+                onClick={() => sendMessage()}
                 disabled={loading || !input.trim()}
                 aria-label="Send message"
                 style={{
@@ -374,6 +514,9 @@ export default function ChatBot() {
       {/*  FLOATING TOGGLE BUTTON                    */}
       {/* ══════════════════════════════════════════ */}
       <button
+        ref={toggleRef}
+        className="edna-toggle"
+        aria-expanded={isOpen}
         onClick={() => setIsOpen((prev) => !prev)}
         aria-label="Chat with Edna"
         style={{
@@ -392,7 +535,7 @@ export default function ChatBot() {
           boxShadow: '0 4px 20px rgba(0,0,0,0.35)',
           zIndex: 999999,
           display: 'block',
-          transition: 'transform 0.2s, box-shadow 0.2s',
+          transition: 'transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1)',
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.transform = 'scale(1.1)';
@@ -417,6 +560,37 @@ export default function ChatBot() {
         @keyframes sfn-bounce {
           0%, 80%, 100% { transform: translateY(0);   opacity: 0.45; }
           40%            { transform: translateY(-5px); opacity: 1;    }
+        }
+        @keyframes edna-rise {
+          from { opacity: 0; transform: translateY(8px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .edna-icon-btn {
+          all: unset; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center;
+          width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; cursor: pointer; color: #fff; font-size: 16px;
+          background: rgba(255,255,255,0.18); border: 1.5px solid rgba(255,255,255,0.35);
+          transition: background 0.2s cubic-bezier(0.22,1,0.36,1), transform 0.2s cubic-bezier(0.22,1,0.36,1);
+        }
+        .edna-icon-btn:hover { background: rgba(255,255,255,0.32); transform: rotate(-30deg); }
+        .edna-icon-btn:active { transform: scale(0.92); }
+        .edna-chip {
+          all: unset; box-sizing: border-box; cursor: pointer; color: #fff; font-size: 12.5px; line-height: 1.3;
+          padding: 7px 12px; border-radius: 999px; background: rgba(255,255,255,0.12);
+          box-shadow: inset 0 0 0 1px rgba(255,255,255,0.22); animation: edna-rise 0.4s cubic-bezier(0.22,1,0.36,1) both;
+          transition: background 0.2s cubic-bezier(0.22,1,0.36,1), transform 0.2s cubic-bezier(0.22,1,0.36,1);
+        }
+        .edna-chip:hover { background: rgba(46,125,50,0.75); transform: translateY(-1px); }
+        .edna-chip:active { transform: scale(0.97); }
+        .edna-chip:nth-child(2) { animation-delay: 0.06s; }
+        .edna-chip:nth-child(3) { animation-delay: 0.12s; }
+        .edna-icon-btn:focus-visible, .edna-chip:focus-visible, .edna-toggle:focus-visible {
+          outline: 2px solid #b6f36a; outline-offset: 2px;
+        }
+        textarea[aria-label="Message Edna"]:focus-visible { box-shadow: 0 0 0 2px #b6f36a; }
+        textarea[aria-label="Message Edna"]::placeholder { color: rgba(255,255,255,0.7); }
+        @media (prefers-reduced-motion: reduce) {
+          .edna-chip, .edna-icon-btn, .edna-toggle { animation: none !important; transition: none !important; }
+          [style*="sfn-bounce"] { animation: none !important; }
         }
       `}</style>
     </>
